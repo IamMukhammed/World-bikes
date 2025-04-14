@@ -72,7 +72,8 @@ const withLayoutMain = (Component: any) => {
 							<Component {...props} />
 						</Stack>
 
-						{user?._id && <Chat />}
+						{/* {user?._id && <Chat />} */}
+						{true && <Chat />}
 
 						<Stack id={'footer'}>
 							<Footer />
