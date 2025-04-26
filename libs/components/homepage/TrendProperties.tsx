@@ -26,6 +26,7 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 
 	/** APOLLO REQUESTS **/
 	const [likeTargetProperty] = useMutation(LIKE_TARGET_PROPERTY);
+	
 	const {
 		loading: getPropertiesLoading,
 		data: getPropertiesData,
