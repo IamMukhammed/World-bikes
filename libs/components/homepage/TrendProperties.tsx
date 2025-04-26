@@ -25,10 +25,10 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 	const [trendProperties, setTrendProperties] = useState<Property[]>([]);
 
 	/** APOLLO REQUESTS **/
-	const [ likeTargetProperty ] = useMutation(LIKE_TARGET_PROPERTY);
+	const [likeTargetProperty] = useMutation(LIKE_TARGET_PROPERTY);
 	const {
-		loading: getPropertiesLoading, 
-		data: getPropertiesData, 
+		loading: getPropertiesLoading,
+		data: getPropertiesData,
 		error: getPropertiesError,
 		refetch: getPropertiesRefetch,
 	} = useQuery(GET_PROPERTIES, {
@@ -52,9 +52,9 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 			// execute getPropertiesRefetch
 			await getPropertiesRefetch({ input: initialInput });
 
-			await sweetTopSmallSuccessAlert("Success", 800);
+			await sweetTopSmallSuccessAlert('Success', 800);
 		} catch (err: any) {
-			console.log("ERROR, likePropertyHandler:", err.message);
+			console.log('ERROR, likePropertyHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};
