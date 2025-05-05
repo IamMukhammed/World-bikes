@@ -81,6 +81,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 		fetchPolicy: 'network-only',
 		variables: {
 			input: articleId,
+			// articleId,
 		},
 		notifyOnNetworkStatusChange: true,
 		onCompleted(data: any) {
