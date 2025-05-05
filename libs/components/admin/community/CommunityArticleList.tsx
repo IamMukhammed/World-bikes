@@ -142,7 +142,7 @@ const CommunityArticleList = (props: CommunityArticleListProps) => {
 						{articles.length === 0 && (
 							<TableRow>
 								<TableCell align="center" colSpan={8}>
-									<span className={'no-data'}>data not found!</span>
+									<span className={'no-data'}>Data not found!</span>
 								</TableCell>
 							</TableRow>
 						)}
@@ -189,7 +189,7 @@ const CommunityArticleList = (props: CommunityArticleListProps) => {
 										<Moment format={'DD.MM.YY HH:mm'}>{article?.createdAt}</Moment>
 									</TableCell>
 									<TableCell align="center">
-										{article.articleStatus === 'DELETE' ? (
+										{article.articleStatus === BoardArticleStatus.DELETE ? (
 											<Button
 												variant="outlined"
 												sx={{ p: '3px', border: 'none', ':hover': { border: '1px solid #000000' } }}
