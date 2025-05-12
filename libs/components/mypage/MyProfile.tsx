@@ -3,13 +3,13 @@ import { NextPage } from 'next';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { Button, Stack, Typography } from '@mui/material';
 import axios from 'axios';
-import { Messages, REACT_APP_API_URL } from '../../config';
-import { getJwtToken, updateStorage, updateUserInfo } from '../../auth';
-import { useMutation, useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
 import { MemberUpdate } from '../../types/member/member.update';
+import { useMutation, useReactiveVar } from '@apollo/client';
+import { getJwtToken, updateStorage, updateUserInfo } from '../../auth';
 import { UPDATE_MEMBER } from '../../../apollo/user/mutation';
 import { sweetErrorHandling, sweetMixinSuccessAlert } from '../../sweetAlert';
+import { Messages, REACT_APP_API_URL } from '../../config';
 
 const MyProfile: NextPage = ({ initialValues, ...props }: any) => {
 	const device = useDeviceDetect();
@@ -91,7 +91,7 @@ const MyProfile: NextPage = ({ initialValues, ...props }: any) => {
 			const jwtToken = result.data.updateMember?.accessToken;
 			await updateStorage({ jwtToken });
 			updateUserInfo(result.data.updateMember?.accessToken);
-			await sweetMixinSuccessAlert('Information updated successfully.');
+			await sweetMixinSuccessAlert('information updated successfully.');
 		} catch (err: any) {
 			sweetErrorHandling(err).then();
 		}
@@ -185,7 +185,9 @@ const MyProfile: NextPage = ({ initialValues, ...props }: any) => {
 							<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
 								<g clipPath="url(#clip0_7065_6985)">
 									<path
-										d="M12.6389 0H4.69446C4.49486 0 4.33334 0.161518 4.33334 0.361122C4.33334 0.560727 4.49486 0.722245 4.69446 0.722245H11.7672L0.105803 12.3836C-0.0352676 12.5247 -0.0352676 12.7532 0.105803 12.8942C0.176321 12.9647 0.268743 13 0.361131 13C0.453519 13 0.545907 12.9647 0.616459 12.8942L12.2778 1.23287V8.30558C12.2778 8.50518 12.4393 8.6667 12.6389 8.6667C12.8385 8.6667 13 8.50518 13 8.30558V0.361122C13 0.161518 12.8385 0 12.6389 0Z"
+										d="M12.6389 0H4.69446C4.49486 0 4.33334 0.161518 4.33334 0.361122C4.33334 0.560727 4.49486 0.722245 4.69446 0.722245H11.7672L0.105803 
+										12.3836C-0.0352676 12.5247 -0.0352676 12.7532 0.105803 12.8942C0.176321 12.9647 0.268743 13 0.361131 13C0.453519 13 0.545907 12.9647 0.616459 
+										12.8942L12.2778 1.23287V8.30558C12.2778 8.50518 12.4393 8.6667 12.6389 8.6667C12.8385 8.6667 13 8.50518 13 8.30558V0.361122C13 0.161518 12.8385 0 12.6389 0Z"
 										fill="white"
 									/>
 								</g>

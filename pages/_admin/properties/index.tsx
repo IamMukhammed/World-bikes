@@ -15,8 +15,8 @@ import { PropertyLocation, PropertyStatus } from '../../../libs/enums/property.e
 import { sweetConfirmAlert, sweetErrorHandling } from '../../../libs/sweetAlert';
 import { PropertyUpdate } from '../../../libs/types/property/property.update';
 import { useMutation, useQuery } from '@apollo/client';
-import { REMOVE_PROPERTY_BY_ADMIN, UPDATE_PROPERTY_BY_ADMIN } from '../../../apollo/admin/mutation';
 import { GET_ALL_PROPERTIES_BY_ADMIN } from '../../../apollo/admin/query';
+import { REMOVE_PROPERTY_BY_ADMIN, UPDATE_PROPERTY_BY_ADMIN } from '../../../apollo/admin/mutation';
 import { T } from '../../../libs/types/common';
 
 const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
@@ -40,9 +40,7 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 		refetch: getAllPropertiesByAdminRefetch,
 	} = useQuery(GET_ALL_PROPERTIES_BY_ADMIN, {
 		fetchPolicy: 'network-only',
-		variables: {
-			input: propertiesInquiry,
-		},
+		variables: { input: propertiesInquiry },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
 			setProperties(data?.getAllPropertiesByAdmin?.list);
@@ -169,28 +167,28 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 						<Box component={'div'}>
 							<List className={'tab-menu'}>
 								<ListItem
-									onClick={(e: any) => tabChangeHandler(e, 'ALL')}
+									onClick={(e) => tabChangeHandler(e, 'ALL')}
 									value="ALL"
 									className={value === 'ALL' ? 'li on' : 'li'}
 								>
 									All
 								</ListItem>
 								<ListItem
-									onClick={(e: any) => tabChangeHandler(e, 'ACTIVE')}
+									onClick={(e) => tabChangeHandler(e, 'ACTIVE')}
 									value="ACTIVE"
 									className={value === 'ACTIVE' ? 'li on' : 'li'}
 								>
 									Active
 								</ListItem>
 								<ListItem
-									onClick={(e: any) => tabChangeHandler(e, 'SOLD')}
+									onClick={(e) => tabChangeHandler(e, 'SOLD')}
 									value="SOLD"
 									className={value === 'SOLD' ? 'li on' : 'li'}
 								>
 									Sold
 								</ListItem>
 								<ListItem
-									onClick={(e: any) => tabChangeHandler(e, 'DELETE')}
+									onClick={(e) => tabChangeHandler(e, 'DELETE')}
 									value="DELETE"
 									className={value === 'DELETE' ? 'li on' : 'li'}
 								>

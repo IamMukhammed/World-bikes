@@ -22,8 +22,9 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 	const user = useReactiveVar(userVar);
 
 	/** HANDLERS **/
+
 	const pushDetailHandler = async (propertyId: string) => {
-		console.log('ID:', propertyId);
+		console.log('propertyId:', propertyId);
 		await router.push({ pathname: '/property/detail', query: { id: propertyId } });
 	};
 
@@ -94,7 +95,7 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'} onClick={() => pushDetailHandler(property._id)}>
-						{property.propertyTitle}
+						{property.propertyTitle}{' '}
 					</strong>
 					<p className={'desc'}>{property.propertyDesc ?? 'no description'}</p>
 					<div className={'options'}>

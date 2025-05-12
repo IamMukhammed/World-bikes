@@ -15,7 +15,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { GET_PROPERTIES } from '../../apollo/user/query';
 import { T } from '../../libs/types/common';
 import { LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
-import { sweetTopSmallSuccessAlert, sweetMixinErrorAlert } from '../../libs/sweetAlert';
+import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
 
 export const getStaticProps = async ({ locale }: any) => ({
 	props: {
@@ -38,6 +38,7 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 
 	/** APOLLO REQUESTS **/
 	const [likeTargetProperty] = useMutation(LIKE_TARGET_PROPERTY);
+
 	const {
 		loading: getPropertiesLoading,
 		data: getPropertiesData,
@@ -64,12 +65,12 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 	}, [router]);
 
 	useEffect(() => {
-		// BACKEND REFETCH
 		console.log('searchFilter:', searchFilter);
 		// getPropertiesRefetch({ input: searchFilter }).then();
 	}, [searchFilter]);
 
 	/** HANDLERS **/
+
 	const handlePaginationChange = async (event: ChangeEvent<unknown>, value: number) => {
 		searchFilter.page = value;
 		await router.push(
@@ -87,13 +88,12 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 			if (!id) return;
 			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
 
-			// execute likeTargetProperty Mutation
-			await likeTargetProperty({ variables: { input: id } });
-
-			// execute getPropertiesRefetch
+			await likeTargetProperty({
+				variables: { input: id },
+			});
 			await getPropertiesRefetch({ input: initialInput });
 
-			await sweetTopSmallSuccessAlert('Success', 800);
+			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
 			console.log('ERROR, likePropertyHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();

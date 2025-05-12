@@ -26,14 +26,14 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 
 	/** APOLLO REQUESTS **/
 	const [likeTargetProperty] = useMutation(LIKE_TARGET_PROPERTY);
-	
+
 	const {
 		loading: getPropertiesLoading,
 		data: getPropertiesData,
 		error: getPropertiesError,
 		refetch: getPropertiesRefetch,
 	} = useQuery(GET_PROPERTIES, {
-		fetchPolicy: 'cache-and-network', // cache + => network -
+		fetchPolicy: 'cache-and-network',
 		variables: { input: initialInput },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
@@ -47,13 +47,12 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 			if (!id) return;
 			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
 
-			// execute likeTargetProperty Mutation
-			await likeTargetProperty({ variables: { input: id } });
-
-			// execute getPropertiesRefetch
+			await likeTargetProperty({
+				variables: { input: id },
+			});
 			await getPropertiesRefetch({ input: initialInput });
 
-			await sweetTopSmallSuccessAlert('Success', 800);
+			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
 			console.log('ERROR, likePropertyHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();

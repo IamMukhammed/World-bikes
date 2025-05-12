@@ -40,12 +40,10 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 		refetch: getAllBoardArticlesByAdminRefetch,
 	} = useQuery(GET_ALL_BOARD_ARTICLES_BY_ADMIN, {
 		fetchPolicy: 'network-only',
-		variables: {
-			input: communityInquiry,
-		},
+		variables: { input: communityInquiry },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
-			setArticles(data?.getAllBoardArticlesByAdmin?.List);
+			setArticles(data?.getAllBoardArticlesByAdmin?.list);
 			setArticleTotal(data?.getAllBoardArticlesByAdmin?.metaCounter[0]?.total ?? 0);
 		},
 	});
@@ -167,21 +165,21 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 						<Box component={'div'}>
 							<List className={'tab-menu'}>
 								<ListItem
-									onClick={(e: any) => tabChangeHandler(e, 'ALL')}
+									onClick={(e) => tabChangeHandler(e, 'ALL')}
 									value="ALL"
 									className={value === 'ALL' ? 'li on' : 'li'}
 								>
 									All
 								</ListItem>
 								<ListItem
-									onClick={(e: any) => tabChangeHandler(e, 'ACTIVE')}
+									onClick={(e) => tabChangeHandler(e, 'ACTIVE')}
 									value="ACTIVE"
 									className={value === 'ACTIVE' ? 'li on' : 'li'}
 								>
 									Active
 								</ListItem>
 								<ListItem
-									onClick={(e: any) => tabChangeHandler(e, 'DELETE')}
+									onClick={(e) => tabChangeHandler(e, 'DELETE')}
 									value="DELETE"
 									className={value === 'DELETE' ? 'li on' : 'li'}
 								>

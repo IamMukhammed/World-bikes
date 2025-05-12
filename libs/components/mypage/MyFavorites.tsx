@@ -6,8 +6,8 @@ import PropertyCard from '../property/PropertyCard';
 import { Property } from '../../types/property/property';
 import { T } from '../../types/common';
 import { useMutation, useQuery } from '@apollo/client';
-import { LIKE_TARGET_PROPERTY } from '../../../apollo/user/mutation';
 import { GET_FAVORITES } from '../../../apollo/user/query';
+import { LIKE_TARGET_PROPERTY } from '../../../apollo/user/mutation';
 import { Messages } from '../../config';
 import { sweetMixinErrorAlert } from '../../sweetAlert';
 

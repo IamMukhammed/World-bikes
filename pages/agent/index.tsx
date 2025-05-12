@@ -13,8 +13,8 @@ import { useMutation, useQuery } from '@apollo/client';
 import { GET_AGENTS } from '../../apollo/user/query';
 import { LIKE_TARGET_MEMBER } from '../../apollo/user/mutation';
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
-import { T } from '../../libs/types/common';
 import { Messages } from '../../libs/config';
+import { T } from '../../libs/types/common';
 
 export const getStaticProps = async ({ locale }: any) => ({
 	props: {
@@ -72,6 +72,11 @@ const AgentList: NextPage = ({ initialInput, ...props }: any) => {
 		setSortingOpen(true);
 	};
 
+	const sortingCloseHandler = () => {
+		setSortingOpen(false);
+		setAnchorEl(null);
+	};
+
 	const sortingHandler = (e: React.MouseEvent<HTMLLIElement>) => {
 		switch (e.currentTarget.id) {
 			case 'recent':
@@ -115,16 +120,11 @@ const AgentList: NextPage = ({ initialInput, ...props }: any) => {
 			});
 
 			await getAgentsRefetch({ input: searchFilter });
-			await sweetTopSmallSuccessAlert('Success', 800);
+			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
-			console.log('ERROR, likeMemberHandler:', err.message);
+			console.log('ERROR, likePropertyHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();
 		}
-	};
-
-	const sortingCloseHandler = () => {
-		setSortingOpen(false);
-		setAnchorEl(null);
 	};
 
 	if (device === 'mobile') {

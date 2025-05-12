@@ -15,11 +15,11 @@ import { userVar } from '../../apollo/store';
 import MyMenu from '../../libs/components/mypage/MyMenu';
 import WriteArticle from '../../libs/components/mypage/WriteArticle';
 import MemberFollowers from '../../libs/components/member/MemberFollowers';
+import { Messages } from '../../libs/config';
+import { LIKE_TARGET_MEMBER, SUBSCRIBE, UNSUBSCRIBE } from '../../apollo/user/mutation';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
 import MemberFollowings from '../../libs/components/member/MemberFollowings';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { LIKE_TARGET_MEMBER, SUBSCRIBE, UNSUBSCRIBE } from '../../apollo/user/mutation';
-import { Messages } from '../../libs/config';
 
 export const getStaticProps = async ({ locale }: any) => ({
 	props: {
@@ -88,7 +88,6 @@ const MyPage: NextPage = () => {
 					input: id,
 				},
 			});
-
 			await sweetTopSmallSuccessAlert('Success!', 800);
 			await refetch({ input: query });
 		} catch (err: any) {

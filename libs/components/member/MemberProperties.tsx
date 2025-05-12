@@ -26,14 +26,12 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 		refetch: getPropertiesRefetch,
 	} = useQuery(GET_PROPERTIES, {
 		fetchPolicy: 'network-only',
-		variables: {
-			input: searchFilter,
-		},
+		variables: { input: searchFilter },
 		skip: !searchFilter?.search?.memberId,
 		notifyOnNetworkStatusChange: true,
-		onCompleted: (data: T) => {
-			setAgentProperties(data?.getProeprties?.list);
-			setTotal(data?.getProeprties?.metaCounter[0]?.total ?? 0);
+		onCompleted: (data: any) => {
+			setAgentProperties(data?.getProperties?.list);
+			setTotal(data?.getProperties?.metaCounter[0]?.total ?? 0);
 		},
 	});
 
@@ -82,7 +80,7 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 							return <PropertyCard property={property} memberPage={true} key={property?._id} />;
 						})}
 
-						{agentProperties?.length !== 0 && (
+						{agentProperties.length !== 0 && (
 							<Stack className="pagination-config">
 								<Stack className="pagination-box">
 									<Pagination

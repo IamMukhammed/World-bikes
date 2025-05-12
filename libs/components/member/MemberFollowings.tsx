@@ -4,12 +4,12 @@ import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { useRouter } from 'next/router';
 import { FollowInquiry } from '../../types/follow/follow.input';
 import { useQuery, useReactiveVar } from '@apollo/client';
+import { GET_MEMBER_FOLLOWINGS } from '../../../apollo/user/query';
 import { Following } from '../../types/follow/follow';
 import { REACT_APP_API_URL } from '../../config';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { userVar } from '../../../apollo/store';
-import { GET_MEMBER_FOLLOWINGS } from '../../../apollo/user/query';
 import { T } from '../../types/common';
 
 interface MemberFollowingsProps {
@@ -34,13 +34,11 @@ const MemberFollowings = (props: MemberFollowingsProps) => {
 	const {
 		loading: getMemberFollowingsLoading,
 		data: getMemberFollowingsData,
-		error: getMemberFollowingsError,
+		error: getMemberFollowersError,
 		refetch: getMemberFollowingsRefetch,
 	} = useQuery(GET_MEMBER_FOLLOWINGS, {
 		fetchPolicy: 'network-only',
-		variables: {
-			input: followInquiry,
-		},
+		variables: { input: followInquiry },
 		skip: !followInquiry?.search?.followerId,
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {

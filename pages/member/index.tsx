@@ -9,12 +9,12 @@ import { useRouter } from 'next/router';
 import MemberFollowers from '../../libs/components/member/MemberFollowers';
 import MemberArticles from '../../libs/components/member/MemberArticles';
 import { useMutation, useReactiveVar } from '@apollo/client';
+import { LIKE_TARGET_MEMBER, SUBSCRIBE, UNSUBSCRIBE } from '../../apollo/user/mutation';
+import { Messages } from '../../libs/config';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
 import MemberFollowings from '../../libs/components/member/MemberFollowings';
 import { userVar } from '../../apollo/store';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { SUBSCRIBE, UNSUBSCRIBE, LIKE_TARGET_MEMBER } from '../../apollo/user/mutation';
-import { Messages } from '../../libs/config';
 
 export const getStaticProps = async ({ locale }: any) => ({
 	props: {
@@ -76,6 +76,7 @@ const MemberPage: NextPage = () => {
 					input: id,
 				},
 			});
+
 			await sweetTopSmallSuccessAlert('Unfollowed!', 800);
 			await refetch({ input: query });
 		} catch (err: any) {
@@ -93,7 +94,6 @@ const MemberPage: NextPage = () => {
 					input: id,
 				},
 			});
-
 			await sweetTopSmallSuccessAlert('Success!', 800);
 			await refetch({ input: query });
 		} catch (err: any) {

@@ -3,13 +3,13 @@ import { NextPage } from 'next';
 import { Pagination, Stack, Typography } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { PropertyCard } from './PropertyCard';
-import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { Property } from '../../types/property/property';
 import { AgentPropertiesInquiry } from '../../types/property/property.input';
 import { T } from '../../types/common';
 import { PropertyStatus } from '../../enums/property.enum';
 import { userVar } from '../../../apollo/store';
 import { useRouter } from 'next/router';
+import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { UPDATE_PROPERTY } from '../../../apollo/user/mutation';
 import { GET_AGENT_PROPERTIES } from '../../../apollo/user/query';
 import { sweetConfirmAlert, sweetErrorHandling } from '../../sweetAlert';
@@ -32,9 +32,7 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 		refetch: getAgentPropertiesRefetch,
 	} = useQuery(GET_AGENT_PROPERTIES, {
 		fetchPolicy: 'network-only',
-		variables: {
-			input: searchFilter,
-		},
+		variables: { input: searchFilter },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
 			setAgentProperties(data?.getAgentProperties?.list);
@@ -83,7 +81,7 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 				});
 				await getAgentPropertiesRefetch({ input: searchFilter });
 			}
-		} catch (err) {
+		} catch (err: any) {
 			await sweetErrorHandling(err);
 		}
 	};

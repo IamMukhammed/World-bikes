@@ -15,7 +15,7 @@ import { CommentInput, CommentsInquiry } from '../../libs/types/comment/comment.
 import { Comment } from '../../libs/types/comment/comment';
 import { CommentGroup } from '../../libs/enums/comment.enum';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useReactiveVar, useQuery, useMutation } from '@apollo/client';
+import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { CREATE_COMMENT, LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
 import { GET_COMMENTS, GET_MEMBER, GET_PROPERTIES } from '../../apollo/user/query';
 import { Messages, REACT_APP_API_URL } from '../../libs/config';
@@ -32,7 +32,7 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 	const device = useDeviceDetect();
 	const router = useRouter();
 	const user = useReactiveVar(userVar);
-	const [mbId, setMbId] = useState<string | null>(null);
+	const [agentId, setAgentId] = useState<string | null>(null);
 	const [agent, setAgent] = useState<Member | null>(null);
 	const [searchFilter, setSearchFilter] = useState<PropertiesInquiry>(initialInput);
 	const [agentProperties, setAgentProperties] = useState<Property[]>([]);
@@ -57,8 +57,8 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 		refetch: getMemberRefetch,
 	} = useQuery(GET_MEMBER, {
 		fetchPolicy: 'network-only',
-		variables: { input: mbId },
-		skip: !mbId,
+		variables: { input: agentId },
+		skip: !agentId,
 		onCompleted: (data: T) => {
 			setAgent(data?.getMember);
 			setSearchFilter({
@@ -83,7 +83,7 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 	const {
 		loading: getPropertiesLoading,
 		data: getPropertiesData,
-		error: getProeprtiesError,
+		error: getPropertiesError,
 		refetch: getPropertiesRefetch,
 	} = useQuery(GET_PROPERTIES, {
 		fetchPolicy: 'network-only',
@@ -92,7 +92,7 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
 			setAgentProperties(data?.getProperties?.list);
-			setPropertyTotal(data?.getProeprties?.metaCounter[0]?.total ?? 0);
+			setPropertyTotal(data?.getProperties?.metaCounter[0]?.total ?? 0);
 		},
 	});
 
@@ -114,7 +114,7 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 
 	/** LIFECYCLES **/
 	useEffect(() => {
-		if (router.query.agentId) setMbId(router.query.agentId as string);
+		if (router.query.agentId) setAgentId(router.query.agentId as string);
 	}, [router]);
 
 	useEffect(() => {
@@ -152,7 +152,7 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 	const createCommentHandler = async () => {
 		try {
 			if (!user._id) throw new Error(Messages.error2);
-			if (user._id === mbId) throw new Error('Cannot write a review for yourself');
+			if (user._id === agentId) throw new Error('Cannot write a review for yourself');
 
 			await createComment({
 				variables: {
@@ -177,7 +177,7 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 				},
 			});
 			await getPropertiesRefetch({ input: searchFilter });
-			await sweetTopSmallSuccessAlert('Success', 800);
+			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
 			console.log('ERROR, likePropertyHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();

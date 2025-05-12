@@ -12,10 +12,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { BoardArticlesInquiry } from '../../libs/types/board-article/board-article.input';
 import { BoardArticleCategory } from '../../libs/enums/board-article.enum';
 import { useMutation, useQuery } from '@apollo/client';
-import { LIKE_TARGET_BOARD_ARTICLE } from '../../apollo/user/mutation';
 import { GET_BOARD_ARTICLES } from '../../apollo/user/query';
 import { Messages } from '../../libs/config';
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
+import { LIKE_TARGET_BOARD_ARTICLE } from '../../apollo/user/mutation';
 
 export const getStaticProps = async ({ locale }: any) => ({
 	props: {
@@ -39,10 +39,10 @@ const Community: NextPage = ({ initialInput, ...props }: T) => {
 	const {
 		loading: boardArticlesLoading,
 		data: boardArticlesData,
-		error: boardArticlesError,
+		error: getBoardArticlesError,
 		refetch: boardArticlesRefetch,
 	} = useQuery(GET_BOARD_ARTICLES, {
-		fetchPolicy: 'network-only',
+		fetchPolicy: 'cache-and-network',
 		variables: {
 			input: searchCommunity,
 		},
@@ -97,9 +97,9 @@ const Community: NextPage = ({ initialInput, ...props }: T) => {
 				},
 			});
 			await boardArticlesRefetch({ input: searchCommunity });
-			await sweetTopSmallSuccessAlert('Success', 800);
+			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
-			console.log('ERROR, likeArticleHandler:', err.message);
+			console.log('ERROR, likePropertyHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};

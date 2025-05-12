@@ -4,14 +4,14 @@ import { Pagination, Stack, Typography } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { useRouter } from 'next/router';
 import CommunityCard from '../common/CommunityCard';
+import { useMutation, useQuery } from '@apollo/client';
+import { GET_BOARD_ARTICLES } from '../../../apollo/user/query';
 import { T } from '../../types/common';
 import { BoardArticle } from '../../types/board-article/board-article';
 import { BoardArticlesInquiry } from '../../types/board-article/board-article.input';
-import { useMutation, useQuery } from '@apollo/client';
-import { LIKE_TARGET_BOARD_ARTICLE } from '../../../apollo/user/mutation';
-import { GET_BOARD_ARTICLES } from '../../../apollo/user/query';
 import { Messages } from '../../config';
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../sweetAlert';
+import { LIKE_TARGET_BOARD_ARTICLE } from '../../../apollo/user/mutation';
 
 const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
 	const device = useDeviceDetect();
@@ -26,8 +26,8 @@ const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
 
 	const {
 		loading: boardArticlesLoading,
-		data: boardArticlesData,
-		error: boardArticlesError,
+		data: boardArticles,
+		error: getBoardArticlesError,
 		refetch: boardArticlesRefetch,
 	} = useQuery(GET_BOARD_ARTICLES, {
 		fetchPolicy: 'network-only',
@@ -63,9 +63,9 @@ const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
 				},
 			});
 			await boardArticlesRefetch({ input: searchFilter });
-			await sweetTopSmallSuccessAlert('Success!', 800);
+			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
-			console.log('ERROR, likeArticleHandler:', err.message);
+			console.log('ERROR, likePropertyHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};

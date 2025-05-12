@@ -3,10 +3,10 @@ import { NextPage } from 'next';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { Pagination, Stack, Typography } from '@mui/material';
 import CommunityCard from '../common/CommunityCard';
-import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
 import { T } from '../../types/common';
 import { BoardArticle } from '../../types/board-article/board-article';
+import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { LIKE_TARGET_BOARD_ARTICLE } from '../../../apollo/user/mutation';
 import { GET_BOARD_ARTICLES } from '../../../apollo/user/query';
 import { Messages } from '../../config';
@@ -28,7 +28,7 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 	const {
 		loading: boardArticlesLoading,
 		data: boardArticlesData,
-		error: boardArticlesError,
+		error: getBoardArticlesError,
 		refetch: boardArticlesRefetch,
 	} = useQuery(GET_BOARD_ARTICLES, {
 		fetchPolicy: 'network-only',
@@ -51,7 +51,7 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 		try {
 			e.stopPropagation();
 			if (!id) return;
-			if (!user._id) throw new Error(Messages.error2);
+			if (!user?._id) throw new Error(Messages.error2);
 
 			await likeTargetBoardArticle({
 				variables: {

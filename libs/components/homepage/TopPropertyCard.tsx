@@ -22,8 +22,9 @@ const TopPropertyCard = (props: TopPropertyCardProps) => {
 	const user = useReactiveVar(userVar);
 
 	/** HANDLERS **/
+
 	const pushDetailHandler = async (propertyId: string) => {
-		console.log('ID:', propertyId);
+		console.log('propertyId:', propertyId);
 		await router.push({ pathname: '/property/detail', query: { id: propertyId } });
 	};
 

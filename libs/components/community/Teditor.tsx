@@ -20,7 +20,7 @@ const TuiEditor = () => {
 	const [articleCategory, setArticleCategory] = useState<BoardArticleCategory>(BoardArticleCategory.FREE);
 
 	/** APOLLO REQUESTS **/
-	const [createBoardArticle] = useMutation(CREATE_BOARD_ARTICLE);
+	const [createboardArticle] = useMutation(CREATE_BOARD_ARTICLE);
 
 	const memoizedValues = useMemo(() => {
 		const articleTitle = '',
@@ -87,17 +87,17 @@ const TuiEditor = () => {
 			const articleContent = editor?.getInstance().getHTML() as string;
 			memoizedValues.articleContent = articleContent;
 
-			if (memoizedValues.articleContent === '' && memoizedValues.articleContent === '') {
+			if (memoizedValues.articleContent === '' && memoizedValues.articleTitle === '') {
 				throw new Error(Message.INSERT_ALL_INPUTS);
 			}
 
-			await createBoardArticle({
+			await createboardArticle({
 				variables: {
 					input: { ...memoizedValues, articleCategory },
 				},
 			});
 
-			await sweetTopSuccessAlert('Article is created successfully.', 700);
+			await sweetTopSuccessAlert('Article is created successfully', 700);
 			await router.push({
 				pathname: '/mypage',
 				query: {
@@ -167,6 +167,7 @@ const TuiEditor = () => {
 				ref={editorRef}
 				hooks={{
 					addImageBlobHook: async (image: any, callback: any) => {
+						console.log('image:', image);
 						const uploadedImageURL = await uploadImage(image);
 						callback(uploadedImageURL);
 						return false;

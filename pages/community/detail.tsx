@@ -5,7 +5,6 @@ import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
 import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
 import { Button, Stack, Typography, Tab, Tabs, IconButton, Backdrop, Pagination } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import Moment from 'react-moment';
 import { userVar } from '../../apollo/store';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
@@ -13,27 +12,27 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ChatIcon from '@mui/icons-material/Chat';
 import ChatBubbleOutlineRoundedIcon from '@mui/icons-material/ChatBubbleOutlineRounded';
-import { CommentInput, CommentsInquiry } from '../../libs/types/comment/comment.input';
 import { Comment } from '../../libs/types/comment/comment';
 import dynamic from 'next/dynamic';
-import { CommentGroup, CommentStatus } from '../../libs/enums/comment.enum';
 import { T } from '../../libs/types/common';
 import EditIcon from '@mui/icons-material/Edit';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { BoardArticle } from '../../libs/types/board-article/board-article';
-import { CREATE_COMMENT, LIKE_TARGET_BOARD_ARTICLE, UPDATE_COMMENT } from '../../apollo/user/mutation';
+import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { GET_BOARD_ARTICLE, GET_COMMENTS } from '../../apollo/user/query';
+import { CommentInput, CommentsInquiry } from '../../libs/types/comment/comment.input';
+import { CommentGroup, CommentStatus } from '../../libs/enums/comment.enum';
 import { Messages } from '../../libs/config';
+import { CommentUpdate } from '../../libs/types/comment/comment.update';
 import {
 	sweetConfirmAlert,
 	sweetMixinErrorAlert,
 	sweetMixinSuccessAlert,
 	sweetTopSmallSuccessAlert,
 } from '../../libs/sweetAlert';
-import { Trash } from 'phosphor-react';
-import { CommentUpdate } from '../../libs/types/comment/comment.update';
-const ToastViewerComponent = dynamic(() => import('../../libs/components/community/TViewer'), { ssr: false });
+import { CREATE_COMMENT, LIKE_TARGET_BOARD_ARTICLE, UPDATE_COMMENT } from '../../apollo/user/mutation';
 
+const ToastViewerComponent = dynamic(() => import('../../libs/components/community/TViewer'), { ssr: false });
 export const getStaticProps = async ({ locale }: any) => ({
 	props: {
 		...(await serverSideTranslations(locale, ['common'])),
@@ -75,13 +74,12 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 	const {
 		loading: boardArticleLoading,
 		data: boardArticleData,
-		error: boardArticleError,
+		error: getBoardArticleError,
 		refetch: boardArticleRefetch,
 	} = useQuery(GET_BOARD_ARTICLE, {
 		fetchPolicy: 'network-only',
 		variables: {
 			input: articleId,
-			// articleId,
 		},
 		notifyOnNetworkStatusChange: true,
 		onCompleted(data: any) {
@@ -98,7 +96,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 		error: getCommentsError,
 		refetch: getCommentsRefetch,
 	} = useQuery(GET_COMMENTS, {
-		fetchPolicy: 'cache-and-network', // cache + => network -
+		fetchPolicy: 'cache-and-network',
 		variables: {
 			input: searchFilter,
 		},
@@ -144,6 +142,8 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 		} catch (err: any) {
 			console.log('ERROR, likeBoArticleHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();
+		} finally {
+			setLikeLoading(false);
 		}
 	};
 
@@ -165,8 +165,8 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 			await boardArticleRefetch({ input: articleId });
 			setComment('');
 			await sweetMixinSuccessAlert('Successfully commented!');
-		} catch (err: any) {
-			await sweetMixinErrorAlert(err.message);
+		} catch (error: any) {
+			await sweetMixinErrorAlert(error.message);
 		}
 	};
 
@@ -183,7 +183,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 			};
 
 			if (!updateData?.commentContent && !updateData?.commentStatus)
-				throw new Error('provide data to update your comment');
+				throw new Error('Provide data to update your comment!');
 
 			if (commentStatus) {
 				if (await sweetConfirmAlert('Do you want to delete the comment?')) {
@@ -203,9 +203,8 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 				await sweetMixinSuccessAlert('Successfully updated!');
 			}
 			await getCommentsRefetch({ input: searchFilter });
-			await getCommentsRefetch({ input: searchFilter });
-		} catch (err: any) {
-			await sweetMixinErrorAlert(err.message);
+		} catch (error: any) {
+			await sweetMixinErrorAlert(error.message);
 		} finally {
 			setOpenBackdrop(false);
 			setUpdatedComment('');
@@ -527,6 +526,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 		);
 	}
 };
+
 CommunityDetail.defaultProps = {
 	initialInput: {
 		page: 1,
