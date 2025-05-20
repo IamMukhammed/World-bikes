@@ -5,8 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import WestIcon from '@mui/icons-material/West';
 import EastIcon from '@mui/icons-material/East';
-import PopularPropertyCard from './PopularProductCard';
-import { Property } from '../../types/product/product';
+import PopularProductCard from './PopularProductCard';
+import { Product } from '../../types/product/product';
 import Link from 'next/link';
 import { ProductsInquiry } from '../../types/product/product.input';
 import { GET_PRODUCTS } from '../../../apollo/user/query';
@@ -20,7 +20,7 @@ interface PopularProductsProps {
 const PopularProducts = (props: PopularProductsProps) => {
 	const { initialInput } = props;
 	const device = useDeviceDetect();
-	const [popularProducts, setPopularProducts] = useState<Property[]>([]);
+	const [popularProducts, setPopularProducts] = useState<Product[]>([]);
 
 	/** APOLLO REQUESTS **/
 	const {
@@ -43,23 +43,23 @@ const PopularProducts = (props: PopularProductsProps) => {
 
 	if (device === 'mobile') {
 		return (
-			<Stack className={'popular-properties'}>
+			<Stack className={'popular-products'}>
 				<Stack className={'container'}>
 					<Stack className={'info-box'}>
 						<span>Popular Motorcycles</span>
 					</Stack>
 					<Stack className={'card-box'}>
 						<Swiper
-							className={'popular-property-swiper'}
+							className={'popular-product-swiper'}
 							slidesPerView={'auto'}
 							centeredSlides={true}
 							spaceBetween={25}
 							modules={[Autoplay]}
 						>
-							{popularProducts.map((property: Property) => {
+							{popularProducts.map((product: Product) => {
 								return (
-									<SwiperSlide key={property._id} className={'popular-property-slide'}>
-										<PopularPropertyCard property={property} />
+									<SwiperSlide key={product._id} className={'popular-product-slide'}>
+										<PopularProductCard product={product} />
 									</SwiperSlide>
 								);
 							})}
@@ -70,7 +70,7 @@ const PopularProducts = (props: PopularProductsProps) => {
 		);
 	} else {
 		return (
-			<Stack className={'popular-properties'}>
+			<Stack className={'popular-products'}>
 				<Stack className={'container'}>
 					<Stack className={'info-box'}>
 						<Box component={'div'} className={'left'}>
@@ -79,7 +79,7 @@ const PopularProducts = (props: PopularProductsProps) => {
 						</Box>
 						<Box component={'div'} className={'right'}>
 							<div className={'more-box'}>
-								<Link href={'/property'}>
+								<Link href={'/product'}>
 									<span>See All Categories</span>
 								</Link>
 								<img src="/img/icons/rightup.svg" alt="" />
@@ -88,7 +88,7 @@ const PopularProducts = (props: PopularProductsProps) => {
 					</Stack>
 					<Stack className={'card-box'}>
 						<Swiper
-							className={'popular-property-swiper'}
+							className={'popular-product-swiper'}
 							slidesPerView={'auto'}
 							spaceBetween={25}
 							modules={[Autoplay, Navigation, Pagination]}
@@ -100,10 +100,10 @@ const PopularProducts = (props: PopularProductsProps) => {
 								el: '.swiper-popular-pagination',
 							}}
 						>
-							{popularProducts.map((property: Property) => {
+							{popularProducts.map((product: Product) => {
 								return (
-									<SwiperSlide key={property._id} className={'popular-property-slide'}>
-										<PopularPropertyCard property={property} />
+									<SwiperSlide key={product._id} className={'popular-product-slide'}>
+										<PopularProductCard product={product} />
 									</SwiperSlide>
 								);
 							})}
@@ -124,7 +124,7 @@ PopularProducts.defaultProps = {
 	initialInput: {
 		page: 1,
 		limit: 7,
-		sort: 'propertyViews',
+		sort: 'productViews',
 		direction: 'DESC',
 		search: {},
 	},

@@ -5,13 +5,13 @@ import WestIcon from '@mui/icons-material/West';
 import EastIcon from '@mui/icons-material/East';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper';
-import TopPropertyCard from './TopProductCard';
+import TopProductCard from './TopProductCard';
 import { ProductsInquiry } from '../../types/product/product.input';
-import { Property } from '../../types/product/product';
+import { Product } from '../../types/product/product';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../../apollo/user/query';
 import { T } from '../../types/common';
-import { LIKE_TARGET_PROPERTY } from '../../../apollo/user/mutation';
+import { LIKE_TARGET_PRODUCT } from '../../../apollo/user/mutation';
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../sweetAlert';
 import { Message } from '../../enums/common.enum';
 
@@ -22,10 +22,10 @@ interface TopProductsProps {
 const TopProducts = (props: TopProductsProps) => {
 	const { initialInput } = props;
 	const device = useDeviceDetect();
-	const [topProducts, setTopProducts] = useState<Property[]>([]);
+	const [topProducts, setTopProducts] = useState<Product[]>([]);
 
 	/** APOLLO REQUESTS **/
-	const [likeTargetProperty] = useMutation(LIKE_TARGET_PROPERTY);
+	const [likeTargetProduct] = useMutation(LIKE_TARGET_PRODUCT);
 
 	const {
 		loading: getProductsLoading,
@@ -42,42 +42,42 @@ const TopProducts = (props: TopProductsProps) => {
 	});
 
 	/** HANDLERS **/
-	const likePropertyHandler = async (user: T, id: string) => {
+	const likeProductHandler = async (user: T, id: string) => {
 		try {
 			if (!id) return;
 			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
 
-			await likeTargetProperty({
+			await likeTargetProduct({
 				variables: { input: id },
 			});
 			await getProductsRefetch({ input: initialInput });
 
 			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
-			console.log('ERROR, likePropertyHandler:', err.message);
+			console.log('ERROR, likeProductHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};
 
 	if (device === 'mobile') {
 		return (
-			<Stack className={'top-properties'}>
+			<Stack className={'top-products'}>
 				<Stack className={'container'}>
 					<Stack className={'info-box'}>
 						<span>Top Motorcycles</span>
 					</Stack>
 					<Stack className={'card-box'}>
 						<Swiper
-							className={'top-property-swiper'}
+							className={'top-product-swiper'}
 							slidesPerView={'auto'}
 							centeredSlides={true}
 							spaceBetween={15}
 							modules={[Autoplay]}
 						>
-							{topProducts.map((property: Property) => {
+							{topProducts.map((product: Product) => {
 								return (
-									<SwiperSlide className={'top-property-slide'} key={property?._id}>
-										<TopPropertyCard property={property} likePropertyHandler={likePropertyHandler} />
+									<SwiperSlide className={'top-product-slide'} key={product?._id}>
+										<TopProductCard product={product} likeProductHandler={likeProductHandler} />
 									</SwiperSlide>
 								);
 							})}
@@ -88,7 +88,7 @@ const TopProducts = (props: TopProductsProps) => {
 		);
 	} else {
 		return (
-			<Stack className={'top-properties'}>
+			<Stack className={'top-products'}>
 				<Stack className={'container'}>
 					<Stack className={'info-box'}>
 						<Box component={'div'} className={'left'}>
@@ -105,7 +105,7 @@ const TopProducts = (props: TopProductsProps) => {
 					</Stack>
 					<Stack className={'card-box'}>
 						<Swiper
-							className={'top-property-swiper'}
+							className={'top-product-swiper'}
 							slidesPerView={'auto'}
 							spaceBetween={15}
 							modules={[Autoplay, Navigation, Pagination]}
@@ -117,10 +117,10 @@ const TopProducts = (props: TopProductsProps) => {
 								el: '.swiper-top-pagination',
 							}}
 						>
-							{topProducts.map((property: Property) => {
+							{topProducts.map((product: Product) => {
 								return (
-									<SwiperSlide className={'top-property-slide'} key={property?._id}>
-										<TopPropertyCard property={property} likePropertyHandler={likePropertyHandler} />
+									<SwiperSlide className={'top-product-slide'} key={product?._id}>
+										<TopProductCard product={product} likeProductHandler={likeProductHandler} />
 									</SwiperSlide>
 								);
 							})}
@@ -136,7 +136,7 @@ TopProducts.defaultProps = {
 	initialInput: {
 		page: 1,
 		limit: 8,
-		sort: 'propertyRank',
+		sort: 'productRank',
 		direction: 'DESC',
 		search: {},
 	},

@@ -2,28 +2,28 @@ import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { Pagination, Stack, Typography } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
-import { PropertyCard } from './ProductCard';
-import { Property } from '../../types/product/product';
+import { Product } from '../../types/product/product';
 import { AgentProductsInquiry } from '../../types/product/product.input';
 import { T } from '../../types/common';
-import { PropertyStatus } from '../../enums/product.enum';
+import { ProductStatus } from '../../enums/product.enum';
 import { userVar } from '../../../apollo/store';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
-import { UPDATE_PROPERTY } from '../../../apollo/user/mutation';
+import { UPDATE_PRODUCT } from '../../../apollo/user/mutation';
 import { GET_AGENT_PRODUCTS } from '../../../apollo/user/query';
 import { sweetConfirmAlert, sweetErrorHandling } from '../../sweetAlert';
+import { ProductCard } from './ProductCard';
 
 const MyProducts: NextPage = ({ initialInput, ...props }: any) => {
 	const device = useDeviceDetect();
 	const [searchFilter, setSearchFilter] = useState<AgentProductsInquiry>(initialInput);
-	const [agentProducts, setAgentProducts] = useState<Property[]>([]);
+	const [agentProducts, setAgentProducts] = useState<Product[]>([]);
 	const [total, setTotal] = useState<number>(0);
 	const user = useReactiveVar(userVar);
 	const router = useRouter();
 
 	/** APOLLO REQUESTS **/
-	const [updateProperty] = useMutation(UPDATE_PROPERTY);
+	const [updateProduct] = useMutation(UPDATE_PRODUCT);
 
 	const {
 		loading: getAgentProductsLoading,
@@ -45,18 +45,18 @@ const MyProducts: NextPage = ({ initialInput, ...props }: any) => {
 		setSearchFilter({ ...searchFilter, page: value });
 	};
 
-	const changeStatusHandler = (value: PropertyStatus) => {
-		setSearchFilter({ ...searchFilter, search: { propertyStatus: value } });
+	const changeStatusHandler = (value: ProductStatus) => {
+		setSearchFilter({ ...searchFilter, search: { productStatus: value } });
 	};
 
-	const deletePropertyHandler = async (id: string) => {
+	const deleteProductHandler = async (id: string) => {
 		try {
-			if (await sweetConfirmAlert('Are you sure to delete this property?')) {
-				await updateProperty({
+			if (await sweetConfirmAlert('Are you sure to delete this product?')) {
+				await updateProduct({
 					variables: {
 						input: {
 							_id: id,
-							propertyStatus: 'DELETE',
+							productStatus: 'DELETE',
 						},
 					},
 				});
@@ -68,14 +68,14 @@ const MyProducts: NextPage = ({ initialInput, ...props }: any) => {
 		}
 	};
 
-	const updatePropertyHandler = async (status: string, id: string) => {
+	const updateProductHandler = async (status: string, id: string) => {
 		try {
 			if (await sweetConfirmAlert(`Are you sure change to ${status} status?`)) {
-				await updateProperty({
+				await updateProduct({
 					variables: {
 						input: {
 							_id: id,
-							propertyStatus: status,
+							productStatus: status,
 						},
 					},
 				});
@@ -94,24 +94,24 @@ const MyProducts: NextPage = ({ initialInput, ...props }: any) => {
 		return <div>WORLD MOTORCYCLES MOBILE</div>;
 	} else {
 		return (
-			<div id="my-property-page">
+			<div id="my-product-page">
 				<Stack className="main-title-box">
 					<Stack className="right-box">
 						<Typography className="main-title">My Products</Typography>
 						<Typography className="sub-title">We are glad to see you again!</Typography>
 					</Stack>
 				</Stack>
-				<Stack className="property-list-box">
+				<Stack className="product-list-box">
 					<Stack className="tab-name-box">
 						<Typography
-							onClick={() => changeStatusHandler(PropertyStatus.ACTIVE)}
-							className={searchFilter.search.propertyStatus === 'ACTIVE' ? 'active-tab-name' : 'tab-name'}
+							onClick={() => changeStatusHandler(ProductStatus.ACTIVE)}
+							className={searchFilter.search.productStatus === 'ACTIVE' ? 'active-tab-name' : 'tab-name'}
 						>
 							On Sale
 						</Typography>
 						<Typography
-							onClick={() => changeStatusHandler(PropertyStatus.SOLD)}
-							className={searchFilter.search.propertyStatus === 'SOLD' ? 'active-tab-name' : 'tab-name'}
+							onClick={() => changeStatusHandler(ProductStatus.SOLD)}
+							className={searchFilter.search.productStatus === 'SOLD' ? 'active-tab-name' : 'tab-name'}
 						>
 							On Sold
 						</Typography>
@@ -122,7 +122,7 @@ const MyProducts: NextPage = ({ initialInput, ...props }: any) => {
 							<Typography className="title-text">Date Published</Typography>
 							<Typography className="title-text">Status</Typography>
 							<Typography className="title-text">View</Typography>
-							{searchFilter.search.propertyStatus === 'ACTIVE' && (
+							{searchFilter.search.productStatus === 'ACTIVE' && (
 								<Typography className="title-text">Action</Typography>
 							)}
 						</Stack>
@@ -133,12 +133,12 @@ const MyProducts: NextPage = ({ initialInput, ...props }: any) => {
 								<p>No Products found!</p>
 							</div>
 						) : (
-							agentProducts.map((property: Property) => {
+							agentProducts.map((product: Product) => {
 								return (
-									<PropertyCard
-										property={property}
-										deletePropertyHandler={deletePropertyHandler}
-										updatePropertyHandler={updatePropertyHandler}
+									<ProductCard
+										product={product}
+										deleteProductHandler={deleteProductHandler}
+										updateProductHandler={updateProductHandler}
 									/>
 								);
 							})
@@ -173,7 +173,7 @@ MyProducts.defaultProps = {
 		limit: 5,
 		sort: 'createdAt',
 		search: {
-			propertyStatus: 'ACTIVE',
+			productStatus: 'ACTIVE',
 		},
 	},
 };

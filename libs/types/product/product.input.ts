@@ -1,27 +1,27 @@
-import { PropertyLocation, PropertyStatus, PropertyType } from '../../enums/product.enum';
+import { ProductLocation, ProductStatus, ProductType } from '../../enums/product.enum';
 import { Direction } from '../../enums/common.enum';
 
-export interface PropertyInput {
-	propertyType: PropertyType;
-	propertyLocation: PropertyLocation;
-	propertyAddress: string;
-	propertyTitle: string;
-	propertyPrice: number;
-	propertySquare: number;
-	propertyBeds: number;
-	propertyRooms: number;
-	propertyImages: string[];
-	propertyDesc?: string;
-	propertyBarter?: boolean;
-	propertyRent?: boolean;
+export interface ProductInput {
+	productType: ProductType;
+	productLocation: ProductLocation;
+	productAddress: string;
+	productTitle: string;
+	productPrice: number;
+	productSquare: number;
+	productBeds: number;
+	productRooms: number;
+	productImages: string[];
+	productDesc?: string;
+	productBarter?: boolean;
+	productRent?: boolean;
 	memberId?: string;
 	constructedAt?: Date;
 }
 
 interface PISearch {
 	memberId?: string;
-	locationList?: PropertyLocation[];
-	typeList?: PropertyType[];
+	locationList?: ProductLocation[];
+	typeList?: ProductType[];
 	roomsList?: Number[];
 	options?: string[];
 	bedsList?: Number[];
@@ -40,7 +40,8 @@ export interface ProductsInquiry {
 }
 
 interface APISearch {
-	propertyStatus?: PropertyStatus;
+	// productsStatus: string;
+	productStatus?: ProductStatus;
 }
 
 export interface AgentProductsInquiry {
@@ -52,8 +53,8 @@ export interface AgentProductsInquiry {
 }
 
 interface ALPISearch {
-	propertyStatus?: PropertyStatus;
-	propertyLocationList?: PropertyLocation[];
+	productStatus?: ProductStatus;
+	productLocationList?: ProductLocation[];
 }
 
 export interface AllProductsInquiry {

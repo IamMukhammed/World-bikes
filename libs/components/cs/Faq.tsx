@@ -33,7 +33,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 const Faq = () => {
 	const device = useDeviceDetect();
 	const router = useRouter();
-	const [category, setCategory] = useState<string>('property');
+	const [category, setCategory] = useState<string>('product');
 	const [expanded, setExpanded] = useState<string | false>('panel1');
 
 	/** APOLLO REQUESTS **/
@@ -49,7 +49,7 @@ const Faq = () => {
 	};
 
 	const data: any = {
-		property: [
+		product: [
 			{
 				id: '00f5a45ed8897f8090116a01',
 				subject: 'Are the Motorcycles displayed on the site reliable?',
@@ -63,7 +63,7 @@ const Faq = () => {
 			{
 				id: '00f5a45ed8897f8090116a21',
 				subject: 'How can I search for Motorcycles on your website?',
-				content: 'Simply use our search bar to enter location, price range, bedrooms/bathrooms, and property type.',
+				content: 'Simply use our search bar to enter location, price range, bedrooms/bathrooms, and product type.',
 			},
 			{
 				id: '00f5a45ed8897f8090116a23',
@@ -72,7 +72,7 @@ const Faq = () => {
 			},
 			{
 				id: '00f5a45ed8897f8090116a24',
-				subject: 'What should I consider when buying a property?',
+				subject: 'What should I consider when buying a Motorcycle?',
 				content: 'Location, condition, size, amenities, and future development plans.',
 			},
 			{
@@ -82,7 +82,7 @@ const Faq = () => {
 			},
 			{
 				id: '00f5a45ed8897f8090116a29',
-				subject: 'What happens if I encounter issues with the property after purchase?',
+				subject: 'What happens if I encounter issues with the product after purchase?',
 				content: 'We offer post-purchase support to address any concerns promptly.',
 			},
 			{
@@ -92,12 +92,12 @@ const Faq = () => {
 			},
 			{
 				id: '00f5a45ed8897f8090116a27',
-				subject: 'Can I sell my property through your website?',
+				subject: 'Can I sell my product through your website?',
 				content: 'Absolutely, we provide services for selling Motorcycles as well.',
 			},
 			{
 				id: '00f5a45ed8897f8090116b99',
-				subject: 'What if I need help understanding legal aspects of property purchase?',
+				subject: 'What if I need help understanding legal aspects of product purchase?',
 				content: 'Our team can provide basic guidance and recommend legal professionals if needed.',
 			},
 		],
@@ -162,17 +162,17 @@ const Faq = () => {
 			{
 				id: '00f5a45ed8897f8090116a03',
 				subject: 'What should buyers pay attention to?',
-				content: 'Buyers should check and decide whether the property they want to buy or rent is actually suitable!',
+				content: 'Buyers should check and decide whether the product they want to buy or rent is actually suitable!',
 			},
 			{
 				id: '00f5a45ed8897f8090116a85',
-				subject: 'How can I determine if a property is within my budget?',
+				subject: 'How can I determine if a Motorcycle is within my budget?',
 				content:
 					'Calculate your budget by considering your income, down payment, and potential mortgage payments. Our agents can assist you within your budget.',
 			},
 			{
 				id: '00f5a45ed8897f8090116a84',
-				subject: 'What documents do I need to provide when purchasing a property?',
+				subject: 'What documents do I need to provide when purchasing a Motorcyle?',
 				content:
 					"You'll typically need identification, proof of income, bank statements, and any necessary loan documentation. Our team will guide you through.",
 			},
@@ -184,9 +184,9 @@ const Faq = () => {
 			},
 			{
 				id: '00f5a45ed8897f8090116a82',
-				subject: 'Can I negotiate the price of a property?',
+				subject: 'Can I negotiate the price of a Motorcycle?',
 				content:
-					'Yes, you can negotiate the price of a property. Our agents will assist you in making competitive offers and negotiating terms with the seller.',
+					'Yes, you can negotiate the price of a Motorcycle. Our agents will assist you in making competitive offers and negotiating terms with the seller.',
 			},
 			{
 				id: '00f5a45ed8897f8090116a81',
@@ -196,25 +196,25 @@ const Faq = () => {
 			},
 			{
 				id: '00f5a45ed8897f8090116a80',
-				subject: 'Do you provide assistance with property inspections?',
+				subject: 'Do you provide assistance with Motorcycle inspections?',
 				content:
-					'Yes, we can recommend reputable inspectors and accompany you during property inspections to identify any potential issues.',
+					'Yes, we can recommend reputable inspectors and accompany you during Motorcycle inspections to identify any potential issues.',
 			},
 			{
 				id: '00f5a45ed8897f8090116a79',
-				subject: 'How long does it typically take to find the right property?',
+				subject: 'How long does it typically take to find the right Motorcycle?',
 				content:
-					'The timeframe varies depending on your preferences and market conditions. Our agents will work diligently to find the right property as quickly as possible.',
+					'The timeframe varies depending on your preferences and market conditions. Our agents will work diligently to find the right motorcycle as quickly as possible.',
 			},
 			{
 				id: '00f5a45ed8897f8090116a78',
-				subject: 'What are the advantages of using a real estate agent when buying a property?',
+				subject: 'What are the advantages of using a real estate agent when buying a Motorcycle?',
 				content:
 					'Real estate agents provide expertise, negotiation skills, and guidance throughout the buying process, ultimately saving you time and hassle.',
 			},
 			{
 				id: '00f5a45ed8897f8090116a77',
-				subject: 'What happens if I change my mind about a property after making an offer?',
+				subject: 'What happens if I change my mind about a Motorcycle after making an offer?',
 				content:
 					'Depending on the terms of the offer and the stage of the transaction, you may have options to withdraw your offer.',
 			},
@@ -302,7 +302,7 @@ const Faq = () => {
 			},
 			{
 				id: '00f5a45ed8897f8090116a56',
-				subject: 'Do members receive discounts on property listings or services?',
+				subject: 'Do members receive discounts on Motorcycle listings or services?',
 				content: 'Membership discounts are not part of our current offerings.',
 			},
 			{
@@ -440,12 +440,12 @@ const Faq = () => {
 			<Stack className={'faq-content'}>
 				<Box className={'categories'} component={'div'}>
 					<div
-						className={category === 'property' ? 'active' : ''}
+						className={category === 'product' ? 'active' : ''}
 						onClick={() => {
-							changeCategoryHandler('property');
+							changeCategoryHandler('product');
 						}}
 					>
-						Property
+						Product
 					</div>
 					<div
 						className={category === 'payment' ? 'active' : ''}

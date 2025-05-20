@@ -1,20 +1,20 @@
 import React, { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import { Box, Button, Menu, MenuItem, Pagination, Stack, Typography } from '@mui/material';
-import PropertyCard from '../../libs/components/product/ProductCard';
+import ProductCard from '../../libs/components/product/ProductCard';
 import useDeviceDetect from '../../libs/hooks/useDeviceDetect';
 import withLayoutBasic from '../../libs/components/layout/LayoutBasic';
 import Filter from '../../libs/components/product/Filter';
 import { useRouter } from 'next/router';
 import { ProductsInquiry } from '../../libs/types/product/product.input';
-import { Property } from '../../libs/types/product/product';
+import { Product } from '../../libs/types/product/product';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import { Direction, Message } from '../../libs/enums/common.enum';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../apollo/user/query';
 import { T } from '../../libs/types/common';
-import { LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
+import { LIKE_TARGET_PRODUCT } from '../../apollo/user/mutation';
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
 
 export const getStaticProps = async ({ locale }: any) => ({
@@ -23,13 +23,13 @@ export const getStaticProps = async ({ locale }: any) => ({
 	},
 });
 
-const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
+const ProductList: NextPage = ({ initialInput, ...props }: any) => {
 	const device = useDeviceDetect();
 	const router = useRouter();
 	const [searchFilter, setSearchFilter] = useState<ProductsInquiry>(
 		router?.query?.input ? JSON.parse(router?.query?.input as string) : initialInput,
 	);
-	const [products, setProducts] = useState<Property[]>([]);
+	const [products, setProducts] = useState<Product[]>([]);
 	const [total, setTotal] = useState<number>(0);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -37,7 +37,7 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 	const [filterSortName, setFilterSortName] = useState('New');
 
 	/** APOLLO REQUESTS **/
-	const [likeTargetProperty] = useMutation(LIKE_TARGET_PROPERTY);
+	const [likeTargetProduct] = useMutation(LIKE_TARGET_PRODUCT);
 
 	const {
 		loading: getProductsLoading,
@@ -74,8 +74,8 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 	const handlePaginationChange = async (event: ChangeEvent<unknown>, value: number) => {
 		searchFilter.page = value;
 		await router.push(
-			`/property?input=${JSON.stringify(searchFilter)}`,
-			`/property?input=${JSON.stringify(searchFilter)}`,
+			`/product?input=${JSON.stringify(searchFilter)}`,
+			`/product?input=${JSON.stringify(searchFilter)}`,
 			{
 				scroll: false,
 			},
@@ -83,19 +83,19 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 		setCurrentPage(value);
 	};
 
-	const likePropertyHandler = async (user: T, id: string) => {
+	const likeProductHandler = async (user: T, id: string) => {
 		try {
 			if (!id) return;
 			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
 
-			await likeTargetProperty({
+			await likeTargetProduct({
 				variables: { input: id },
 			});
 			await getProductsRefetch({ input: initialInput });
 
 			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
-			console.log('ERROR, likePropertyHandler:', err.message);
+			console.log('ERROR, likeProductHandler:', err.message);
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};
@@ -117,11 +117,11 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 				setFilterSortName('New');
 				break;
 			case 'lowest':
-				setSearchFilter({ ...searchFilter, sort: 'propertyPrice', direction: Direction.ASC });
+				setSearchFilter({ ...searchFilter, sort: 'productPrice', direction: Direction.ASC });
 				setFilterSortName('Lowest Price');
 				break;
 			case 'highest':
-				setSearchFilter({ ...searchFilter, sort: 'propertyPrice', direction: Direction.DESC });
+				setSearchFilter({ ...searchFilter, sort: 'productPrice', direction: Direction.DESC });
 				setFilterSortName('Highest Price');
 		}
 		setSortingOpen(false);
@@ -132,7 +132,7 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 		return <h1>MOTORCYCLES MOBILE</h1>;
 	} else {
 		return (
-			<div id="property-list-page" style={{ position: 'relative' }}>
+			<div id="product-list-page" style={{ position: 'relative' }}>
 				<div className="container">
 					<Box component={'div'} className={'right'}>
 						<span>Sort by</span>
@@ -168,7 +168,7 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 							</Menu>
 						</div>
 					</Box>
-					<Stack className={'property-page'}>
+					<Stack className={'product-page'}>
 						<Stack className={'filter-config'}>
 							{/* @ts-ignore */}
 							<Filter searchFilter={searchFilter} setSearchFilter={setSearchFilter} initialInput={initialInput} />
@@ -181,9 +181,9 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 										<p>No Motorcycles found!</p>
 									</div>
 								) : (
-									products.map((property: Property) => {
+									products.map((product: Product) => {
 										return (
-											<PropertyCard property={property} likePropertyHandler={likePropertyHandler} key={property?._id} />
+											<ProductCard product={product} likeProductHandler={likeProductHandler} key={product?._id} />
 										);
 									})
 								)}
@@ -217,7 +217,7 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 	}
 };
 
-PropertyList.defaultProps = {
+ProductList.defaultProps = {
 	initialInput: {
 		page: 1,
 		limit: 9,
@@ -236,4 +236,4 @@ PropertyList.defaultProps = {
 	},
 };
 
-export default withLayoutBasic(PropertyList);
+export default withLayoutBasic(ProductList);

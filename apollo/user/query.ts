@@ -79,28 +79,28 @@ export const GET_MEMBER = gql`
 `;
 
 /**************************
- *        PROPERTY        *
+ *        PRODUCT        *
  *************************/
 
-export const GET_PROPERTY = gql`
-	query GetProperty($input: String!) {
-		getProperty(propertyId: $input) {
+export const GET_PRODUCT = gql`
+	query GetProduct($input: String!) {
+		getProduct(productId: $input) {
 			_id
-			propertyType
-			propertyStatus
-			propertyLocation
-			propertyAddress
-			propertyTitle
-			propertyPrice
-			propertySquare
-			propertyBeds
-			propertyRooms
-			propertyViews
-			propertyLikes
-			propertyImages
-			propertyDesc
-			propertyBarter
-			propertyRent
+			productType
+			productStatus
+			productLocation
+			productAddress
+			productTitle
+			productPrice
+			productSquare
+			productBeds
+			productRooms
+			productViews
+			productLikes
+			productImages
+			productDesc
+			productBarter
+			productRent
 			memberId
 			soldAt
 			deletedAt
@@ -142,22 +142,22 @@ export const GET_PRODUCTS = gql`
 		getProducts(input: $input) {
 			list {
 				_id
-				propertyType
-				propertyStatus
-				propertyLocation
-				propertyAddress
-				propertyTitle
-				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
-				propertyViews
-				propertyLikes
-				propertyRank
-				propertyImages
-				propertyDesc
-				propertyBarter
-				propertyRent
+				productType
+				productStatus
+				productLocation
+				productAddress
+				productTitle
+				productPrice
+				productSquare
+				productBeds
+				productRooms
+				productViews
+				productLikes
+				productRank
+				productImages
+				productDesc
+				productBarter
+				productRent
 				memberId
 				soldAt
 				deletedAt
@@ -204,21 +204,21 @@ export const GET_AGENT_PRODUCTS = gql`
 		getAgentProducts(input: $input) {
 			list {
 				_id
-				propertyType
-				propertyStatus
-				propertyLocation
-				propertyAddress
-				propertyTitle
-				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
-				propertyViews
-				propertyLikes
-				propertyImages
-				propertyDesc
-				propertyBarter
-				propertyRent
+				productType
+				productStatus
+				productLocation
+				productAddress
+				productTitle
+				productPrice
+				productSquare
+				productBeds
+				productRooms
+				productViews
+				productLikes
+				productImages
+				productDesc
+				productBarter
+				productRent
 				memberId
 				soldAt
 				deletedAt
@@ -238,23 +238,23 @@ export const GET_FAVORITES = gql`
 		getFavorites(input: $input) {
 			list {
 				_id
-				propertyType
-				propertyStatus
-				propertyLocation
-				propertyAddress
-				propertyTitle
-				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
-				propertyViews
-				propertyLikes
-				propertyComments
-				propertyRank
-				propertyImages
-				propertyDesc
-				propertyBarter
-				propertyRent
+				productType
+				productStatus
+				productLocation
+				productAddress
+				productTitle
+				productPrice
+				productSquare
+				productBeds
+				productRooms
+				productViews
+				productLikes
+				productComments
+				productRank
+				productImages
+				productDesc
+				productBarter
+				productRent
 				memberId
 				soldAt
 				deletedAt
@@ -301,23 +301,23 @@ export const GET_VISITED = gql`
 		getVisited(input: $input) {
 			list {
 				_id
-				propertyType
-				propertyStatus
-				propertyLocation
-				propertyAddress
-				propertyTitle
-				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
-				propertyViews
-				propertyLikes
-				propertyComments
-				propertyRank
-				propertyImages
-				propertyDesc
-				propertyBarter
-				propertyRent
+				productType
+				productStatus
+				productLocation
+				productAddress
+				productTitle
+				productPrice
+				productSquare
+				productBeds
+				productRooms
+				productViews
+				productLikes
+				productComments
+				productRank
+				productImages
+				productDesc
+				productBarter
+				productRent
 				memberId
 				soldAt
 				deletedAt

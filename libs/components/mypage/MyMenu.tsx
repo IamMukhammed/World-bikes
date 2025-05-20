@@ -62,22 +62,22 @@ const MyMenu = () => {
 						<List className={'sub-section'}>
 							{user.memberType === 'AGENT' && (
 								<>
-									<ListItem className={pathname === 'addProperty' ? 'focus' : ''}>
+									<ListItem className={pathname === 'addProduct' ? 'focus' : ''}>
 										<Link
 											href={{
 												pathname: '/mypage',
-												query: { category: 'addProperty' },
+												query: { category: 'addProduct' },
 											}}
 											scroll={false}
 										>
 											<div className={'flex-box'}>
-												{category === 'addProperty' ? (
+												{category === 'addProduct' ? (
 													<img className={'com-icon'} src={'/img/icons/whiteTab.svg'} alt={'com-icon'} />
 												) : (
 													<img className={'com-icon'} src={'/img/icons/newTab.svg'} alt={'com_icon'} />
 												)}
 												<Typography className={'sub-title'} variant={'subtitle1'} component={'p'}>
-													Add Property
+													Add Product
 												</Typography>
 												<IconButton aria-label="delete" sx={{ ml: '40px' }}>
 													<PortraitIcon style={{ color: 'red' }} />

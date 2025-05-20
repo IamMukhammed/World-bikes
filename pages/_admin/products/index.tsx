@@ -8,30 +8,30 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { TabContext } from '@mui/lab';
 import TablePagination from '@mui/material/TablePagination';
-import { PropertyPanelList } from '../../../libs/components/admin/products/ProductList';
+import { ProductPanelList } from '../../../libs/components/admin/products/ProductList';
 import { AllProductsInquiry } from '../../../libs/types/product/product.input';
-import { Property } from '../../../libs/types/product/product';
-import { PropertyLocation, PropertyStatus } from '../../../libs/enums/product.enum';
+import { Product } from '../../../libs/types/product/product';
+import { ProductLocation, ProductStatus } from '../../../libs/enums/product.enum';
 import { sweetConfirmAlert, sweetErrorHandling } from '../../../libs/sweetAlert';
-import { PropertyUpdate } from '../../../libs/types/product/product.update';
+import { ProductUpdate } from '../../../libs/types/product/product.update';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_ALL_PRODUCTS_BY_ADMIN } from '../../../apollo/admin/query';
-import { REMOVE_PROPERTY_BY_ADMIN, UPDATE_PROPERTY_BY_ADMIN } from '../../../apollo/admin/mutation';
+import { REMOVE_PRODUCT_BY_ADMIN, UPDATE_PRODUCT_BY_ADMIN } from '../../../apollo/admin/mutation';
 import { T } from '../../../libs/types/common';
 
 const AdminProducts: NextPage = ({ initialInquiry, ...props }: any) => {
 	const [anchorEl, setAnchorEl] = useState<[] | HTMLElement[]>([]);
 	const [productsInquiry, setProductsInquiry] = useState<AllProductsInquiry>(initialInquiry);
-	const [products, setProducts] = useState<Property[]>([]);
+	const [products, setProducts] = useState<Product[]>([]);
 	const [productsTotal, setProductsTotal] = useState<number>(0);
 	const [value, setValue] = useState(
-		productsInquiry?.search?.propertyStatus ? productsInquiry?.search?.propertyStatus : 'ALL',
+		productsInquiry?.search?.productStatus ? productsInquiry?.search?.productStatus : 'ALL',
 	);
 	const [searchType, setSearchType] = useState('ALL');
 
 	/** APOLLO REQUESTS **/
-	const [updatePropertyByAdmin] = useMutation(UPDATE_PROPERTY_BY_ADMIN);
-	const [removePropertyByAdmin] = useMutation(REMOVE_PROPERTY_BY_ADMIN);
+	const [updateProductByAdmin] = useMutation(UPDATE_PRODUCT_BY_ADMIN);
+	const [removeProductByAdmin] = useMutation(REMOVE_PRODUCT_BY_ADMIN);
 
 	const {
 		loading: getAllProductsByAdminLoading,
@@ -84,25 +84,25 @@ const AdminProducts: NextPage = ({ initialInquiry, ...props }: any) => {
 
 		switch (newValue) {
 			case 'ACTIVE':
-				setProductsInquiry({ ...productsInquiry, search: { propertyStatus: PropertyStatus.ACTIVE } });
+				setProductsInquiry({ ...productsInquiry, search: { productStatus: ProductStatus.ACTIVE } });
 				break;
 			case 'SOLD':
-				setProductsInquiry({ ...productsInquiry, search: { propertyStatus: PropertyStatus.SOLD } });
+				setProductsInquiry({ ...productsInquiry, search: { productStatus: ProductStatus.SOLD } });
 				break;
 			case 'DELETE':
-				setProductsInquiry({ ...productsInquiry, search: { propertyStatus: PropertyStatus.DELETE } });
+				setProductsInquiry({ ...productsInquiry, search: { productStatus: ProductStatus.DELETE } });
 				break;
 			default:
-				delete productsInquiry?.search?.propertyStatus;
+				delete productsInquiry?.search?.productStatus;
 				setProductsInquiry({ ...productsInquiry });
 				break;
 		}
 	};
 
-	const removePropertyHandler = async (id: string) => {
+	const removeProductHandler = async (id: string) => {
 		try {
 			if (await sweetConfirmAlert('Are you sure to remove?')) {
-				await removePropertyByAdmin({
+				await removeProductByAdmin({
 					variables: {
 						input: id,
 					},
@@ -127,11 +127,11 @@ const AdminProducts: NextPage = ({ initialInquiry, ...props }: any) => {
 					sort: 'createdAt',
 					search: {
 						...productsInquiry.search,
-						propertyLocationList: [newValue as PropertyLocation],
+						productLocationList: [newValue as ProductLocation],
 					},
 				});
 			} else {
-				delete productsInquiry?.search?.propertyLocationList;
+				delete productsInquiry?.search?.productLocationList;
 				setProductsInquiry({ ...productsInquiry });
 			}
 		} catch (err: any) {
@@ -139,10 +139,10 @@ const AdminProducts: NextPage = ({ initialInquiry, ...props }: any) => {
 		}
 	};
 
-	const updatePropertyHandler = async (updateData: PropertyUpdate) => {
+	const updateProductHandler = async (updateData: ProductUpdate) => {
 		try {
 			console.log('+updateData: ', updateData);
-			await updatePropertyByAdmin({
+			await updateProductByAdmin({
 				variables: {
 					input: updateData,
 				},
@@ -159,7 +159,7 @@ const AdminProducts: NextPage = ({ initialInquiry, ...props }: any) => {
 	return (
 		<Box component={'div'} className={'content'}>
 			<Typography variant={'h2'} className={'tit'} sx={{ mb: '24px' }}>
-				Property List
+				Product List
 			</Typography>
 			<Box component={'div'} className={'table-wrap'}>
 				<Box component={'div'} sx={{ width: '100%', typography: 'body1' }}>
@@ -201,7 +201,7 @@ const AdminProducts: NextPage = ({ initialInquiry, ...props }: any) => {
 									<MenuItem value={'ALL'} onClick={() => searchTypeHandler('ALL')}>
 										ALL
 									</MenuItem>
-									{Object.values(PropertyLocation).map((location: string) => (
+									{Object.values(ProductLocation).map((location: string) => (
 										<MenuItem value={location} onClick={() => searchTypeHandler(location)} key={location}>
 											{location}
 										</MenuItem>
@@ -210,13 +210,13 @@ const AdminProducts: NextPage = ({ initialInquiry, ...props }: any) => {
 							</Stack>
 							<Divider />
 						</Box>
-						<PropertyPanelList
+						<ProductPanelList
 							products={products}
 							anchorEl={anchorEl}
 							menuIconClickHandler={menuIconClickHandler}
 							menuIconCloseHandler={menuIconCloseHandler}
-							updatePropertyHandler={updatePropertyHandler}
-							removePropertyHandler={removePropertyHandler}
+							updateProductHandler={updateProductHandler}
+							removeProductHandler={removeProductHandler}
 						/>
 
 						<TablePagination

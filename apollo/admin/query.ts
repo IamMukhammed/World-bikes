@@ -39,7 +39,7 @@ export const GET_ALL_MEMBERS_BY_ADMIN = gql`
 `;
 
 /**************************
- *        PROPERTY        *
+ *        PRODUCTS       *
  *************************/
 
 export const GET_ALL_PRODUCTS_BY_ADMIN = gql`
@@ -47,21 +47,21 @@ export const GET_ALL_PRODUCTS_BY_ADMIN = gql`
 		getAllProductsByAdmin(input: $input) {
 			list {
 				_id
-				propertyType
-				propertyStatus
-				propertyLocation
-				propertyAddress
-				propertyTitle
-				propertyPrice
-				propertySquare
-				propertyBeds
-				propertyRooms
-				propertyViews
-				propertyLikes
-				propertyImages
-				propertyDesc
-				propertyBarter
-				propertyRent
+				productType
+				productStatus
+				productLocation
+				productAddress
+				productTitle
+				productPrice
+				productSquare
+				productBeds
+				productRooms
+				productViews
+				productLikes
+				productImages
+				productDesc
+				productBarter
+				productRent
 				memberId
 				soldAt
 				deletedAt
