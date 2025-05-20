@@ -8,24 +8,24 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { TabContext } from '@mui/lab';
 import TablePagination from '@mui/material/TablePagination';
-import { PropertyPanelList } from '../../../libs/components/admin/properties/PropertyList';
-import { AllPropertiesInquiry } from '../../../libs/types/property/property.input';
-import { Property } from '../../../libs/types/property/property';
-import { PropertyLocation, PropertyStatus } from '../../../libs/enums/property.enum';
+import { PropertyPanelList } from '../../../libs/components/admin/products/ProductList';
+import { AllProductsInquiry } from '../../../libs/types/product/product.input';
+import { Property } from '../../../libs/types/product/product';
+import { PropertyLocation, PropertyStatus } from '../../../libs/enums/product.enum';
 import { sweetConfirmAlert, sweetErrorHandling } from '../../../libs/sweetAlert';
-import { PropertyUpdate } from '../../../libs/types/property/property.update';
+import { PropertyUpdate } from '../../../libs/types/product/product.update';
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_ALL_PROPERTIES_BY_ADMIN } from '../../../apollo/admin/query';
+import { GET_ALL_PRODUCTS_BY_ADMIN } from '../../../apollo/admin/query';
 import { REMOVE_PROPERTY_BY_ADMIN, UPDATE_PROPERTY_BY_ADMIN } from '../../../apollo/admin/mutation';
 import { T } from '../../../libs/types/common';
 
-const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
+const AdminProducts: NextPage = ({ initialInquiry, ...props }: any) => {
 	const [anchorEl, setAnchorEl] = useState<[] | HTMLElement[]>([]);
-	const [propertiesInquiry, setPropertiesInquiry] = useState<AllPropertiesInquiry>(initialInquiry);
-	const [properties, setProperties] = useState<Property[]>([]);
-	const [propertiesTotal, setPropertiesTotal] = useState<number>(0);
+	const [productsInquiry, setProductsInquiry] = useState<AllProductsInquiry>(initialInquiry);
+	const [products, setProducts] = useState<Property[]>([]);
+	const [productsTotal, setProductsTotal] = useState<number>(0);
 	const [value, setValue] = useState(
-		propertiesInquiry?.search?.propertyStatus ? propertiesInquiry?.search?.propertyStatus : 'ALL',
+		productsInquiry?.search?.propertyStatus ? productsInquiry?.search?.propertyStatus : 'ALL',
 	);
 	const [searchType, setSearchType] = useState('ALL');
 
@@ -34,37 +34,37 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 	const [removePropertyByAdmin] = useMutation(REMOVE_PROPERTY_BY_ADMIN);
 
 	const {
-		loading: getAllPropertiesByAdminLoading,
-		data: getAllPropertiesByAdminData,
-		error: getAllPropertiesByAdminError,
-		refetch: getAllPropertiesByAdminRefetch,
-	} = useQuery(GET_ALL_PROPERTIES_BY_ADMIN, {
+		loading: getAllProductsByAdminLoading,
+		data: getAllProductsByAdminData,
+		error: getAllProductsByAdminError,
+		refetch: getAllProductsByAdminRefetch,
+	} = useQuery(GET_ALL_PRODUCTS_BY_ADMIN, {
 		fetchPolicy: 'network-only',
-		variables: { input: propertiesInquiry },
+		variables: { input: productsInquiry },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
-			setProperties(data?.getAllPropertiesByAdmin?.list);
-			setPropertiesTotal(data?.getAllPropertiesByAdmin?.metaCounter[0]?.total ?? 0);
+			setProducts(data?.getAllProductsByAdmin?.list);
+			setProductsTotal(data?.getAllProductsByAdmin?.metaCounter[0]?.total ?? 0);
 		},
 	});
 
 	/** LIFECYCLES **/
 	useEffect(() => {
-		getAllPropertiesByAdminRefetch({ input: propertiesInquiry }).then();
-	}, [propertiesInquiry]);
+		getAllProductsByAdminRefetch({ input: productsInquiry }).then();
+	}, [productsInquiry]);
 
 	/** HANDLERS **/
 	const changePageHandler = async (event: unknown, newPage: number) => {
-		propertiesInquiry.page = newPage + 1;
-		await getAllPropertiesByAdminRefetch({ input: propertiesInquiry });
-		setPropertiesInquiry({ ...propertiesInquiry });
+		productsInquiry.page = newPage + 1;
+		await getAllProductsByAdminRefetch({ input: productsInquiry });
+		setProductsInquiry({ ...productsInquiry });
 	};
 
 	const changeRowsPerPageHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-		propertiesInquiry.limit = parseInt(event.target.value, 10);
-		propertiesInquiry.page = 1;
-		await getAllPropertiesByAdminRefetch({ input: propertiesInquiry });
-		setPropertiesInquiry({ ...propertiesInquiry });
+		productsInquiry.limit = parseInt(event.target.value, 10);
+		productsInquiry.page = 1;
+		await getAllProductsByAdminRefetch({ input: productsInquiry });
+		setProductsInquiry({ ...productsInquiry });
 	};
 
 	const menuIconClickHandler = (e: any, index: number) => {
@@ -80,21 +80,21 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 	const tabChangeHandler = async (event: any, newValue: string) => {
 		setValue(newValue);
 
-		setPropertiesInquiry({ ...propertiesInquiry, page: 1, sort: 'createdAt' });
+		setProductsInquiry({ ...productsInquiry, page: 1, sort: 'createdAt' });
 
 		switch (newValue) {
 			case 'ACTIVE':
-				setPropertiesInquiry({ ...propertiesInquiry, search: { propertyStatus: PropertyStatus.ACTIVE } });
+				setProductsInquiry({ ...productsInquiry, search: { propertyStatus: PropertyStatus.ACTIVE } });
 				break;
 			case 'SOLD':
-				setPropertiesInquiry({ ...propertiesInquiry, search: { propertyStatus: PropertyStatus.SOLD } });
+				setProductsInquiry({ ...productsInquiry, search: { propertyStatus: PropertyStatus.SOLD } });
 				break;
 			case 'DELETE':
-				setPropertiesInquiry({ ...propertiesInquiry, search: { propertyStatus: PropertyStatus.DELETE } });
+				setProductsInquiry({ ...productsInquiry, search: { propertyStatus: PropertyStatus.DELETE } });
 				break;
 			default:
-				delete propertiesInquiry?.search?.propertyStatus;
-				setPropertiesInquiry({ ...propertiesInquiry });
+				delete productsInquiry?.search?.propertyStatus;
+				setProductsInquiry({ ...productsInquiry });
 				break;
 		}
 	};
@@ -108,7 +108,7 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 					},
 				});
 
-				await getAllPropertiesByAdminRefetch({ input: propertiesInquiry });
+				await getAllProductsByAdminRefetch({ input: productsInquiry });
 			}
 			menuIconCloseHandler();
 		} catch (err: any) {
@@ -121,18 +121,18 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 			setSearchType(newValue);
 
 			if (newValue !== 'ALL') {
-				setPropertiesInquiry({
-					...propertiesInquiry,
+				setProductsInquiry({
+					...productsInquiry,
 					page: 1,
 					sort: 'createdAt',
 					search: {
-						...propertiesInquiry.search,
+						...productsInquiry.search,
 						propertyLocationList: [newValue as PropertyLocation],
 					},
 				});
 			} else {
-				delete propertiesInquiry?.search?.propertyLocationList;
-				setPropertiesInquiry({ ...propertiesInquiry });
+				delete productsInquiry?.search?.propertyLocationList;
+				setProductsInquiry({ ...productsInquiry });
 			}
 		} catch (err: any) {
 			console.log('searchTypeHandler: ', err.message);
@@ -149,7 +149,7 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 			});
 
 			menuIconCloseHandler();
-			await getAllPropertiesByAdminRefetch({ input: propertiesInquiry });
+			await getAllProductsByAdminRefetch({ input: productsInquiry });
 		} catch (err: any) {
 			menuIconCloseHandler();
 			sweetErrorHandling(err).then();
@@ -167,28 +167,28 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 						<Box component={'div'}>
 							<List className={'tab-menu'}>
 								<ListItem
-									onClick={(e) => tabChangeHandler(e, 'ALL')}
+									onClick={(e: any) => tabChangeHandler(e, 'ALL')}
 									value="ALL"
 									className={value === 'ALL' ? 'li on' : 'li'}
 								>
 									All
 								</ListItem>
 								<ListItem
-									onClick={(e) => tabChangeHandler(e, 'ACTIVE')}
+									onClick={(e: any) => tabChangeHandler(e, 'ACTIVE')}
 									value="ACTIVE"
 									className={value === 'ACTIVE' ? 'li on' : 'li'}
 								>
 									Active
 								</ListItem>
 								<ListItem
-									onClick={(e) => tabChangeHandler(e, 'SOLD')}
+									onClick={(e: any) => tabChangeHandler(e, 'SOLD')}
 									value="SOLD"
 									className={value === 'SOLD' ? 'li on' : 'li'}
 								>
 									Sold
 								</ListItem>
 								<ListItem
-									onClick={(e) => tabChangeHandler(e, 'DELETE')}
+									onClick={(e: any) => tabChangeHandler(e, 'DELETE')}
 									value="DELETE"
 									className={value === 'DELETE' ? 'li on' : 'li'}
 								>
@@ -211,7 +211,7 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 							<Divider />
 						</Box>
 						<PropertyPanelList
-							properties={properties}
+							products={products}
 							anchorEl={anchorEl}
 							menuIconClickHandler={menuIconClickHandler}
 							menuIconCloseHandler={menuIconCloseHandler}
@@ -222,9 +222,9 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 						<TablePagination
 							rowsPerPageOptions={[10, 20, 40, 60]}
 							component="div"
-							count={propertiesTotal}
-							rowsPerPage={propertiesInquiry?.limit}
-							page={propertiesInquiry?.page - 1}
+							count={productsTotal}
+							rowsPerPage={productsInquiry?.limit}
+							page={productsInquiry?.page - 1}
 							onPageChange={changePageHandler}
 							onRowsPerPageChange={changeRowsPerPageHandler}
 						/>
@@ -235,7 +235,7 @@ const AdminProperties: NextPage = ({ initialInquiry, ...props }: any) => {
 	);
 };
 
-AdminProperties.defaultProps = {
+AdminProducts.defaultProps = {
 	initialInquiry: {
 		page: 1,
 		limit: 10,
@@ -245,4 +245,4 @@ AdminProperties.defaultProps = {
 	},
 };
 
-export default withAdminLayout(AdminProperties);
+export default withAdminLayout(AdminProducts);

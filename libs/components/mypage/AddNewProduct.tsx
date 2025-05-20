@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button, Stack, Typography } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
-import { PropertyLocation, PropertyType } from '../../enums/property.enum';
+import { PropertyLocation, PropertyType } from '../../enums/product.enum';
 import { REACT_APP_API_URL, propertySquare } from '../../config';
-import { PropertyInput } from '../../types/property/property.input';
+import { PropertyInput } from '../../types/product/product.input';
 import axios from 'axios';
 import { getJwtToken } from '../../auth';
 import { userVar } from '../../../apollo/store';
@@ -142,7 +142,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 			await router.push({
 				pathname: '/mypage',
 				query: {
-					category: 'myProperties',
+					category: 'myProducts',
 				},
 			});
 		} catch (err: any) {
@@ -164,7 +164,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 			await router.push({
 				pathname: '/mypage',
 				query: {
-					category: 'myProperties',
+					category: 'myProducts',
 				},
 			});
 		} catch (err: any) {

@@ -14,11 +14,11 @@ import {
 } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import { Stack } from '@mui/material';
-import { Property } from '../../../types/property/property';
+import { Property } from '../../../types/product/product';
 import { REACT_APP_API_URL } from '../../../config';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Typography from '@mui/material/Typography';
-import { PropertyStatus } from '../../../enums/property.enum';
+import { PropertyStatus } from '../../../enums/product.enum';
 
 interface Data {
 	id: string;
@@ -114,7 +114,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 }
 
 interface PropertyPanelListType {
-	properties: Property[];
+	products: Property[];
 	anchorEl: any;
 	menuIconClickHandler: any;
 	menuIconCloseHandler: any;
@@ -124,7 +124,7 @@ interface PropertyPanelListType {
 
 export const PropertyPanelList = (props: PropertyPanelListType) => {
 	const {
-		properties,
+		products,
 		anchorEl,
 		menuIconClickHandler,
 		menuIconCloseHandler,
@@ -139,7 +139,7 @@ export const PropertyPanelList = (props: PropertyPanelListType) => {
 					{/*@ts-ignore*/}
 					<EnhancedTableHead />
 					<TableBody>
-						{properties.length === 0 && (
+						{products.length === 0 && (
 							<TableRow>
 								<TableCell align="center" colSpan={8}>
 									<span className={'no-data'}>data not found!</span>
@@ -147,8 +147,8 @@ export const PropertyPanelList = (props: PropertyPanelListType) => {
 							</TableRow>
 						)}
 
-						{properties.length !== 0 &&
-							properties.map((property: Property, index: number) => {
+						{products.length !== 0 &&
+							products.map((property: Property, index: number) => {
 								const propertyImage = `${REACT_APP_API_URL}/${property?.propertyImages[0]}`;
 
 								return (

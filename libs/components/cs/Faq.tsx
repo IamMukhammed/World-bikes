@@ -52,17 +52,17 @@ const Faq = () => {
 		property: [
 			{
 				id: '00f5a45ed8897f8090116a01',
-				subject: 'Are the properties displayed on the site reliable?',
-				content: 'of course we only have verified properties',
+				subject: 'Are the Motorcycles displayed on the site reliable?',
+				content: 'of course we only have verified Motorcycles',
 			},
 			{
 				id: '00f5a45ed8897f8090116a22',
-				subject: 'What types of properties do you offer?',
+				subject: 'What types of Motorcycles do you offer?',
 				content: 'We offer single-family homes, condos, townhouses, apartments, and penthouses',
 			},
 			{
 				id: '00f5a45ed8897f8090116a21',
-				subject: 'How can I search for properties on your website?',
+				subject: 'How can I search for Motorcycles on your website?',
 				content: 'Simply use our search bar to enter location, price range, bedrooms/bathrooms, and property type.',
 			},
 			{
@@ -87,13 +87,13 @@ const Faq = () => {
 			},
 			{
 				id: '00f5a45ed8897f8090116a28',
-				subject: 'Do you offer properties in specific neighborhoods?',
+				subject: 'Do you offer Motorcycles in specific neighborhoods?',
 				content: 'Yes, we have listings in various neighborhoods based on your preferences.',
 			},
 			{
 				id: '00f5a45ed8897f8090116a27',
 				subject: 'Can I sell my property through your website?',
-				content: 'Absolutely, we provide services for selling properties as well.',
+				content: 'Absolutely, we provide services for selling Motorcycles as well.',
 			},
 			{
 				id: '00f5a45ed8897f8090116b99',
@@ -115,7 +115,7 @@ const Faq = () => {
 			{
 				id: '00f5a45ed8897f8090116a92',
 				subject: 'Is there an option for installment payments?',
-				content: 'Yes, we offer installment payment plans for certain properties. Please inquire for more details.',
+				content: 'Yes, we offer installment payment plans for certain Motorcycles. Please inquire for more details.',
 			},
 			{
 				id: '00f5a45ed8897f8090116a93',
@@ -190,7 +190,7 @@ const Faq = () => {
 			},
 			{
 				id: '00f5a45ed8897f8090116a81',
-				subject: 'What are some red flags to watch out for when viewing properties?',
+				subject: 'What are some red flags to watch out for when viewing Motorcycles?',
 				content:
 					'Watch out for signs of structural damage, water damage, mold, outdated systems, and undesirable neighborhood conditions.',
 			},
@@ -239,7 +239,7 @@ const Faq = () => {
 			},
 			{
 				id: '00f5a45ed8897f8090116a64',
-				subject: 'What are some effective marketing strategies for selling properties?',
+				subject: 'What are some effective marketing strategies for selling Motorcycles?',
 				content: 'Use social media, online platforms, networking events, and direct mail.',
 			},
 			{

@@ -3,19 +3,19 @@ import { Stack, Box, Divider, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Property } from '../../types/property/property';
+import { Property } from '../../types/product/product';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { REACT_APP_API_URL } from '../../config';
 import { useRouter } from 'next/router';
 import { useReactiveVar } from '@apollo/client';
 import { userVar } from '../../../apollo/store';
 
-interface TrendPropertyCardProps {
+interface TopPropertyCardProps {
 	property: Property;
 	likePropertyHandler: any;
 }
 
-const TrendPropertyCard = (props: TrendPropertyCardProps) => {
+const TopPropertyCard = (props: TopPropertyCardProps) => {
 	const { property, likePropertyHandler } = props;
 	const device = useDeviceDetect();
 	const router = useRouter();
@@ -30,37 +30,38 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 
 	if (device === 'mobile') {
 		return (
-			<Stack className="trend-card-box" key={property._id}>
+			<Stack className="top-card-box">
 				<Box
 					component={'div'}
 					className={'card-img'}
 					style={{ backgroundImage: `url(${REACT_APP_API_URL}/${property?.propertyImages[0]})` }}
 					onClick={() => pushDetailHandler(property._id)}
 				>
-					<div>${property.propertyPrice}</div>
+					<div>${property?.propertyPrice}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'} onClick={() => pushDetailHandler(property._id)}>
-						{property.propertyTitle}
+						{property?.propertyTitle}
 					</strong>
-					<p className={'desc'}>{property.propertyDesc ?? 'no description'}</p>
+					<p className={'desc'}>{property?.propertyAddress}</p>
 					<div className={'options'}>
 						<div>
 							<img src="/img/icons/bed.svg" alt="" />
-							<span>{property.propertyBeds} bed</span>
+							<span>{property?.propertyBeds} bed</span>
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
-							<span>{property.propertyRooms} rooms</span>
+							<span>{property?.propertyRooms} rooms</span>
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
-							<span>{property.propertySquare} m2</span>
+							<span>{property?.propertySquare} m2</span>
 						</div>
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
 						<p>
+							{' '}
 							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
 							{property.propertyBarter ? 'Barter' : ''}
 						</p>
@@ -84,37 +85,38 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 		);
 	} else {
 		return (
-			<Stack className="trend-card-box" key={property._id}>
+			<Stack className="top-card-box">
 				<Box
 					component={'div'}
 					className={'card-img'}
 					style={{ backgroundImage: `url(${REACT_APP_API_URL}/${property?.propertyImages[0]})` }}
 					onClick={() => pushDetailHandler(property._id)}
 				>
-					<div>${property.propertyPrice}</div>
+					<div>${property?.propertyPrice}</div>
 				</Box>
 				<Box component={'div'} className={'info'}>
 					<strong className={'title'} onClick={() => pushDetailHandler(property._id)}>
-						{property.propertyTitle}{' '}
+						{property?.propertyTitle}
 					</strong>
-					<p className={'desc'}>{property.propertyDesc ?? 'no description'}</p>
+					<p className={'desc'}>{property?.propertyAddress}</p>
 					<div className={'options'}>
 						<div>
 							<img src="/img/icons/bed.svg" alt="" />
-							<span>{property.propertyBeds} bed</span>
+							<span>{property?.propertyBeds} bed</span>
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
-							<span>{property.propertyRooms} rooms</span>
+							<span>{property?.propertyRooms} rooms</span>
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
-							<span>{property.propertySquare} m2</span>
+							<span>{property?.propertySquare} m2</span>
 						</div>
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
 						<p>
+							{' '}
 							{property.propertyRent ? 'Rent' : ''} {property.propertyRent && property.propertyBarter && '/'}{' '}
 							{property.propertyBarter ? 'Barter' : ''}
 						</p>
@@ -139,4 +141,4 @@ const TrendPropertyCard = (props: TrendPropertyCardProps) => {
 	}
 };
 
-export default TrendPropertyCard;
+export default TopPropertyCard;

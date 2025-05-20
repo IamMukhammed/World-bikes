@@ -5,39 +5,39 @@ import WestIcon from '@mui/icons-material/West';
 import EastIcon from '@mui/icons-material/East';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper';
-import TopPropertyCard from './TopPropertyCard';
-import { PropertiesInquiry } from '../../types/property/property.input';
-import { Property } from '../../types/property/property';
+import TopPropertyCard from './TopProductCard';
+import { ProductsInquiry } from '../../types/product/product.input';
+import { Property } from '../../types/product/product';
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_PROPERTIES } from '../../../apollo/user/query';
+import { GET_PRODUCTS } from '../../../apollo/user/query';
 import { T } from '../../types/common';
 import { LIKE_TARGET_PROPERTY } from '../../../apollo/user/mutation';
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../sweetAlert';
 import { Message } from '../../enums/common.enum';
 
-interface TopPropertiesProps {
-	initialInput: PropertiesInquiry;
+interface TopProductsProps {
+	initialInput: ProductsInquiry;
 }
 
-const TopProperties = (props: TopPropertiesProps) => {
+const TopProducts = (props: TopProductsProps) => {
 	const { initialInput } = props;
 	const device = useDeviceDetect();
-	const [topProperties, setTopProperties] = useState<Property[]>([]);
+	const [topProducts, setTopProducts] = useState<Property[]>([]);
 
 	/** APOLLO REQUESTS **/
 	const [likeTargetProperty] = useMutation(LIKE_TARGET_PROPERTY);
 
 	const {
-		loading: getPropertiesLoading,
-		data: getPropertiesData,
-		error: getPropertiesError,
-		refetch: getPropertiesRefetch,
-	} = useQuery(GET_PROPERTIES, {
+		loading: getProductsLoading,
+		data: getProductsData,
+		error: getProductsError,
+		refetch: getProductsRefetch,
+	} = useQuery(GET_PRODUCTS, {
 		fetchPolicy: 'cache-and-network',
 		variables: { input: initialInput },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
-			setTopProperties(data?.getProperties?.list);
+			setTopProducts(data?.getProducts?.list);
 		},
 	});
 
@@ -50,7 +50,7 @@ const TopProperties = (props: TopPropertiesProps) => {
 			await likeTargetProperty({
 				variables: { input: id },
 			});
-			await getPropertiesRefetch({ input: initialInput });
+			await getProductsRefetch({ input: initialInput });
 
 			await sweetTopSmallSuccessAlert('success', 800);
 		} catch (err: any) {
@@ -64,7 +64,7 @@ const TopProperties = (props: TopPropertiesProps) => {
 			<Stack className={'top-properties'}>
 				<Stack className={'container'}>
 					<Stack className={'info-box'}>
-						<span>Top properties</span>
+						<span>Top Motorcycles</span>
 					</Stack>
 					<Stack className={'card-box'}>
 						<Swiper
@@ -74,7 +74,7 @@ const TopProperties = (props: TopPropertiesProps) => {
 							spaceBetween={15}
 							modules={[Autoplay]}
 						>
-							{topProperties.map((property: Property) => {
+							{topProducts.map((property: Property) => {
 								return (
 									<SwiperSlide className={'top-property-slide'} key={property?._id}>
 										<TopPropertyCard property={property} likePropertyHandler={likePropertyHandler} />
@@ -92,8 +92,8 @@ const TopProperties = (props: TopPropertiesProps) => {
 				<Stack className={'container'}>
 					<Stack className={'info-box'}>
 						<Box component={'div'} className={'left'}>
-							<span>Top properties</span>
-							<p>Check out our Top Properties</p>
+							<span>Top Motorcycles</span>
+							<p>Check out our Top Motorcycles</p>
 						</Box>
 						<Box component={'div'} className={'right'}>
 							<div className={'pagination-box'}>
@@ -117,7 +117,7 @@ const TopProperties = (props: TopPropertiesProps) => {
 								el: '.swiper-top-pagination',
 							}}
 						>
-							{topProperties.map((property: Property) => {
+							{topProducts.map((property: Property) => {
 								return (
 									<SwiperSlide className={'top-property-slide'} key={property?._id}>
 										<TopPropertyCard property={property} likePropertyHandler={likePropertyHandler} />
@@ -132,7 +132,7 @@ const TopProperties = (props: TopPropertiesProps) => {
 	}
 };
 
-TopProperties.defaultProps = {
+TopProducts.defaultProps = {
 	initialInput: {
 		page: 1,
 		limit: 8,
@@ -142,4 +142,4 @@ TopProperties.defaultProps = {
 	},
 };
 
-export default TopProperties;
+export default TopProducts;

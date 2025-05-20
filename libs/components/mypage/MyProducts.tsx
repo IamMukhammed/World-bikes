@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { Pagination, Stack, Typography } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
-import { PropertyCard } from './PropertyCard';
-import { Property } from '../../types/property/property';
-import { AgentPropertiesInquiry } from '../../types/property/property.input';
+import { PropertyCard } from './ProductCard';
+import { Property } from '../../types/product/product';
+import { AgentProductsInquiry } from '../../types/product/product.input';
 import { T } from '../../types/common';
-import { PropertyStatus } from '../../enums/property.enum';
+import { PropertyStatus } from '../../enums/product.enum';
 import { userVar } from '../../../apollo/store';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { UPDATE_PROPERTY } from '../../../apollo/user/mutation';
-import { GET_AGENT_PROPERTIES } from '../../../apollo/user/query';
+import { GET_AGENT_PRODUCTS } from '../../../apollo/user/query';
 import { sweetConfirmAlert, sweetErrorHandling } from '../../sweetAlert';
 
-const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
+const MyProducts: NextPage = ({ initialInput, ...props }: any) => {
 	const device = useDeviceDetect();
-	const [searchFilter, setSearchFilter] = useState<AgentPropertiesInquiry>(initialInput);
-	const [agentProperties, setAgentProperties] = useState<Property[]>([]);
+	const [searchFilter, setSearchFilter] = useState<AgentProductsInquiry>(initialInput);
+	const [agentProducts, setAgentProducts] = useState<Property[]>([]);
 	const [total, setTotal] = useState<number>(0);
 	const user = useReactiveVar(userVar);
 	const router = useRouter();
@@ -26,17 +26,17 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 	const [updateProperty] = useMutation(UPDATE_PROPERTY);
 
 	const {
-		loading: getAgentPropertiesLoading,
-		data: getAgentPropertiesData,
-		error: getAgentPropertiesError,
-		refetch: getAgentPropertiesRefetch,
-	} = useQuery(GET_AGENT_PROPERTIES, {
+		loading: getAgentProductsLoading,
+		data: getAgentProductsData,
+		error: getAgentProductsError,
+		refetch: getAgentProductsRefetch,
+	} = useQuery(GET_AGENT_PRODUCTS, {
 		fetchPolicy: 'network-only',
 		variables: { input: searchFilter },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
-			setAgentProperties(data?.getAgentProperties?.list);
-			setTotal(data?.getAgentProperties?.metaCounter[0]?.total ?? 0);
+			setAgentProducts(data?.getAgentProducts?.list);
+			setTotal(data?.getAgentProducts?.metaCounter[0]?.total ?? 0);
 		},
 	});
 
@@ -61,7 +61,7 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 					},
 				});
 
-				await getAgentPropertiesRefetch({ input: searchFilter });
+				await getAgentProductsRefetch({ input: searchFilter });
 			}
 		} catch (err: any) {
 			await sweetErrorHandling(err);
@@ -79,7 +79,7 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 						},
 					},
 				});
-				await getAgentPropertiesRefetch({ input: searchFilter });
+				await getAgentProductsRefetch({ input: searchFilter });
 			}
 		} catch (err: any) {
 			await sweetErrorHandling(err);
@@ -91,13 +91,13 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 	}
 
 	if (device === 'mobile') {
-		return <div>NESTAR PROPERTIES MOBILE</div>;
+		return <div>WORLD MOTORCYCLES MOBILE</div>;
 	} else {
 		return (
 			<div id="my-property-page">
 				<Stack className="main-title-box">
 					<Stack className="right-box">
-						<Typography className="main-title">My Properties</Typography>
+						<Typography className="main-title">My Products</Typography>
 						<Typography className="sub-title">We are glad to see you again!</Typography>
 					</Stack>
 				</Stack>
@@ -127,13 +127,13 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 							)}
 						</Stack>
 
-						{agentProperties?.length === 0 ? (
+						{agentProducts?.length === 0 ? (
 							<div className={'no-data'}>
 								<img src="/img/icons/icoAlert.svg" alt="" />
-								<p>No Property found!</p>
+								<p>No Products found!</p>
 							</div>
 						) : (
-							agentProperties.map((property: Property) => {
+							agentProducts.map((property: Property) => {
 								return (
 									<PropertyCard
 										property={property}
@@ -144,7 +144,7 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 							})
 						)}
 
-						{agentProperties.length !== 0 && (
+						{agentProducts.length !== 0 && (
 							<Stack className="pagination-config">
 								<Stack className="pagination-box">
 									<Pagination
@@ -156,7 +156,7 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 									/>
 								</Stack>
 								<Stack className="total-result">
-									<Typography>{total} property available</Typography>
+									<Typography>{total} products available</Typography>
 								</Stack>
 							</Stack>
 						)}
@@ -167,7 +167,7 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 	}
 };
 
-MyProperties.defaultProps = {
+MyProducts.defaultProps = {
 	initialInput: {
 		page: 1,
 		limit: 5,
@@ -178,4 +178,4 @@ MyProperties.defaultProps = {
 	},
 };
 
-export default MyProperties;
+export default MyProducts;

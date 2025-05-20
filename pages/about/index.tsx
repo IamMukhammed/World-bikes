@@ -132,7 +132,7 @@ const About: NextPage = () => {
 					<Stack className={'container'}>
 						<Box component={'div'} className={'left'}>
 							<strong>Need help? Talk to our expert.</strong>
-							<p>Talk to our experts or Browse through more properties.</p>
+							<p>Talk to our experts or Browse through more Motorcycles.</p>
 						</Box>
 						<Box component={'div'} className={'right'}>
 							<div className={'white'}>
@@ -141,7 +141,7 @@ const About: NextPage = () => {
 							</div>
 							<div className={'black'}>
 								<img src="/img/icons/call.svg" alt="" />
-								920 851 9087
+								630 797 0126
 							</div>
 						</Box>
 					</Stack>

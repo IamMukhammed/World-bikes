@@ -1,4 +1,4 @@
-import { PropertyLocation, PropertyStatus, PropertyType } from '../../enums/property.enum';
+import { PropertyLocation, PropertyStatus, PropertyType } from '../../enums/product.enum';
 import { Member } from '../member/member';
 
 export interface MeLiked {
@@ -41,7 +41,7 @@ export interface Property {
 	memberData?: Member;
 }
 
-export interface Properties {
+export interface Products {
 	list: Property[];
 	metaCounter: TotalCounter[];
 }

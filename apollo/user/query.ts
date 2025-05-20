@@ -20,7 +20,7 @@ export const GET_AGENTS = gql`
 				memberDesc
 				memberWarnings
 				memberBlocks
-				memberProperties
+				memberProducts
 				memberRank
 				memberPoints
 				memberLikes
@@ -55,7 +55,7 @@ export const GET_MEMBER = gql`
 			memberImage
 			memberAddress
 			memberDesc
-			memberProperties
+			memberProducts
 			memberArticles
 			memberPoints
 			memberLikes
@@ -137,9 +137,9 @@ export const GET_PROPERTY = gql`
 	}
 `;
 
-export const GET_PROPERTIES = gql`
-	query GetProperties($input: PropertiesInquiry!) {
-		getProperties(input: $input) {
+export const GET_PRODUCTS = gql`
+	query GetProducts($input: ProductsInquiry!) {
+		getProducts(input: $input) {
 			list {
 				_id
 				propertyType
@@ -177,7 +177,7 @@ export const GET_PROPERTIES = gql`
 					memberDesc
 					memberWarnings
 					memberBlocks
-					memberProperties
+					memberProducts
 					memberRank
 					memberPoints
 					memberLikes
@@ -199,9 +199,9 @@ export const GET_PROPERTIES = gql`
 	}
 `;
 
-export const GET_AGENT_PROPERTIES = gql`
-	query GetAgentProperties($input: AgentPropertiesInquiry!) {
-		getAgentProperties(input: $input) {
+export const GET_AGENT_PRODUCTS = gql`
+	query GetAgentProducts($input: AgentProductsInquiry!) {
+		getAgentProducts(input: $input) {
 			list {
 				_id
 				propertyType
@@ -272,7 +272,7 @@ export const GET_FAVORITES = gql`
 					memberImage
 					memberAddress
 					memberDesc
-					memberProperties
+					memberProducts
 					memberArticles
 					memberPoints
 					memberLikes
@@ -335,7 +335,7 @@ export const GET_VISITED = gql`
 					memberImage
 					memberAddress
 					memberDesc
-					memberProperties
+					memberProducts
 					memberArticles
 					memberPoints
 					memberLikes
@@ -391,7 +391,7 @@ export const GET_BOARD_ARTICLE = gql`
 				memberDesc
 				memberWarnings
 				memberBlocks
-				memberProperties
+				memberProducts
 				memberRank
 				memberPoints
 				memberLikes
@@ -443,7 +443,7 @@ export const GET_BOARD_ARTICLES = gql`
 					memberDesc
 					memberWarnings
 					memberBlocks
-					memberProperties
+					memberProducts
 					memberRank
 					memberPoints
 					memberLikes
@@ -489,7 +489,7 @@ export const GET_COMMENTS = gql`
 					memberDesc
 					memberWarnings
 					memberBlocks
-					memberProperties
+					memberProducts
 					memberRank
 					memberPoints
 					memberLikes
@@ -540,7 +540,7 @@ export const GET_MEMBER_FOLLOWERS = gql`
 					memberImage
 					memberAddress
 					memberDesc
-					memberProperties
+					memberProducts
 					memberArticles
 					memberPoints
 					memberLikes
@@ -583,7 +583,7 @@ export const GET_MEMBER_FOLLOWINGS = gql`
 					memberImage
 					memberAddress
 					memberDesc
-					memberProperties
+					memberProducts
 					memberArticles
 					memberPoints
 					memberLikes
