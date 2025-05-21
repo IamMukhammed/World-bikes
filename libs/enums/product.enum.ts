@@ -3,12 +3,12 @@ export enum ProductType {
 	CRUISER = 'CRUISER',           // Harley-style low seat, long body
 	SPORT = 'SPORT',               // High-speed, performance bikes
 	TOURING = 'TOURING',           // Long-distance comfort motorcycles
-	DUAL_SPORT = 'DUAL_SPORT',     // On-road + off-road
+	DUAL_SPORT = 'DUAL SPORT',     // On-road + off-road
 	ADVENTURE = 'ADVENTURE',       // Big off-road touring bikes
-	OFF_ROAD = 'OFF_ROAD',         // Dirt bikes, motocross
+	OFF_ROAD = 'OFF ROAD',         // Dirt bikes, motocross
 	SCOOTER = 'SCOOTER',           // Lightweight, automatic transmission
 	MOPED = 'MOPED',               // Small engine, pedal-like
-	CAFE_RACER = 'CAFE_RACER',     // Retro-style lightweight racer
+	CAFE_RACER = 'CAFE RACER',     // Retro-style lightweight racer
 }
 
 export enum ProductStatus {

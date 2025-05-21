@@ -66,7 +66,7 @@ const ProductList: NextPage = ({ initialInput, ...props }: any) => {
 
 	useEffect(() => {
 		console.log('searchFilter:', searchFilter);
-		// getProductsRefetch({ input: searchFilter }).then();
+		getProductsRefetch({ input: searchFilter }).then();
 	}, [searchFilter]);
 
 	/** HANDLERS **/
