@@ -44,7 +44,7 @@ const AgentCard = (props: AgentCardProps) => {
 							backgroundRepeat: 'no-repeat',
 						}}
 					>
-						<div>{agent?.Products} products</div>
+						<div>{agent?.memberProducts} products</div>
 					</Box>
 				</Link>
 
