@@ -47,7 +47,7 @@ export const UPDATE_PRODUCT_BY_ADMIN = gql`
 			productAddress
 			productTitle
 			productPrice
-			productSquare
+			productMileage
 			productYears
 			productEngineSize
 			productViews
@@ -77,7 +77,7 @@ export const REMOVE_PRODUCT_BY_ADMIN = gql`
 			productAddress
 			productTitle
 			productPrice
-			productSquare
+			productMileage
 			productYears
 			productEngineSize
 			productViews

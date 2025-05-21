@@ -26,7 +26,7 @@ const TopProducts = (props: TopProductsProps) => {
 
 	/** APOLLO REQUESTS **/
 	const [likeTargetProduct] = useMutation(LIKE_TARGET_PRODUCT);
-
+	console.log('GraphQL input topproducts.tsx:', initialInput);
 	const {
 		loading: getProductsLoading,
 		data: getProductsData,
@@ -138,7 +138,13 @@ TopProducts.defaultProps = {
 		limit: 8,
 		sort: 'productRank',
 		direction: 'DESC',
-		search: {},
+		search: {
+			locationList: [],
+			pricesRange: {
+				start: 0,
+				end: 2000000,
+			},
+		},
 	},
 };
 

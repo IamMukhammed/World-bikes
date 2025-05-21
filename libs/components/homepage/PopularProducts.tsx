@@ -23,6 +23,7 @@ const PopularProducts = (props: PopularProductsProps) => {
 	const [popularProducts, setPopularProducts] = useState<Product[]>([]);
 
 	/** APOLLO REQUESTS **/
+	console.log("GraphQL input popularproducts.tsx:", initialInput);
 	const {
 		loading: getProductsLoading,
 		data: getProductsData,
@@ -126,7 +127,13 @@ PopularProducts.defaultProps = {
 		limit: 7,
 		sort: 'productViews',
 		direction: 'DESC',
-		search: {},
+		search: {
+			locationList: [],
+			pricesRange: {
+				start: 0,
+				end: 2000000
+			},
+		},
 	},
 };
 

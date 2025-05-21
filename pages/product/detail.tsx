@@ -290,7 +290,7 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 											<Typography>{product?.productEngineSize} engine size</Typography>
 										</Stack>
 										<Stack className="option">
-											<img src="/img/icons/expand.svg" alt="" /> <Typography>{product?.productSquare} m2</Typography>
+											<img src="/img/icons/expand.svg" alt="" /> <Typography>{product?.productMileage} mi</Typography>
 										</Stack>
 									</Stack>
 								</Stack>
@@ -445,7 +445,7 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 										</Stack>
 										<Stack className={'option-includes'}>
 											<Typography className={'title'}>Size</Typography>
-											<Typography className={'option-data'}>{product?.productSquare} m2</Typography>
+											<Typography className={'option-data'}>{product?.productMileage} mi</Typography>
 										</Stack>
 									</Stack>
 									<Stack className={'option'}>
@@ -486,7 +486,7 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 												</Box>
 												<Box component={'div'} className={'info'}>
 													<Typography className={'title'}>Product Size</Typography>
-													<Typography className={'data'}>{product?.productSquare} m2</Typography>
+													<Typography className={'data'}>{product?.productMileage} mi</Typography>
 												</Box>
 												<Box component={'div'} className={'info'}>
 													<Typography className={'title'}>Engine Size</Typography>

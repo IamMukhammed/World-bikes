@@ -38,7 +38,7 @@ const ProductList: NextPage = ({ initialInput, ...props }: any) => {
 
 	/** APOLLO REQUESTS **/
 	const [likeTargetProduct] = useMutation(LIKE_TARGET_PRODUCT);
-
+	console.log("GraphQL input, index.ts:", initialInput);
 	const {
 		loading: getProductsLoading,
 		data: getProductsData,
@@ -224,9 +224,9 @@ ProductList.defaultProps = {
 		sort: 'createdAt',
 		direction: 'DESC',
 		search: {
-			squaresRange: {
+			mileagesRange: {
 				start: 0,
-				end: 500,
+				end: 50000,
 			},
 			pricesRange: {
 				start: 0,

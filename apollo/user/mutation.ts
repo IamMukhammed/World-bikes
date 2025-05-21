@@ -132,7 +132,7 @@ export const CREATE_PRODUCT = gql`
 			productAddress
 			productTitle
 			productPrice
-			productSquare
+			productMileage
 			productYears
 			productEngineSize
 			productViews
@@ -162,7 +162,7 @@ export const UPDATE_PRODUCT = gql`
 			productAddress
 			productTitle
 			productPrice
-			productSquare
+			productMileage
 			productYears
 			productEngineSize
 			productViews
@@ -192,7 +192,7 @@ export const LIKE_TARGET_PRODUCT = gql`
 			productAddress
 			productTitle
 			productPrice
-			productSquare
+			productMileage
 			productYears
 			productEngineSize
 			productViews

@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 
-const Accordion = styled((props: AccordionProps) => <MuiAccordion disableGutters elevation={0} square {...props} />)(
+const Accordion = styled((props: AccordionProps) => <MuiAccordion disableGutters elevation={0} mileage {...props} />)(
 	({ theme }) => ({
 		border: `1px solid ${theme.palette.divider}`,
 		'&:not(:last-child)': {

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Button, Stack, Typography } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { ProductLocation, ProductType } from '../../enums/product.enum';
-import { REACT_APP_API_URL, productSquare } from '../../config';
+import { REACT_APP_API_URL, productMileage } from '../../config';
 import { ProductInput } from '../../types/product/product.input';
 import axios from 'axios';
 import { getJwtToken } from '../../auth';
@@ -53,7 +53,7 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 			productSale: getProductData?.getProduct ? getProductData?.getProduct?.productSale : false,
 			productEngineSize: getProductData?.getProduct ? getProductData?.getProduct?.productEngineSize : 0,
 			productYears: getProductData?.getProduct ? getProductData?.getProduct?.productYears : 0,
-			productSquare: getProductData?.getProduct ? getProductData?.getProduct?.productSquare : 0,
+			productMileage: getProductData?.getProduct ? getProductData?.getProduct?.productMileage : 0,
 			productDesc: getProductData?.getProduct ? getProductData?.getProduct?.productDesc : '',
 			productImages: getProductData?.getProduct ? getProductData?.getProduct?.productImages : [],
 		});
@@ -124,7 +124,7 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 			insertProductData.productSale === '' ||
 			insertProductData.productEngineSize === 0 ||
 			insertProductData.productYears === 0 ||
-			insertProductData.productSquare === 0 ||
+			insertProductData.productMileage === 0 ||
 			insertProductData.productDesc === '' ||
 			insertProductData.productImages.length === 0
 		) {
@@ -400,9 +400,9 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 									<Typography className="title">Mileage</Typography>
 									<select
 										className="select-description"
-										value={insertProductData.productSquare || 'select'}
+										value={insertProductData.productMileage || 'select'}
 										onChange={({ target: { value } }) =>
-											setInsertProductData({ ...insertProductData, productSquare: parseInt(value, 10) })
+											setInsertProductData({ ...insertProductData, productMileage: parseInt(value, 10) })
 										}
 									>
 										<option disabled value="select">
@@ -591,7 +591,7 @@ AddProduct.defaultProps = {
 		productSale: false,
 		productEngineSize: 0,
 		productYears: 0,
-		productSquare: 0,
+		productMileage: 0,
 		productDesc: '',
 		productImages: [],
 	},

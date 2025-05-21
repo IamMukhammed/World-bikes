@@ -92,7 +92,7 @@ export const GET_PRODUCT = gql`
 			productAddress
 			productTitle
 			productPrice
-			productSquare
+			productMileage
 			productYears
 			productEngineSize
 			productViews
@@ -149,7 +149,7 @@ export const GET_PRODUCTS = gql`
 				productAddress
 				productTitle
 				productPrice
-				productSquare
+				productMileage
 				productYears
 				productEngineSize
 				productViews
@@ -212,7 +212,7 @@ export const GET_AGENT_PRODUCTS = gql`
 				productAddress
 				productTitle
 				productPrice
-				productSquare
+				productMileage
 				productYears
 				productEngineSize
 				productViews
@@ -247,7 +247,7 @@ export const GET_FAVORITES = gql`
 				productAddress
 				productTitle
 				productPrice
-				productSquare
+				productMileage
 				productYears
 				productEngineSize
 				productViews
@@ -311,7 +311,7 @@ export const GET_VISITED = gql`
 				productAddress
 				productTitle
 				productPrice
-				productSquare
+				productMileage
 				productYears
 				productEngineSize
 				productViews

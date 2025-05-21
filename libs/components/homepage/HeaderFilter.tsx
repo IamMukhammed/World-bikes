@@ -6,7 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { productSquare, productYears } from '../../config';
+import { productMileage, productYears } from '../../config';
 import { ProductLocation, ProductType } from '../../enums/product.enum';
 import { ProductsInquiry } from '../../types/product/product.input';
 import { useRouter } from 'next/router';
@@ -226,7 +226,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 		[searchFilter],
 	);
 
-	const productSquareHandler = useCallback(
+	const productMileageHandler = useCallback(
 		async (e: any, type: string) => {
 			const value = e.target.value;
 
@@ -236,7 +236,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 					search: {
 						...searchFilter.search,
 						// @ts-ignore
-						squaresRange: { ...searchFilter.search.squaresRange, start: parseInt(value) },
+						mileagesRange: { ...searchFilter.search.mileagesRange, start: parseInt(value) },
 					},
 				});
 			} else {
@@ -245,7 +245,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 					search: {
 						...searchFilter.search,
 						// @ts-ignore
-						squaresRange: { ...searchFilter.search.squaresRange, end: parseInt(value) },
+						mileagesRange: { ...searchFilter.search.mileagesRange, end: parseInt(value) },
 					},
 				});
 			}
@@ -500,19 +500,19 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 										<div className={'inside space-between align-center'}>
 											<FormControl sx={{ width: '122px' }}>
 												<Select
-													value={searchFilter?.search?.squaresRange?.start}
-													onChange={(e: any) => productSquareHandler(e, 'start')}
+													value={searchFilter?.search?.mileagesRange?.start}
+													onChange={(e: any) => productMileageHandler(e, 'start')}
 													displayEmpty
 													inputProps={{ 'aria-label': 'Without label' }}
 													MenuProps={MenuProps}
 												>
-													{productSquare.map((square: number) => (
+													{productMileage.map((mileage: number) => (
 														<MenuItem
-															value={square}
-															disabled={(searchFilter?.search?.squaresRange?.end || 0) < square}
-															key={square}
+															value={mileage}
+															disabled={(searchFilter?.search?.mileagesRange?.end || 0) < mileage}
+															key={mileage}
 														>
-															{square}
+															{mileage}
 														</MenuItem>
 													))}
 												</Select>
@@ -520,19 +520,19 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 											<div className={'minus-line'}></div>
 											<FormControl sx={{ width: '122px' }}>
 												<Select
-													value={searchFilter?.search?.squaresRange?.end}
-													onChange={(e: any) => productSquareHandler(e, 'end')}
+													value={searchFilter?.search?.mileagesRange?.end}
+													onChange={(e: any) => productMileageHandler(e, 'end')}
 													displayEmpty
 													inputProps={{ 'aria-label': 'Without label' }}
 													MenuProps={MenuProps}
 												>
-													{productSquare.map((square: number) => (
+													{productMileage.map((mileage: number) => (
 														<MenuItem
-															value={square}
-															disabled={(searchFilter?.search?.squaresRange?.start || 0) > square}
-															key={square}
+															value={mileage}
+															disabled={(searchFilter?.search?.mileagesRange?.start || 0) > mileage}
+															key={mileage}
 														>
-															{square}
+															{mileage}
 														</MenuItem>
 													))}
 												</Select>
@@ -568,7 +568,7 @@ HeaderFilter.defaultProps = {
 		page: 1,
 		limit: 9,
 		search: {
-			squaresRange: {
+			mileagesRange: {
 				start: 0,
 				end: 50000,
 			},

@@ -53,7 +53,7 @@ export const GET_ALL_PRODUCTS_BY_ADMIN = gql`
 				productAddress
 				productTitle
 				productPrice
-				productSquare
+				productMileage
 				productYears
 				productEngineSize
 				productViews

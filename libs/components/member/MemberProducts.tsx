@@ -19,6 +19,7 @@ const MyProducts: NextPage = ({ initialInput, ...props }: any) => {
 	const [total, setTotal] = useState<number>(0);
 
 	/** APOLLO REQUESTS **/
+	console.log("GraphQL input memberproducts.tsx:", initialInput);
 	const {
 		loading: getProductsLoading,
 		data: getProductsData,

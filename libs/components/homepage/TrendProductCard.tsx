@@ -55,7 +55,7 @@ const TrendProductCard = (props: TrendProductCardProps) => {
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
-							<span>{product.productSquare} m2</span>
+							<span>{product.productMileage} mi</span>
 						</div>
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
@@ -117,7 +117,7 @@ const TrendProductCard = (props: TrendProductCardProps) => {
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
-							<span>{product.productSquare} m2</span>
+							<span>{product.productMileage} mi</span>
 						</div>
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />

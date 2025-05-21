@@ -26,7 +26,7 @@ const TrendProducts = (props: TrendProductsProps) => {
 
 	/** APOLLO REQUESTS **/
 	const [likeTargetProduct] = useMutation(LIKE_TARGET_PRODUCT);
-
+	console.log('GraphQL input trendproperties.tsx:', initialInput);
 	const {
 		loading: getProductsLoading,
 		data: getProductsData,
@@ -153,7 +153,13 @@ TrendProducts.defaultProps = {
 		limit: 8,
 		sort: 'productLikes',
 		direction: 'DESC',
-		search: {},
+		search: {
+			locationList: [],
+			pricesRange: {
+				start: 0,
+				end: 2000000,
+			},
+		},
 	},
 };
 

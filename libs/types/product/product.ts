@@ -19,7 +19,7 @@ export interface Product {
 	productAddress: string;
 	productTitle: string;
 	productPrice: number;
-	productSquare: number;
+	productMileage: number;
 	productYears: number;
 	productEngineSize: number;
 	productViews: number;

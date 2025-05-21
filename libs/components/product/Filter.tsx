@@ -17,7 +17,7 @@ import { ProductLocation, ProductType } from '../../enums/product.enum';
 import { ProductsInquiry } from '../../types/product/product.input';
 import { useRouter } from 'next/router';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
-import { productSquare } from '../../config';
+import { productMileage } from '../../config';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
 const MenuProps = {
@@ -424,7 +424,7 @@ const Filter = (props: FilterType) => {
 		[searchFilter],
 	);
 
-	const productSquareHandler = useCallback(
+	const productMileageHandler = useCallback(
 		async (e: any, type: string) => {
 			const value = e.target.value;
 
@@ -434,14 +434,14 @@ const Filter = (props: FilterType) => {
 						...searchFilter,
 						search: {
 							...searchFilter.search,
-							squaresRange: { ...searchFilter.search.squaresRange, start: value },
+							mileagesRange: { ...searchFilter.search.mileagesRange, start: value },
 						},
 					})}`,
 					`/product?input=${JSON.stringify({
 						...searchFilter,
 						search: {
 							...searchFilter.search,
-							squaresRange: { ...searchFilter.search.squaresRange, start: value },
+							mileagesRange: { ...searchFilter.search.mileagesRange, start: value },
 						},
 					})}`,
 					{ scroll: false },
@@ -452,14 +452,14 @@ const Filter = (props: FilterType) => {
 						...searchFilter,
 						search: {
 							...searchFilter.search,
-							squaresRange: { ...searchFilter.search.squaresRange, end: value },
+							mileagesRange: { ...searchFilter.search.mileagesRange, end: value },
 						},
 					})}`,
 					`/product?input=${JSON.stringify({
 						...searchFilter,
 						search: {
 							...searchFilter.search,
-							squaresRange: { ...searchFilter.search.squaresRange, end: value },
+							mileagesRange: { ...searchFilter.search.mileagesRange, end: value },
 						},
 					})}`,
 					{ scroll: false },
@@ -799,25 +799,25 @@ const Filter = (props: FilterType) => {
 
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
-					<Typography className={'title'}>Square meter</Typography>
-					<Stack className="square-year-input">
+					<Typography className={'title'}>Mileage</Typography>
+					<Stack className="mileage-year-input">
 						<FormControl>
 							<InputLabel id="demo-simple-select-label">Min</InputLabel>
 							<Select
 								labelId="demo-simple-select-label"
 								id="demo-simple-select"
-								value={searchFilter?.search?.squaresRange?.start ?? 0}
+								value={searchFilter?.search?.mileagesRange?.start ?? 0}
 								label="Min"
-								onChange={(e: any) => productSquareHandler(e, 'start')}
+								onChange={(e: any) => productMileageHandler(e, 'start')}
 								MenuProps={MenuProps}
 							>
-								{productSquare.map((square: number) => (
+								{productMileage.map((mileage: number) => (
 									<MenuItem
-										value={square}
-										disabled={(searchFilter?.search?.squaresRange?.end || 0) < square}
-										key={square}
+										value={mileage}
+										disabled={(searchFilter?.search?.mileagesRange?.end || 0) < mileage}
+										key={mileage}
 									>
-										{square}
+										{mileage}
 									</MenuItem>
 								))}
 							</Select>
@@ -828,18 +828,18 @@ const Filter = (props: FilterType) => {
 							<Select
 								labelId="demo-simple-select-label"
 								id="demo-simple-select"
-								value={searchFilter?.search?.squaresRange?.end ?? 500}
+								value={searchFilter?.search?.mileagesRange?.end ?? 500}
 								label="Max"
-								onChange={(e: any) => productSquareHandler(e, 'end')}
+								onChange={(e: any) => productMileageHandler(e, 'end')}
 								MenuProps={MenuProps}
 							>
-								{productSquare.map((square: number) => (
+								{productMileage.map((mileage: number) => (
 									<MenuItem
-										value={square}
-										disabled={(searchFilter?.search?.squaresRange?.start || 0) > square}
-										key={square}
+										value={mileage}
+										disabled={(searchFilter?.search?.mileagesRange?.start || 0) > mileage}
+										key={mileage}
 									>
-										{square}
+										{mileage}
 									</MenuItem>
 								))}
 							</Select>
@@ -848,7 +848,7 @@ const Filter = (props: FilterType) => {
 				</Stack>
 				<Stack className={'find-your-home'}>
 					<Typography className={'title'}>Price Range</Typography>
-					<Stack className="square-year-input">
+					<Stack className="mileage-year-input">
 						<input
 							type="number"
 							placeholder="$ min"

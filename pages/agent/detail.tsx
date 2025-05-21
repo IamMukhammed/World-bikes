@@ -79,7 +79,7 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 			});
 		},
 	});
-
+	console.log("GraphQL input detail.tsx", initialInput);
 	const {
 		loading: getProductsLoading,
 		data: getProductsData,

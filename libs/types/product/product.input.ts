@@ -7,7 +7,7 @@ export interface ProductInput {
 	productAddress: string;
 	productTitle: string;
 	productPrice: number;
-	productSquare: number;
+	productMileage: number;
 	productYears: number;
 	productEngineSize: number;
 	productImages: string[];
@@ -28,7 +28,7 @@ interface PISearch {
 	yearsList?: Number[];
 	pricesRange?: Range;
 	periodsRange?: PeriodsRange;
-	squaresRange?: Range;
+	mileagesRange?: Range;
 	text?: string;
 }
 
