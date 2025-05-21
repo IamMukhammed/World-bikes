@@ -63,7 +63,7 @@ const Faq = () => {
 			{
 				id: '00f5a45ed8897f8090116a21',
 				subject: 'How can I search for Motorcycles on your website?',
-				content: 'Simply use our search bar to enter location, price range, bedrooms/bathrooms, and product type.',
+				content: 'Simply use our search bar to enter location, price range, engine size/bathrooms, and product type.',
 			},
 			{
 				id: '00f5a45ed8897f8090116a23',

@@ -55,7 +55,7 @@ export const GET_ALL_PRODUCTS_BY_ADMIN = gql`
 				productPrice
 				productSquare
 				productBeds
-				productRooms
+				productEngineSize
 				productViews
 				productLikes
 				productImages

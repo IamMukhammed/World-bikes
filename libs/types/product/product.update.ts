@@ -10,7 +10,7 @@ export interface ProductUpdate {
 	productPrice?: number;
 	productSquare?: number;
 	productBeds?: number;
-	productRooms?: number;
+	productEngineSize?: number;
 	productImages?: string[];
 	productDesc?: string;
 	productBarter?: boolean;

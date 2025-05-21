@@ -51,7 +51,7 @@ const TrendProductCard = (props: TrendProductCardProps) => {
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
-							<span>{product.productRooms} rooms</span>
+							<span>{product.productEngineSize} Engine Size</span>
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
@@ -105,7 +105,7 @@ const TrendProductCard = (props: TrendProductCardProps) => {
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
-							<span>{product.productRooms} rooms</span>
+							<span>{product.productEngineSize} Engine Size</span>
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />

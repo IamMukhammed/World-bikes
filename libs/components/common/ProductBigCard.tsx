@@ -56,7 +56,7 @@ const ProductBigCard = (props: ProductBigCardProps) => {
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
-							<span>{product?.productRooms} rooms</span>
+							<span>{product?.productEngineSize} Engine Size</span>
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />

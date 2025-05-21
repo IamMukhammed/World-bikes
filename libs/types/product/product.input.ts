@@ -9,7 +9,7 @@ export interface ProductInput {
 	productPrice: number;
 	productSquare: number;
 	productBeds: number;
-	productRooms: number;
+	productEngineSize: number;
 	productImages: string[];
 	productDesc?: string;
 	productBarter?: boolean;
@@ -22,7 +22,7 @@ interface PISearch {
 	memberId?: string;
 	locationList?: ProductLocation[];
 	typeList?: ProductType[];
-	roomsList?: Number[];
+	engineSizeList?: Number[];
 	options?: string[];
 	bedsList?: Number[];
 	pricesRange?: Range;

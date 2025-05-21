@@ -74,7 +74,7 @@ const ProductCard = (props: ProductCardType) => {
 							<img src="/img/icons/bed.svg" alt="" /> <Typography>{product.productBeds} bed</Typography>
 						</Stack>
 						<Stack className="option">
-							<img src="/img/icons/room.svg" alt="" /> <Typography>{product.productRooms} room</Typography>
+							<img src="/img/icons/room.svg" alt="" /> <Typography>{product.productEngineSize} engine size</Typography>
 						</Stack>
 						<Stack className="option">
 							<img src="/img/icons/expand.svg" alt="" /> <Typography>{product.productSquare} m2</Typography>

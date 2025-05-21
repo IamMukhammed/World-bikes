@@ -21,7 +21,7 @@ export interface Product {
 	productPrice: number;
 	productSquare: number;
 	productBeds: number;
-	productRooms: number;
+	productEngineSize: number;
 	productViews: number;
 	productLikes: number;
 	productComments: number;

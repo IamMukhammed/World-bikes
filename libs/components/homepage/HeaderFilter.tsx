@@ -45,12 +45,12 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 	const [searchFilter, setSearchFilter] = useState<ProductsInquiry>(initialInput);
 	const locationRef: any = useRef();
 	const typeRef: any = useRef();
-	const roomsRef: any = useRef();
+	const engineSizeRef: any = useRef();
 	const router = useRouter();
 	const [openAdvancedFilter, setOpenAdvancedFilter] = useState(false);
 	const [openLocation, setOpenLocation] = useState(false);
 	const [openType, setOpenType] = useState(false);
-	const [openRooms, setOpenRooms] = useState(false);
+	const [openEngineSize, setOpenEngineSize] = useState(false);
 	const [productLocation, setProductLocation] = useState<ProductLocation[]>(Object.values(ProductLocation));
 	const [productType, setProductType] = useState<ProductType[]>(Object.values(ProductType));
 	const [yearCheck, setYearCheck] = useState({ start: 1970, end: thisYear });
@@ -67,8 +67,8 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 				setOpenType(false);
 			}
 
-			if (!roomsRef?.current?.contains(event.target)) {
-				setOpenRooms(false);
+			if (!engineSizeRef?.current?.contains(event.target)) {
+				setOpenEngineSize(false);
 			}
 		};
 
@@ -82,31 +82,31 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 	/** HANDLERS **/
 	const advancedFilterHandler = (status: boolean) => {
 		setOpenLocation(false);
-		setOpenRooms(false);
+		setOpenEngineSize(false);
 		setOpenType(false);
 		setOpenAdvancedFilter(status);
 	};
 
 	const locationStateChangeHandler = () => {
 		setOpenLocation((prev) => !prev);
-		setOpenRooms(false);
+		setOpenEngineSize(false);
 		setOpenType(false);
 	};
 
 	const typeStateChangeHandler = () => {
 		setOpenType((prev) => !prev);
 		setOpenLocation(false);
-		setOpenRooms(false);
+		setOpenEngineSize(false);
 	};
 
-	const roomStateChangeHandler = () => {
-		setOpenRooms((prev) => !prev);
+	const esizeStateChangeHandler = () => {
+		setOpenEngineSize((prev) => !prev);
 		setOpenType(false);
 		setOpenLocation(false);
 	};
 
 	const disableAllStateHandler = () => {
-		setOpenRooms(false);
+		setOpenEngineSize(false);
 		setOpenType(false);
 		setOpenLocation(false);
 	};
@@ -139,7 +139,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 						typeList: [value],
 					},
 				});
-				roomStateChangeHandler();
+				esizeStateChangeHandler();
 			} catch (err: any) {
 				console.log('ERROR, productTypeSelectHandler:', err);
 			}
@@ -147,19 +147,19 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 		[searchFilter],
 	);
 
-	const productRoomSelectHandler = useCallback(
+	const productEsizeSelectHandler = useCallback(
 		async (value: any) => {
 			try {
 				setSearchFilter({
 					...searchFilter,
 					search: {
 						...searchFilter.search,
-						roomsList: [value],
+						engineSizeList: [value],
 					},
 				});
 				disableAllStateHandler();
 			} catch (err: any) {
-				console.log('ERROR, productRoomSelectHandler:', err);
+				console.log('ERROR, productEsizeSelectHandler:', err);
 			}
 		},
 		[searchFilter],
@@ -280,7 +280,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 	const resetFilterHandler = () => {
 		setSearchFilter(initialInput);
 		setOptionCheck('all');
-		setYearCheck({ start: 1970, end: thisYear });
+		setYearCheck({ start: 2000, end: thisYear });
 	};
 
 	const pushSearchHandler = async () => {
@@ -293,8 +293,8 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 				delete searchFilter.search.typeList;
 			}
 
-			if (searchFilter?.search?.roomsList?.length == 0) {
-				delete searchFilter.search.roomsList;
+			if (searchFilter?.search?.engineSizeList?.length == 0) {
+				delete searchFilter.search.engineSizeList;
 			}
 
 			if (searchFilter?.search?.options?.length == 0) {
@@ -329,9 +329,9 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 							<span> {searchFilter?.search?.typeList ? searchFilter?.search?.typeList[0] : t('Product type')} </span>
 							<ExpandMoreIcon />
 						</Box>
-						<Box className={`box ${openRooms ? 'on' : ''}`} onClick={roomStateChangeHandler}>
+						<Box className={`box ${openEngineSize ? 'on' : ''}`} onClick={esizeStateChangeHandler}>
 							<span>
-								{searchFilter?.search?.roomsList ? `${searchFilter?.search?.roomsList[0]} rooms}` : t('Rooms')}
+								{searchFilter?.search?.engineSizeList ? `${searchFilter?.search?.engineSizeList[0]} engine size}` : t('Engine Size')}
 							</span>
 							<ExpandMoreIcon />
 						</Box>
@@ -372,11 +372,11 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 						})}
 					</div>
 
-					<div className={`filter-rooms ${openRooms ? 'on' : ''}`} ref={roomsRef}>
-						{[1, 2, 3, 4, 5].map((room: number) => {
+					<div className={`filter-engine-size ${openEngineSize ? 'on' : ''}`} ref={engineSizeRef}>
+						{[125, 2250, 400, 500, 1000].map((room: number) => {
 							return (
-								<span onClick={() => productRoomSelectHandler(room)} key={room}>
-									{room} room{room > 1 ? 's' : ''}
+								<span onClick={() => productEsizeSelectHandler(room)} key={room}>
+									{room} c{room > 1 ? 'c+' : ''}
 								</span>
 							);
 						})}
@@ -397,7 +397,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 								<CloseIcon />
 							</div>
 							<div className={'top'}>
-								<span>Find your home</span>
+								<span>Find your future motorcycle</span>
 								<div className={'search-input-box'}>
 									<img src="/img/icons/search.svg" alt="" />
 									<input
@@ -417,7 +417,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 							<div className={'middle'}>
 								<div className={'row-box'}>
 									<div className={'box'}>
-										<span>bedrooms</span>
+										<span>Engine Size</span>
 										<div className={'inside'}>
 											<div
 												className={`room ${!searchFilter?.search?.bedsList ? 'active' : ''}`}
@@ -425,7 +425,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 											>
 												Any
 											</div>
-											{[1, 2, 3, 4, 5].map((bed: number) => (
+											{[125, 250, 400, 500, 1000].map((bed: number) => (
 												<div
 													className={`room ${searchFilter?.search?.bedsList?.includes(bed) ? 'active' : ''}`}
 													onClick={() => productBedSelectHandler(bed)}
@@ -437,7 +437,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 										</div>
 									</div>
 									<div className={'box'}>
-										<span>options</span>
+										<span>Features</span>
 										<div className={'inside'}>
 											<FormControl>
 												<Select
@@ -446,9 +446,10 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 													displayEmpty
 													inputProps={{ 'aria-label': 'Without label' }}
 												>
-													<MenuItem value={'all'}>All Options</MenuItem>
-													<MenuItem value={'productBarter'}>Barter</MenuItem>
-													<MenuItem value={'productRent'}>Rent</MenuItem>
+													<MenuItem value={'all'}>All Features</MenuItem>
+													<MenuItem value={'productBarter'}>ABS</MenuItem>
+													<MenuItem value={'productRent'}>Bluetooth</MenuItem>
+													<MenuItem value={'productRent'}>Storage</MenuItem>
 												</Select>
 											</FormControl>
 										</div>
@@ -456,7 +457,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 								</div>
 								<div className={'row-box'} style={{ marginTop: '44px' }}>
 									<div className={'box'}>
-										<span>Year Built</span>
+										<span>Year</span>
 										<div className={'inside space-between align-center'}>
 											<FormControl sx={{ width: '122px' }}>
 												<Select
@@ -495,7 +496,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 										</div>
 									</div>
 									<div className={'box'}>
-										<span>square meter</span>
+										<span>Mileage</span>
 										<div className={'inside space-between align-center'}>
 											<FormControl sx={{ width: '122px' }}>
 												<Select
@@ -569,7 +570,7 @@ HeaderFilter.defaultProps = {
 		search: {
 			squaresRange: {
 				start: 0,
-				end: 500,
+				end: 50000,
 			},
 			pricesRange: {
 				start: 0,

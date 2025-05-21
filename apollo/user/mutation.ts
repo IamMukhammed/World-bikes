@@ -134,7 +134,7 @@ export const CREATE_PRODUCT = gql`
 			productPrice
 			productSquare
 			productBeds
-			productRooms
+			productEngineSize
 			productViews
 			productLikes
 			productImages
@@ -163,7 +163,7 @@ export const UPDATE_PRODUCT = gql`
 			productPrice
 			productSquare
 			productBeds
-			productRooms
+			productEngineSize
 			productViews
 			productLikes
 			productImages
@@ -192,7 +192,7 @@ export const LIKE_TARGET_PRODUCT = gql`
 			productPrice
 			productSquare
 			productBeds
-			productRooms
+			productEngineSize
 			productViews
 			productLikes
 			productImages

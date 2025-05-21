@@ -94,7 +94,7 @@ export const GET_PRODUCT = gql`
 			productPrice
 			productSquare
 			productBeds
-			productRooms
+			productEngineSize
 			productViews
 			productLikes
 			productImages
@@ -150,7 +150,7 @@ export const GET_PRODUCTS = gql`
 				productPrice
 				productSquare
 				productBeds
-				productRooms
+				productEngineSize
 				productViews
 				productLikes
 				productRank
@@ -212,7 +212,7 @@ export const GET_AGENT_PRODUCTS = gql`
 				productPrice
 				productSquare
 				productBeds
-				productRooms
+				productEngineSize
 				productViews
 				productLikes
 				productImages
@@ -246,7 +246,7 @@ export const GET_FAVORITES = gql`
 				productPrice
 				productSquare
 				productBeds
-				productRooms
+				productEngineSize
 				productViews
 				productLikes
 				productComments
@@ -309,7 +309,7 @@ export const GET_VISITED = gql`
 				productPrice
 				productSquare
 				productBeds
-				productRooms
+				productEngineSize
 				productViews
 				productLikes
 				productComments

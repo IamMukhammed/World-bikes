@@ -275,7 +275,7 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 											<img src="/img/icons/bed.svg" alt="" /> <Typography>{product?.productBeds} bed</Typography>
 										</Stack>
 										<Stack className="option">
-											<img src="/img/icons/room.svg" alt="" /> <Typography>{product?.productRooms} room</Typography>
+											<img src="/img/icons/room.svg" alt="" /> <Typography>{product?.productEngineSize} engine size</Typography>
 										</Stack>
 										<Stack className="option">
 											<img src="/img/icons/expand.svg" alt="" /> <Typography>{product?.productSquare} m2</Typography>
@@ -360,7 +360,7 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 										</Stack>
 										<Stack className={'option-includes'}>
 											<Typography className={'title'}>Room</Typography>
-											<Typography className={'option-data'}>{product?.productRooms}</Typography>
+											<Typography className={'option-data'}>{product?.productEngineSize}</Typography>
 										</Stack>
 									</Stack>
 									<Stack className={'option'}>
@@ -477,8 +477,8 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 													<Typography className={'data'}>{product?.productSquare} m2</Typography>
 												</Box>
 												<Box component={'div'} className={'info'}>
-													<Typography className={'title'}>Rooms</Typography>
-													<Typography className={'data'}>{product?.productRooms}</Typography>
+													<Typography className={'title'}>Engine Size</Typography>
+													<Typography className={'data'}>{product?.productEngineSize}</Typography>
 												</Box>
 												<Box component={'div'} className={'info'}>
 													<Typography className={'title'}>Bedrooms</Typography>

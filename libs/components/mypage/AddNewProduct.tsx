@@ -50,7 +50,7 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 			productAddress: getProductData?.getProduct ? getProductData?.getProduct?.productAddress : '',
 			productBarter: getProductData?.getProduct ? getProductData?.getProduct?.productBarter : false,
 			productRent: getProductData?.getProduct ? getProductData?.getProduct?.productRent : false,
-			productRooms: getProductData?.getProduct ? getProductData?.getProduct?.productRooms : 0,
+			productEngineSize: getProductData?.getProduct ? getProductData?.getProduct?.productEngineSize : 0,
 			productBeds: getProductData?.getProduct ? getProductData?.getProduct?.productBeds : 0,
 			productSquare: getProductData?.getProduct ? getProductData?.getProduct?.productSquare : 0,
 			productDesc: getProductData?.getProduct ? getProductData?.getProduct?.productDesc : '',
@@ -120,7 +120,7 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 			insertProductData.productAddress === '' || // @ts-ignore
 			insertProductData.productBarter === '' || // @ts-ignore
 			insertProductData.productRent === '' ||
-			insertProductData.productRooms === 0 ||
+			insertProductData.productEngineSize === 0 ||
 			insertProductData.productBeds === 0 ||
 			insertProductData.productSquare === 0 ||
 			insertProductData.productDesc === '' ||
@@ -327,13 +327,13 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 
 							<Stack className="config-row">
 								<Stack className="price-year-after-price">
-									<Typography className="title">Rooms</Typography>
+									<Typography className="title">Engine Size</Typography>
 									<select
 										className={'select-description'}
-										value={insertProductData.productRooms || 'select'}
-										defaultValue={insertProductData.productRooms || 'select'}
+										value={insertProductData.productEngineSize || 'select'}
+										defaultValue={insertProductData.productEngineSize || 'select'}
 										onChange={({ target: { value } }) =>
-											setInsertProductData({ ...insertProductData, productRooms: parseInt(value) })
+											setInsertProductData({ ...insertProductData, productEngineSize: parseInt(value) })
 										}
 									>
 										<option disabled={true} selected={true} value={'select'}>
@@ -559,7 +559,7 @@ AddProduct.defaultProps = {
 		productAddress: '',
 		productBarter: false,
 		productRent: false,
-		productRooms: 0,
+		productEngineSize: 0,
 		productBeds: 0,
 		productSquare: 0,
 		productDesc: '',
