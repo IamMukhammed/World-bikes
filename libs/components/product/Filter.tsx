@@ -623,7 +623,7 @@ const Filter = (props: FilterType) => {
 					))}
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
-					<Typography className={'title'}>Engine Size</Typography>
+					<Typography className={'title'}>Engine Size (cc)</Typography>
 					<Stack className="button-group">
 						<Button
 							sx={{
@@ -642,7 +642,7 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => productEsizeSelectHandler(1)}
 						>
-							1
+							125
 						</Button>
 						<Button
 							sx={{
@@ -652,7 +652,7 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => productEsizeSelectHandler(2)}
 						>
-							2
+							250
 						</Button>
 						<Button
 							sx={{
@@ -662,7 +662,7 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => productEsizeSelectHandler(3)}
 						>
-							3
+							400
 						</Button>
 						<Button
 							sx={{
@@ -673,7 +673,7 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => productEsizeSelectHandler(4)}
 						>
-							4
+							500
 						</Button>
 						<Button
 							sx={{
@@ -682,11 +682,11 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => productEsizeSelectHandler(5)}
 						>
-							5+
+							1000+
 						</Button>
 					</Stack>
 				</Stack>
-				<Stack className={'find-your-home'} mb={'30px'}>
+				{/* <Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Bedrooms</Typography>
 					<Stack className="button-group">
 						<Button
@@ -750,7 +750,7 @@ const Filter = (props: FilterType) => {
 							5+
 						</Button>
 					</Stack>
-				</Stack>
+				</Stack> */}
 				<Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Options</Typography>
 					<Stack className={'input-box'}>
