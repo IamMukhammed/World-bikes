@@ -50,8 +50,9 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 			productAddress: getProductData?.getProduct ? getProductData?.getProduct?.productAddress : '',
 			productBarter: getProductData?.getProduct ? getProductData?.getProduct?.productBarter : false,
 			productRent: getProductData?.getProduct ? getProductData?.getProduct?.productRent : false,
+			productSale: getProductData?.getProduct ? getProductData?.getProduct?.productSale : false,
 			productEngineSize: getProductData?.getProduct ? getProductData?.getProduct?.productEngineSize : 0,
-			productBeds: getProductData?.getProduct ? getProductData?.getProduct?.productBeds : 0,
+			productYears: getProductData?.getProduct ? getProductData?.getProduct?.productYears : 0,
 			productSquare: getProductData?.getProduct ? getProductData?.getProduct?.productSquare : 0,
 			productDesc: getProductData?.getProduct ? getProductData?.getProduct?.productDesc : '',
 			productImages: getProductData?.getProduct ? getProductData?.getProduct?.productImages : [],
@@ -119,9 +120,10 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 			insertProductData.productLocation === '' || // @ts-ignore
 			insertProductData.productAddress === '' || // @ts-ignore
 			insertProductData.productBarter === '' || // @ts-ignore
-			insertProductData.productRent === '' ||
+			insertProductData.productRent === '' || // @ts-ignore
+			insertProductData.productSale === '' ||
 			insertProductData.productEngineSize === 0 ||
-			insertProductData.productBeds === 0 ||
+			insertProductData.productYears === 0 ||
 			insertProductData.productSquare === 0 ||
 			insertProductData.productDesc === '' ||
 			insertProductData.productImages.length === 0
@@ -323,6 +325,26 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 									<div className={'divider'}></div>
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
 								</Stack>
+
+								<Stack className="price-year-after-price">
+									<Typography className="title">Sale</Typography>
+									<select
+										className={'select-description'}
+										value={insertProductData.productSale ? 'yes' : 'no'}
+										defaultValue={insertProductData.productSale ? 'yes' : 'no'}
+										onChange={({ target: { value } }) =>
+											setInsertProductData({ ...insertProductData, productSale: value === 'yes' })
+										}
+									>
+										<option disabled={true} selected={true}>
+											Select
+										</option>
+										<option value={'yes'}>Yes</option>
+										<option value={'no'}>No</option>
+									</select>
+									<div className={'divider'}></div>
+									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
+								</Stack>
 							</Stack>
 
 							<Stack className="config-row">
@@ -339,54 +361,61 @@ const AddProduct = ({ initialValues, ...props }: any) => {
 										<option disabled={true} selected={true} value={'select'}>
 											Select
 										</option>
-										{[1, 2, 3, 4, 5].map((room: number) => (
-											<option value={`${room}`}>{room}</option>
+										{[125, 250, 400, 500, 1000].map((esize: number) => (
+											<option value={`${esize}`}>{esize}</option>
 										))}
 									</select>
 									<div className={'divider'}></div>
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
 								</Stack>
 								<Stack className="price-year-after-price">
-									<Typography className="title">Bed</Typography>
+									<Typography className="title">Year</Typography>
 									<select
-										className={'select-description'}
-										value={insertProductData.productBeds || 'select'}
-										defaultValue={insertProductData.productBeds || 'select'}
+										className="select-description"
+										value={
+											insertProductData.constructedAt
+												? new Date(insertProductData.constructedAt).getFullYear().toString()
+												: 'select'
+										}
 										onChange={({ target: { value } }) =>
-											setInsertProductData({ ...insertProductData, productBeds: parseInt(value) })
+											setInsertProductData({
+												...insertProductData,
+												constructedAt: new Date(parseInt(value, 10), 0, 1), // faqat yil
+											})
 										}
 									>
-										<option disabled={true} selected={true} value={'select'}>
+										<option disabled value="select">
 											Select
 										</option>
-										{[1, 2, 3, 4, 5].map((bed: number) => (
-											<option value={`${bed}`}>{bed}</option>
+										{Array.from({ length: 55 }, (_, i) => new Date().getFullYear() - i).map((year) => (
+											<option key={year} value={year}>
+												{year}
+											</option>
 										))}
 									</select>
-									<div className={'divider'}></div>
-									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
+									<div className="divider"></div>
+									<img src="/img/icons/Vector.svg" className="arrow-down" />
 								</Stack>
 								<Stack className="price-year-after-price">
-									<Typography className="title">Square</Typography>
+									<Typography className="title">Mileage</Typography>
 									<select
-										className={'select-description'}
+										className="select-description"
 										value={insertProductData.productSquare || 'select'}
-										defaultValue={insertProductData.productSquare || 'select'}
 										onChange={({ target: { value } }) =>
-											setInsertProductData({ ...insertProductData, productSquare: parseInt(value) })
+											setInsertProductData({ ...insertProductData, productSquare: parseInt(value, 10) })
 										}
 									>
-										<option disabled={true} selected={true} value={'select'}>
+										<option disabled value="select">
 											Select
 										</option>
-										{productSquare.map((square: number) => {
-											if (square !== 0) {
-												return <option value={`${square}`}>{square}</option>;
-											}
-										})}
+										{[0, 1000, 5000, 10000, 20000, 50000].map((mileage) => (
+											<option key={mileage} value={mileage}>
+												{mileage.toLocaleString()} mi
+											</option>
+										))}
 									</select>
-									<div className={'divider'}></div>
-									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
+									<div className="divider"></div>
+									<img src="/img/icons/Vector.svg" className="arrow-down" />
 								</Stack>
 							</Stack>
 
@@ -559,8 +588,9 @@ AddProduct.defaultProps = {
 		productAddress: '',
 		productBarter: false,
 		productRent: false,
+		productSale: false,
 		productEngineSize: 0,
-		productBeds: 0,
+		productYears: 0,
 		productSquare: 0,
 		productDesc: '',
 		productImages: [],

@@ -54,7 +54,7 @@ export const GET_ALL_PRODUCTS_BY_ADMIN = gql`
 				productTitle
 				productPrice
 				productSquare
-				productBeds
+				productYears
 				productEngineSize
 				productViews
 				productLikes
@@ -62,6 +62,7 @@ export const GET_ALL_PRODUCTS_BY_ADMIN = gql`
 				productDesc
 				productBarter
 				productRent
+				productSale
 				memberId
 				soldAt
 				deletedAt

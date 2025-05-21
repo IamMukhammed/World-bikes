@@ -165,32 +165,32 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 		[searchFilter],
 	);
 
-	const productBedSelectHandler = useCallback(
+	const productYearSelectHandler = useCallback(
 		async (number: Number) => {
 			try {
 				if (number != 0) {
-					if (searchFilter?.search?.bedsList?.includes(number)) {
+					if (searchFilter?.search?.yearsList?.includes(number)) {
 						setSearchFilter({
 							...searchFilter,
 							search: {
 								...searchFilter.search,
-								bedsList: searchFilter?.search?.bedsList?.filter((item: Number) => item !== number),
+								yearsList: searchFilter?.search?.yearsList?.filter((item: Number) => item !== number),
 							},
 						});
 					} else {
 						setSearchFilter({
 							...searchFilter,
-							search: { ...searchFilter.search, bedsList: [...(searchFilter?.search?.bedsList || []), number] },
+							search: { ...searchFilter.search, yearsList: [...(searchFilter?.search?.yearsList || []), number] },
 						});
 					}
 				} else {
-					delete searchFilter?.search.bedsList;
+					delete searchFilter?.search.yearsList;
 					setSearchFilter({ ...searchFilter });
 				}
 
-				console.log('productBedSelectHandler:', number);
+				console.log('productYearSelectHandler:', number);
 			} catch (err: any) {
-				console.log('ERROR, productBedSelectHandler:', err);
+				console.log('ERROR, productYearSelectHandler:', err);
 			}
 		},
 		[searchFilter],
@@ -301,8 +301,8 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 				delete searchFilter.search.options;
 			}
 
-			if (searchFilter?.search?.bedsList?.length == 0) {
-				delete searchFilter.search.bedsList;
+			if (searchFilter?.search?.yearsList?.length == 0) {
+				delete searchFilter.search.yearsList;
 			}
 
 			await router.push(
@@ -420,15 +420,15 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 										<span>Engine Size</span>
 										<div className={'inside'}>
 											<div
-												className={`room ${!searchFilter?.search?.bedsList ? 'active' : ''}`}
-												onClick={() => productBedSelectHandler(0)}
+												className={`room ${!searchFilter?.search?.yearsList ? 'active' : ''}`}
+												onClick={() => productYearSelectHandler(0)}
 											>
 												Any
 											</div>
 											{[125, 250, 400, 500, 1000].map((bed: number) => (
 												<div
-													className={`room ${searchFilter?.search?.bedsList?.includes(bed) ? 'active' : ''}`}
-													onClick={() => productBedSelectHandler(bed)}
+													className={`room ${searchFilter?.search?.yearsList?.includes(bed) ? 'active' : ''}`}
+													onClick={() => productYearSelectHandler(bed)}
 													key={bed}
 												>
 													{bed == 0 ? 'Any' : bed}
@@ -446,10 +446,10 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 													displayEmpty
 													inputProps={{ 'aria-label': 'Without label' }}
 												>
-													<MenuItem value={'all'}>All Features</MenuItem>
-													<MenuItem value={'productBarter'}>ABS</MenuItem>
-													<MenuItem value={'productRent'}>Bluetooth</MenuItem>
-													<MenuItem value={'productRent'}>Storage</MenuItem>
+													<MenuItem value={'all'}>All Options</MenuItem>
+													<MenuItem value={'productBarter'}>Barter</MenuItem>
+													<MenuItem value={'productRent'}>Rent</MenuItem>
+													<MenuItem value={'productSale'}>Sale</MenuItem>
 												</Select>
 											</FormControl>
 										</div>

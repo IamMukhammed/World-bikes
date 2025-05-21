@@ -8,12 +8,13 @@ export interface ProductInput {
 	productTitle: string;
 	productPrice: number;
 	productSquare: number;
-	productBeds: number;
+	productYears: number;
 	productEngineSize: number;
 	productImages: string[];
 	productDesc?: string;
 	productBarter?: boolean;
 	productRent?: boolean;
+	productSale?: boolean;
 	memberId?: string;
 	constructedAt?: Date;
 }
@@ -24,7 +25,7 @@ interface PISearch {
 	typeList?: ProductType[];
 	engineSizeList?: Number[];
 	options?: string[];
-	bedsList?: Number[];
+	yearsList?: Number[];
 	pricesRange?: Range;
 	periodsRange?: PeriodsRange;
 	squaresRange?: Range;

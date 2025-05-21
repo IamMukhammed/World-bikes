@@ -236,7 +236,18 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 															<circle cx="3" cy="3" r="3" fill="#EB6753" />
 														</svg>
 													</Stack>
-													<Typography className={'buy-rent'}>rent</Typography>
+													<Typography className={'buy-rent'}>Rent</Typography>
+												</>
+											)}
+
+											{product?.productSale && (
+												<>
+													<Stack className={'circle'}>
+														<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
+															<circle cx="3" cy="3" r="3" fill="#EB6753" />
+														</svg>
+													</Stack>
+													<Typography className={'buy-rent'}>Sale</Typography>
 												</>
 											)}
 										</Stack>
@@ -272,10 +283,11 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 									</Stack>
 									<Stack className={'bottom-box'}>
 										<Stack className="option">
-											<img src="/img/icons/bed.svg" alt="" /> <Typography>{product?.productBeds} bed</Typography>
+											<img src="/img/icons/bed.svg" alt="" /> <Typography>{product?.productYears} year</Typography>
 										</Stack>
 										<Stack className="option">
-											<img src="/img/icons/room.svg" alt="" /> <Typography>{product?.productEngineSize} engine size</Typography>
+											<img src="/img/icons/room.svg" alt="" />{' '}
+											<Typography>{product?.productEngineSize} engine size</Typography>
 										</Stack>
 										<Stack className="option">
 											<img src="/img/icons/expand.svg" alt="" /> <Typography>{product?.productSquare} m2</Typography>
@@ -351,7 +363,7 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 										</Stack>
 										<Stack className={'option-includes'}>
 											<Typography className={'title'}>Bedroom</Typography>
-											<Typography className={'option-data'}>{product?.productBeds}</Typography>
+											<Typography className={'option-data'}>{product?.productYears}</Typography>
 										</Stack>
 									</Stack>
 									<Stack className={'option'}>
@@ -482,7 +494,7 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 												</Box>
 												<Box component={'div'} className={'info'}>
 													<Typography className={'title'}>Bedrooms</Typography>
-													<Typography className={'data'}>{product?.productBeds}</Typography>
+													<Typography className={'data'}>{product?.productYears}</Typography>
 												</Box>
 											</Stack>
 											<Stack className={'right'}>
@@ -497,7 +509,7 @@ const ProductDetail: NextPage = ({ initialComment, ...props }: any) => {
 												<Box component={'div'} className={'info'}>
 													<Typography className={'title'}>Product Options</Typography>
 													<Typography className={'data'}>
-														For {product?.productBarter && 'Barter'} {product?.productRent && 'Rent'}
+														For {product?.productBarter && 'Barter'} {product?.productRent && 'Rent'} {product?.productSale && 'Sale'}
 													</Typography>
 												</Box>
 											</Stack>

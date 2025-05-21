@@ -133,7 +133,7 @@ export const CREATE_PRODUCT = gql`
 			productTitle
 			productPrice
 			productSquare
-			productBeds
+			productYears
 			productEngineSize
 			productViews
 			productLikes
@@ -141,6 +141,7 @@ export const CREATE_PRODUCT = gql`
 			productDesc
 			productBarter
 			productRent
+			productSale
 			memberId
 			soldAt
 			deletedAt
@@ -162,7 +163,7 @@ export const UPDATE_PRODUCT = gql`
 			productTitle
 			productPrice
 			productSquare
-			productBeds
+			productYears
 			productEngineSize
 			productViews
 			productLikes
@@ -170,6 +171,7 @@ export const UPDATE_PRODUCT = gql`
 			productDesc
 			productBarter
 			productRent
+			productSale
 			memberId
 			soldAt
 			deletedAt
@@ -191,7 +193,7 @@ export const LIKE_TARGET_PRODUCT = gql`
 			productTitle
 			productPrice
 			productSquare
-			productBeds
+			productYears
 			productEngineSize
 			productViews
 			productLikes
@@ -199,6 +201,7 @@ export const LIKE_TARGET_PRODUCT = gql`
 			productDesc
 			productBarter
 			productRent
+			productSale
 			memberId
 			soldAt
 			deletedAt

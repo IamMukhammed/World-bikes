@@ -130,8 +130,8 @@ const Filter = (props: FilterType) => {
 				.then();
 		}
 
-		if (searchFilter?.search?.bedsList?.length == 0) {
-			delete searchFilter.search.bedsList;
+		if (searchFilter?.search?.yearsList?.length == 0) {
+			delete searchFilter.search.yearsList;
 			router
 				.push(
 					`/product?input=${JSON.stringify({
@@ -361,24 +361,24 @@ const Filter = (props: FilterType) => {
 		[searchFilter],
 	);
 
-	const productBedSelectHandler = useCallback(
+	const productYearSelectHandler = useCallback(
 		async (number: Number) => {
 			try {
 				if (number != 0) {
-					if (searchFilter?.search?.bedsList?.includes(number)) {
+					if (searchFilter?.search?.yearsList?.includes(number)) {
 						await router.push(
 							`/product?input=${JSON.stringify({
 								...searchFilter,
 								search: {
 									...searchFilter.search,
-									bedsList: searchFilter?.search?.bedsList?.filter((item: Number) => item !== number),
+									yearsList: searchFilter?.search?.yearsList?.filter((item: Number) => item !== number),
 								},
 							})}`,
 							`/product?input=${JSON.stringify({
 								...searchFilter,
 								search: {
 									...searchFilter.search,
-									bedsList: searchFilter?.search?.bedsList?.filter((item: Number) => item !== number),
+									yearsList: searchFilter?.search?.yearsList?.filter((item: Number) => item !== number),
 								},
 							})}`,
 							{ scroll: false },
@@ -387,17 +387,17 @@ const Filter = (props: FilterType) => {
 						await router.push(
 							`/product?input=${JSON.stringify({
 								...searchFilter,
-								search: { ...searchFilter.search, bedsList: [...(searchFilter?.search?.bedsList || []), number] },
+								search: { ...searchFilter.search, yearsList: [...(searchFilter?.search?.yearsList || []), number] },
 							})}`,
 							`/product?input=${JSON.stringify({
 								...searchFilter,
-								search: { ...searchFilter.search, bedsList: [...(searchFilter?.search?.bedsList || []), number] },
+								search: { ...searchFilter.search, yearsList: [...(searchFilter?.search?.yearsList || []), number] },
 							})}`,
 							{ scroll: false },
 						);
 					}
 				} else {
-					delete searchFilter?.search.bedsList;
+					delete searchFilter?.search.yearsList;
 					setSearchFilter({ ...searchFilter });
 					await router.push(
 						`/product?input=${JSON.stringify({
@@ -416,9 +416,9 @@ const Filter = (props: FilterType) => {
 					);
 				}
 
-				console.log('productBedSelectHandler:', number);
+				console.log('productYearSelectHandler:', number);
 			} catch (err: any) {
-				console.log('ERROR, productBedSelectHandler:', err);
+				console.log('ERROR, productYearSelectHandler:', err);
 			}
 		},
 		[searchFilter],
@@ -692,60 +692,60 @@ const Filter = (props: FilterType) => {
 						<Button
 							sx={{
 								borderRadius: '12px 0 0 12px',
-								border: !searchFilter?.search?.bedsList ? '2px solid #181A20' : '1px solid #b9b9b9',
+								border: !searchFilter?.search?.yearsList ? '2px solid #181A20' : '1px solid #b9b9b9',
 							}}
-							onClick={() => productBedSelectHandler(0)}
+							onClick={() => productYearSelectHandler(0)}
 						>
 							Any
 						</Button>
 						<Button
 							sx={{
 								borderRadius: 0,
-								border: searchFilter?.search?.bedsList?.includes(1) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(1) ? undefined : 'none',
+								border: searchFilter?.search?.yearsList?.includes(1) ? '2px solid #181A20' : '1px solid #b9b9b9',
+								borderLeft: searchFilter?.search?.yearsList?.includes(1) ? undefined : 'none',
 							}}
-							onClick={() => productBedSelectHandler(1)}
+							onClick={() => productYearSelectHandler(1)}
 						>
 							1
 						</Button>
 						<Button
 							sx={{
 								borderRadius: 0,
-								border: searchFilter?.search?.bedsList?.includes(2) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(2) ? undefined : 'none',
+								border: searchFilter?.search?.yearsList?.includes(2) ? '2px solid #181A20' : '1px solid #b9b9b9',
+								borderLeft: searchFilter?.search?.yearsList?.includes(2) ? undefined : 'none',
 							}}
-							onClick={() => productBedSelectHandler(2)}
+							onClick={() => productYearSelectHandler(2)}
 						>
 							2
 						</Button>
 						<Button
 							sx={{
 								borderRadius: 0,
-								border: searchFilter?.search?.bedsList?.includes(3) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(3) ? undefined : 'none',
+								border: searchFilter?.search?.yearsList?.includes(3) ? '2px solid #181A20' : '1px solid #b9b9b9',
+								borderLeft: searchFilter?.search?.yearsList?.includes(3) ? undefined : 'none',
 							}}
-							onClick={() => productBedSelectHandler(3)}
+							onClick={() => productYearSelectHandler(3)}
 						>
 							3
 						</Button>
 						<Button
 							sx={{
 								borderRadius: 0,
-								border: searchFilter?.search?.bedsList?.includes(4) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(4) ? undefined : 'none',
+								border: searchFilter?.search?.yearsList?.includes(4) ? '2px solid #181A20' : '1px solid #b9b9b9',
+								borderLeft: searchFilter?.search?.yearsList?.includes(4) ? undefined : 'none',
 								// borderRight: false ? undefined : 'none',
 							}}
-							onClick={() => productBedSelectHandler(4)}
+							onClick={() => productYearSelectHandler(4)}
 						>
 							4
 						</Button>
 						<Button
 							sx={{
 								borderRadius: '0 12px 12px 0',
-								border: searchFilter?.search?.bedsList?.includes(5) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(5) ? undefined : 'none',
+								border: searchFilter?.search?.yearsList?.includes(5) ? '2px solid #181A20' : '1px solid #b9b9b9',
+								borderLeft: searchFilter?.search?.yearsList?.includes(5) ? undefined : 'none',
 							}}
-							onClick={() => productBedSelectHandler(5)}
+							onClick={() => productYearSelectHandler(5)}
 						>
 							5+
 						</Button>
@@ -781,6 +781,22 @@ const Filter = (props: FilterType) => {
 							<Typography className="propert-type">Rent</Typography>
 						</label>
 					</Stack>
+
+					<Stack className={'input-box'}>
+						<Checkbox
+							id={'Rent'}
+							className="product-checkbox"
+							color="default"
+							size="small"
+							value={'productSale'}
+							checked={(searchFilter?.search?.options || []).includes('productSale')}
+							onChange={productOptionSelectHandler}
+						/>
+						<label htmlFor={'Rent'} style={{ cursor: 'pointer' }}>
+							<Typography className="propert-type">Sale</Typography>
+						</label>
+					</Stack>
+
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Square meter</Typography>

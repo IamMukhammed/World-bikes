@@ -9,12 +9,13 @@ export interface ProductUpdate {
 	productTitle?: string;
 	productPrice?: number;
 	productSquare?: number;
-	productBeds?: number;
+	productYears?: number;
 	productEngineSize?: number;
 	productImages?: string[];
 	productDesc?: string;
 	productBarter?: boolean;
 	productRent?: boolean;
+	productSale?: boolean;
 	soldAt?: Date;
 	deletedAt?: Date;
 	constructedAt?: Date;

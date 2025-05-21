@@ -47,11 +47,11 @@ const TopProductCard = (props: TopProductCardProps) => {
 					<div className={'options'}>
 						<div>
 							<img src="/img/icons/bed.svg" alt="" />
-							<span>{product?.productBeds} bed</span>
+							<span>{product?.productYears} years</span>
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
-							<span>{product?.productEngineSize} Engine Size</span>
+							<span>{product?.productEngineSize} engine size</span>
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
@@ -60,11 +60,19 @@ const TopProductCard = (props: TopProductCardProps) => {
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
-						<p>
+						{/* <p>
 							{' '}
 							{product.productRent ? 'Rent' : ''} {product.productRent && product.productBarter && '/'}{' '}
 							{product.productBarter ? 'Barter' : ''}
+						</p> */}
+
+						<p>
+							{product.productRent ? 'Rent' : ''}
+							{product.productRent && product.productBarter ? ' / ' : ''}
+							{product.productBarter ? 'Barter' : ''}
+							{!product.productRent && !product.productBarter ? 'Sale' : ''}
 						</p>
+
 						<div className="view-like-box">
 							<IconButton color={'default'}>
 								<RemoveRedEyeIcon />
@@ -102,11 +110,11 @@ const TopProductCard = (props: TopProductCardProps) => {
 					<div className={'options'}>
 						<div>
 							<img src="/img/icons/bed.svg" alt="" />
-							<span>{product?.productBeds} bed</span>
+							<span>{product?.productYears} year</span>
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
-							<span>{product?.productEngineSize} Engine Size</span>
+							<span>{product?.productEngineSize} engine size</span>
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
@@ -115,11 +123,19 @@ const TopProductCard = (props: TopProductCardProps) => {
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
-						<p>
+						{/* <p>
 							{' '}
 							{product.productRent ? 'Rent' : ''} {product.productRent && product.productBarter && '/'}{' '}
 							{product.productBarter ? 'Barter' : ''}
+						</p> */}
+
+						<p>
+							{product.productRent ? 'Rent' : ''}
+							{product.productRent && product.productBarter ? ' / ' : ''}
+							{product.productBarter ? 'Barter' : ''}
+							{!product.productRent && !product.productBarter ? 'Sale' : ''}
 						</p>
+						
 						<div className="view-like-box">
 							<IconButton color={'default'}>
 								<RemoveRedEyeIcon />

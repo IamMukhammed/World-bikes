@@ -20,7 +20,7 @@ export interface Product {
 	productTitle: string;
 	productPrice: number;
 	productSquare: number;
-	productBeds: number;
+	productYears: number;
 	productEngineSize: number;
 	productViews: number;
 	productLikes: number;
@@ -30,6 +30,7 @@ export interface Product {
 	productDesc?: string;
 	productBarter: boolean;
 	productRent: boolean;
+	productSale: boolean;
 	memberId: string;
 	soldAt?: Date;
 	deletedAt?: Date;

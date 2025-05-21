@@ -48,7 +48,7 @@ export const UPDATE_PRODUCT_BY_ADMIN = gql`
 			productTitle
 			productPrice
 			productSquare
-			productBeds
+			productYears
 			productEngineSize
 			productViews
 			productLikes
@@ -56,6 +56,7 @@ export const UPDATE_PRODUCT_BY_ADMIN = gql`
 			productDesc
 			productBarter
 			productRent
+			productSale
 			memberId
 			soldAt
 			deletedAt
@@ -77,7 +78,7 @@ export const REMOVE_PRODUCT_BY_ADMIN = gql`
 			productTitle
 			productPrice
 			productSquare
-			productBeds
+			productYears
 			productEngineSize
 			productViews
 			productLikes
@@ -85,6 +86,7 @@ export const REMOVE_PRODUCT_BY_ADMIN = gql`
 			productDesc
 			productBarter
 			productRent
+			productSale
 			memberId
 			soldAt
 			deletedAt

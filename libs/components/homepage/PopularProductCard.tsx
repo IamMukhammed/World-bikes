@@ -54,11 +54,11 @@ const PopularProductCard = (props: PopularProductCardProps) => {
 					<div className={'options'}>
 						<div>
 							<img src="/img/icons/bed.svg" alt="" />
-							<span>{product?.productBeds} bed</span>
+							<span>{product?.productYears} year</span>
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
-							<span>{product?.productEngineSize} Engine Size</span>
+							<span>{product?.productEngineSize} engine size</span>
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />
@@ -106,11 +106,11 @@ const PopularProductCard = (props: PopularProductCardProps) => {
 					<div className={'options'}>
 						<div>
 							<img src="/img/icons/bed.svg" alt="" />
-							<span>{product?.productBeds} bed</span>
+							<span>{product?.productYears} year</span>
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
-							<span>{product?.productEngineSize} Engine Size</span>
+							<span>{product?.productEngineSize} engine size</span>
 						</div>
 						<div>
 							<img src="/img/icons/expand.svg" alt="" />

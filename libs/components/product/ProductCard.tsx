@@ -71,7 +71,7 @@ const ProductCard = (props: ProductCardType) => {
 					</Stack>
 					<Stack className="options">
 						<Stack className="option">
-							<img src="/img/icons/bed.svg" alt="" /> <Typography>{product.productBeds} bed</Typography>
+							<img src="/img/icons/bed.svg" alt="" /> <Typography>{product.productYears} years</Typography>
 						</Stack>
 						<Stack className="option">
 							<img src="/img/icons/room.svg" alt="" /> <Typography>{product.productEngineSize} engine size</Typography>
@@ -95,6 +95,14 @@ const ProductCard = (props: ProductCardType) => {
 							>
 								Barter
 							</Typography>
+
+							<Typography
+								sx={{ fontWeight: 500, fontSize: '13px' }}
+								className={product.productSale ? '' : 'disabled-type'}
+							>
+								Sale
+							</Typography>
+
 						</Stack>
 						{!recentlyVisited && (
 							<Stack className="buttons">

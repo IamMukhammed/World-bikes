@@ -93,7 +93,7 @@ export const GET_PRODUCT = gql`
 			productTitle
 			productPrice
 			productSquare
-			productBeds
+			productYears
 			productEngineSize
 			productViews
 			productLikes
@@ -101,6 +101,7 @@ export const GET_PRODUCT = gql`
 			productDesc
 			productBarter
 			productRent
+			productSale
 			memberId
 			soldAt
 			deletedAt
@@ -149,7 +150,7 @@ export const GET_PRODUCTS = gql`
 				productTitle
 				productPrice
 				productSquare
-				productBeds
+				productYears
 				productEngineSize
 				productViews
 				productLikes
@@ -158,6 +159,7 @@ export const GET_PRODUCTS = gql`
 				productDesc
 				productBarter
 				productRent
+				productSale
 				memberId
 				soldAt
 				deletedAt
@@ -211,7 +213,7 @@ export const GET_AGENT_PRODUCTS = gql`
 				productTitle
 				productPrice
 				productSquare
-				productBeds
+				productYears
 				productEngineSize
 				productViews
 				productLikes
@@ -219,6 +221,7 @@ export const GET_AGENT_PRODUCTS = gql`
 				productDesc
 				productBarter
 				productRent
+				productSale
 				memberId
 				soldAt
 				deletedAt
@@ -245,7 +248,7 @@ export const GET_FAVORITES = gql`
 				productTitle
 				productPrice
 				productSquare
-				productBeds
+				productYears
 				productEngineSize
 				productViews
 				productLikes
@@ -255,6 +258,7 @@ export const GET_FAVORITES = gql`
 				productDesc
 				productBarter
 				productRent
+				productSale
 				memberId
 				soldAt
 				deletedAt
@@ -308,7 +312,7 @@ export const GET_VISITED = gql`
 				productTitle
 				productPrice
 				productSquare
-				productBeds
+				productYears
 				productEngineSize
 				productViews
 				productLikes
@@ -318,6 +322,7 @@ export const GET_VISITED = gql`
 				productDesc
 				productBarter
 				productRent
+				productSale
 				memberId
 				soldAt
 				deletedAt

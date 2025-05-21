@@ -52,7 +52,7 @@ const ProductBigCard = (props: ProductBigCardProps) => {
 					<div className={'options'}>
 						<div>
 							<img src="/img/icons/bed.svg" alt="" />
-							<span>{product?.productBeds} bed</span>
+							<span>{product?.productYears} year</span>
 						</div>
 						<div>
 							<img src="/img/icons/room.svg" alt="" />
@@ -65,10 +65,17 @@ const ProductBigCard = (props: ProductBigCardProps) => {
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
 					<div className={'bott'}>
-						<div>
+						{/* <div>
 							{product?.productRent ? <p>Rent</p> : <span>Rent</span>}
 							{product?.productBarter ? <p>Barter</p> : <span>Barter</span>}
+						</div> */}
+
+						<div>
+							{product?.productRent && <p>Rent</p>}
+							{product?.productBarter && <p>Barter</p>}
+							{!product?.productRent && !product?.productBarter && <p>Sale</p>}
 						</div>
+						
 						<div className="buttons-box">
 							<IconButton color={'default'}>
 								<RemoveRedEyeIcon />
