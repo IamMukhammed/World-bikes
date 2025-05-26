@@ -20,7 +20,7 @@ export const GET_ALL_MEMBERS_BY_ADMIN = gql`
 				memberDesc
 				memberWarnings
 				memberBlocks
-				memberProducts
+				memberProperties
 				memberRank
 				memberArticles
 				memberPoints
@@ -39,30 +39,30 @@ export const GET_ALL_MEMBERS_BY_ADMIN = gql`
 `;
 
 /**************************
- *        PRODUCTS       *
+ *        PROPERTY        *
  *************************/
 
-export const GET_ALL_PRODUCTS_BY_ADMIN = gql`
-	query GetAllProductsByAdmin($input: AllProductsInquiry!) {
-		getAllProductsByAdmin(input: $input) {
+export const GET_ALL_PROPERTIES_BY_ADMIN = gql`
+	query GetAllPropertiesByAdmin($input: AllPropertiesInquiry!) {
+		getAllPropertiesByAdmin(input: $input) {
 			list {
 				_id
-				productType
-				productStatus
-				productLocation
-				productAddress
-				productTitle
-				productPrice
-				productMileage
-				productYears
-				productEngineSize
-				productViews
-				productLikes
-				productImages
-				productDesc
-				productBarter
-				productRent
-				productSale
+				propertyType
+				propertyStatus
+				propertyLocation
+				propertyAddress
+				propertyTitle
+				propertyPrice
+				propertySquare
+				propertyBeds
+				propertyRooms
+				propertyViews
+				propertyLikes
+				propertyImages
+				propertyDesc
+				propertyBarter
+				propertyRent
+				propertySale
 				memberId
 				soldAt
 				deletedAt
@@ -82,7 +82,7 @@ export const GET_ALL_PRODUCTS_BY_ADMIN = gql`
 					memberDesc
 					memberWarnings
 					memberBlocks
-					memberProducts
+					memberProperties
 					memberRank
 					memberPoints
 					memberLikes
@@ -132,7 +132,7 @@ export const GET_ALL_BOARD_ARTICLES_BY_ADMIN = gql`
 					memberDesc
 					memberWarnings
 					memberBlocks
-					memberProducts
+					memberProperties
 					memberRank
 					memberPoints
 					memberLikes
@@ -179,7 +179,7 @@ export const GET_COMMENTS = gql`
 					memberDesc
 					memberWarnings
 					memberBlocks
-					memberProducts
+					memberProperties
 					memberRank
 					memberPoints
 					memberLikes

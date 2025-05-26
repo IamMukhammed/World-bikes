@@ -19,10 +19,10 @@ const Article = () => {
 				<Stack className="bottom">
 					<Stack className="name-address">
 						<Stack className="name">
-							<Typography>Equestrian Family Home</Typography>
+							<Typography>Motorcycle Model </Typography>
 						</Stack>
 						<Stack className="address">
-							<Typography>Chicago, Illinois, USA🇺🇸 </Typography>
+							<Typography>USA </Typography>
 						</Stack>
 					</Stack>
 				</Stack>

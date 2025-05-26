@@ -5,15 +5,15 @@ export const formatterStr = (value: number | undefined): string => {
 	return numeral(value).format('0,0') != '0' ? numeral(value).format('0,0') : '';
 };
 
-export const likeTargetProductHandler = async (likeTargetProduct: any, id: string) => {
+export const likeTargetPropertyHandler = async (likeTargetProperty: any, id: string) => {
 	try {
-		await likeTargetProduct({
+		await likeTargetProperty({
 			variables: {
 				input: id,
 			},
 		});
 	} catch (err: any) {
-		console.log('ERROR, likeTargetProductHandler:', err.message);
+		console.log('ERROR, likeTargetPropertyHandler:', err.message);
 		sweetMixinErrorAlert(err.message).then();
 	}
 };

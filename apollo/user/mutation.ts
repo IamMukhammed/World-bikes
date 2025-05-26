@@ -19,7 +19,7 @@ export const SIGN_UP = gql`
 			memberDesc
 			memberWarnings
 			memberBlocks
-			memberProducts
+			memberProperties
 			memberRank
 			memberArticles
 			memberPoints
@@ -48,7 +48,7 @@ export const LOGIN = gql`
 			memberDesc
 			memberWarnings
 			memberBlocks
-			memberProducts
+			memberProperties
 			memberRank
 			memberPoints
 			memberLikes
@@ -74,7 +74,7 @@ export const UPDATE_MEMBER = gql`
 			memberImage
 			memberAddress
 			memberDesc
-			memberProducts
+			memberProperties
 			memberRank
 			memberArticles
 			memberPoints
@@ -105,7 +105,7 @@ export const LIKE_TARGET_MEMBER = gql`
 			memberDesc
 			memberWarnings
 			memberBlocks
-			memberProducts
+			memberProperties
 			memberRank
 			memberPoints
 			memberLikes
@@ -119,29 +119,29 @@ export const LIKE_TARGET_MEMBER = gql`
 `;
 
 /**************************
- *        PRODUCT        *
+ *        PROPERTY        *
  *************************/
 
-export const CREATE_PRODUCT = gql`
-	mutation CreateProduct($input: ProductInput!) {
-		createProduct(input: $input) {
+export const CREATE_PROPERTY = gql`
+	mutation CreateProperty($input: PropertyInput!) {
+		createProperty(input: $input) {
 			_id
-			productType
-			productStatus
-			productLocation
-			productAddress
-			productTitle
-			productPrice
-			productMileage
-			productYears
-			productEngineSize
-			productViews
-			productLikes
-			productImages
-			productDesc
-			productBarter
-			productRent
-			productSale
+			propertyType
+			propertyStatus
+			propertyLocation
+			propertyAddress
+			propertyTitle
+			propertyPrice
+			propertySquare
+			propertyBeds
+			propertyRooms
+			propertyViews
+			propertyLikes
+			propertyImages
+			propertyDesc
+			propertyBarter
+			propertyRent
+			propertySale
 			memberId
 			soldAt
 			deletedAt
@@ -152,26 +152,26 @@ export const CREATE_PRODUCT = gql`
 	}
 `;
 
-export const UPDATE_PRODUCT = gql`
-	mutation UpdateProduct($input: ProductUpdate!) {
-		updateProduct(input: $input) {
+export const UPDATE_PROPERTY = gql`
+	mutation UpdateProperty($input: PropertyUpdate!) {
+		updateProperty(input: $input) {
 			_id
-			productType
-			productStatus
-			productLocation
-			productAddress
-			productTitle
-			productPrice
-			productMileage
-			productYears
-			productEngineSize
-			productViews
-			productLikes
-			productImages
-			productDesc
-			productBarter
-			productRent
-			productSale
+			propertyType
+			propertyStatus
+			propertyLocation
+			propertyAddress
+			propertyTitle
+			propertyPrice
+			propertySquare
+			propertyBeds
+			propertyRooms
+			propertyViews
+			propertyLikes
+			propertyImages
+			propertyDesc
+			propertyBarter
+			propertyRent
+			propertySale
 			memberId
 			soldAt
 			deletedAt
@@ -182,26 +182,26 @@ export const UPDATE_PRODUCT = gql`
 	}
 `;
 
-export const LIKE_TARGET_PRODUCT = gql`
-	mutation LikeTargetProduct($input: String!) {
-		likeTargetProduct(productId: $input) {
+export const LIKE_TARGET_PROPERTY = gql`
+	mutation LikeTargetProperty($input: String!) {
+		likeTargetProperty(propertyId: $input) {
 			_id
-			productType
-			productStatus
-			productLocation
-			productAddress
-			productTitle
-			productPrice
-			productMileage
-			productYears
-			productEngineSize
-			productViews
-			productLikes
-			productImages
-			productDesc
-			productBarter
-			productRent
-			productSale
+			propertyType
+			propertyStatus
+			propertyLocation
+			propertyAddress
+			propertyTitle
+			propertyPrice
+			propertySquare
+			propertyBeds
+			propertyRooms
+			propertyViews
+			propertyLikes
+			propertyImages
+			propertyDesc
+			propertyBarter
+			propertyRent
+			propertySale
 			memberId
 			soldAt
 			deletedAt

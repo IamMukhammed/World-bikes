@@ -19,11 +19,11 @@ const Footer = () => {
 						</Box>
 						<Box component={'div'} className={'footer-box'}>
 							<span>total free customer care</span>
-							<p>+1 630 797 0126</p>
+							<p>+82 10 4867 2909</p>
 						</Box>
 						<Box component={'div'} className={'footer-box'}>
-							<span>need live</span>
-							<p>+1 630 797 2601</p>
+							<span>nee live</span>
+							<p>+82 10 4867 2909</p>
 							<span>Support?</span>
 						</Box>
 						<Box component={'div'} className={'footer-box'}>
@@ -40,8 +40,8 @@ const Footer = () => {
 						<Box component={'div'} className={'bottom'}>
 							<div>
 								<strong>Popular Search</strong>
-								<span>Motorcyle for Rent or Sale</span>
-								<span>Motorcyle Low to hide</span>
+								<span>Motorcycle for Rent</span>
+								<span>Motorcycle Low to hide</span>
 							</div>
 							<div>
 								<strong>Quick Links</strong>
@@ -54,20 +54,16 @@ const Footer = () => {
 							</div>
 							<div>
 								<strong>Discover</strong>
-								<span>California</span>
-								<span>Texas</span>
-								<span>Florida</span>
-								<span>New York</span>
-								<span>Illinois</span>
-								<span>Nevada</span>
-								<span>Arizona</span>
-								<span>Washington</span>
+								<span>Seoul</span>
+								<span>Gyeongido</span>
+								<span>Busan</span>
+								<span>Jejudo</span>
 							</div>
 						</Box>
 					</Stack>
 				</Stack>
 				<Stack className={'second'}>
-					<span>© World Motorcycles - All rights reserved. Motorcycles {moment().year()}</span>
+					<span>© World Motorcycles - All rights reserved. World Motorcycles {moment().year()}</span>
 				</Stack>
 			</Stack>
 		);
@@ -81,11 +77,11 @@ const Footer = () => {
 						</Box>
 						<Box component={'div'} className={'footer-box'}>
 							<span>total free customer care</span>
-							<p>+1 630 797 0126</p>
+							<p>+82 10 4867 2909</p>
 						</Box>
 						<Box component={'div'} className={'footer-box'}>
-							<span>need live</span>
-							<p>+1 630 797 2601</p>
+							<span>nee live</span>
+							<p>+82 10 4867 2909</p>
 							<span>Support?</span>
 						</Box>
 						<Box component={'div'} className={'footer-box'}>
@@ -109,7 +105,7 @@ const Footer = () => {
 						<Box component={'div'} className={'bottom'}>
 							<div>
 								<strong>Popular Search</strong>
-								<span>Motorcycle for Rent or Sale</span>
+								<span>Motorcycle for Rent</span>
 								<span>Motorcycle Low to hide</span>
 							</div>
 							<div>
@@ -123,18 +119,16 @@ const Footer = () => {
 							</div>
 							<div>
 								<strong>Discover</strong>
-								<span>California</span>
-								<span>Texas</span>
-								<span>Florida</span>
-								<span>New York</span>
-								<span>Illinois</span>
-								<span>Nevada</span>
+								<span>Seoul</span>
+								<span>Gyeongido</span>
+								<span>Busan</span>
+								<span>Jejudo</span>
 							</div>
 						</Box>
 					</Stack>
 				</Stack>
 				<Stack className={'second'}>
-					<span>© World Motorcycles - All rights reserved. Motorcycles {moment().year()}</span>
+					<span>© World Motorcycles - All rights reserved. World Motorcycles {moment().year()}</span>
 					<span>Privacy · Terms · Sitemap</span>
 				</Stack>
 			</Stack>

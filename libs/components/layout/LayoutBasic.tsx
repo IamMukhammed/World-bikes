@@ -28,7 +28,7 @@ const withLayoutBasic = (Component: any) => {
 				bgImage = '';
 
 			switch (router.pathname) {
-				case '/product':
+				case '/property':
 					title = 'Motorcycle Search';
 					desc = 'We are glad to see you again!';
 					bgImage = '/img/banner/products.png';
@@ -116,7 +116,7 @@ const withLayoutBasic = (Component: any) => {
 				<>
 					<Head>
 						<title>World Motorcycles</title>
-						<meta name={'title'} content={`World Motorcycles`} />
+						<meta name={'title'} content={`WOrld Motorcycles`} />
 					</Head>
 					<Stack id="pc-wrap">
 						<Stack id={'top'}>

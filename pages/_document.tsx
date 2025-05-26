@@ -8,13 +8,14 @@ export default function Document() {
 				<link rel="icon" type="image/png" href="/img/logo/favicon.svg" />
 
 				{/* SEO */}
-				<meta name="keyword" content={'worldmotorcycles, worldmotorcycles.uz, devex mern, mern nestjs fullstack'} />
+				<meta name="keyword" content={'world motorcycles, world-motorcycles.uz, devex mern, mern nestjs fullstack'} />
 				<meta
 					name={'description'}
 					content={
-						'Buy and sell motorcycles anywhere anytime in South Korea. Best Motorcycles at Best prices on worldmotorcycles.uz | ' +
-						'Покупайте и продавайте недвижимость в любой точке Южной Кореи в любое время. Лучшая недвижимость по лучшим ценам на worldmotorcycles.uz | ' +
-						'대한민국 언제 어디서나 부동산을 사고팔 수 있습니다. WorldMotorcycles.uz에서 최적의 가격으로 최고의 부동산을 만나보세요'
+						'Buy and sell motorcycles anytime, anywhere in the USA. Find the best motorcycles at the best prices on world-motorcycles.uz. | ' +
+						'Покупайте и продавайте мотоциклы в любое время и в любом месте в США. Лучшие мотоциклы по лучшим ценам на сайте world-motorcycles.uz. | ' +
+						'언제 어디서나 미국에서 오토바이를 사고 파세요. 최고의 가격에 최고의 오토바이 – world-motorcycles.uz에서 만나보세요. | ' +
+						'Istalgan vaqtda, istalgan joyda AQShda mototsikllarni sotib oling va soting. Eng yaxshi mototsikllar eng qulay narxlarda — faqat world-motorcycles.uz saytida.'
 					}
 				/>
 			</Head>

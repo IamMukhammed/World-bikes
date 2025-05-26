@@ -10,32 +10,30 @@ interface EventData {
 }
 const eventsData: EventData[] = [
 	{
-		eventTitle: 'Pacific Coast Moto Cruise',
-		city: 'California',
+		eventTitle: 'Paradise City Theme Park',
+		city: 'Incheon',
 		description:
-			'Feel the ocean breeze as you ride the legendary Pacific Coast Highway with fellow motorheads. California’s ultimate coastal motorcycle cruise awaits you!',
-		imageSrc: '/img/events/illinois.webp',
+			'Experience magic and wonder in Incheon with a visit to the night-themed indoor theme park Wonderbox at Paradise City!',
+		imageSrc: '/img/events/INCHEON.webp',
 	},
 	{
-		eventTitle: 'Indian Riders Winter Rally',
-		city: 'Indiana',
-		description:
-			'If you’re heading to South Korea this season, don’t miss the Indian Riders Winter Rally in Seoul — where chrome meets the cold and passion roars through the snow!',
-		imageSrc: '/img/events/york.webp',
+		eventTitle: 'Taebaeksan Snow Festival',
+		city: 'Seoul',
+		description: 'If you have the opportunity to travel to South Korea, do not miss the Taebaeksan Snow Festival!',
+		imageSrc: '/img/events/SEOUL.webp',
 	},
 	{
-		eventTitle: 'Daytona Ride & Beach Bash',
-		city: 'Florida',
-		description:
-			'Cruise into Daytona for a sun-soaked weekend of motorcycles, beach vibes, and roaring engines. The ultimate biker fest on the Atlantic coast.',
-		imageSrc: '/img/events/california.webp',
+		eventTitle: 'Suseong Lake Event',
+		city: 'Daegu',
+		description: 'The Suseong Lake Festival is a culture and arts festival held alongside Suseongmot Lake!',
+		imageSrc: '/img/events/DAEGU.webp',
 	},
 	{
-		eventTitle: 'Harley-Davidson Showcase',
-		city: 'Milwaukee',
+		eventTitle: 'Sand Festival',
+		city: 'Busan',
 		description:
-			'Feel the power and legacy of the open road at the Harley-Davidson Showcase in Milwaukee — a celebration of iconic design, raw performance, and timeless freedom!',
-		imageSrc: '/img/events/harley2.jpg',
+			'Haeundae Sand Festival, the nation’s largest eco-friendly exhibition on sand, is held at Haeundae Beach!',
+		imageSrc: '/img/events/BUSAN.webp',
 	},
 ];
 

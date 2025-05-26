@@ -17,7 +17,7 @@ export const UPDATE_MEMBER_BY_ADMIN = gql`
 			memberImage
 			memberAddress
 			memberDesc
-			memberProducts
+			memberProperties
 			memberRank
 			memberArticles
 			memberPoints
@@ -34,29 +34,29 @@ export const UPDATE_MEMBER_BY_ADMIN = gql`
 `;
 
 /**************************
- *        PRODUCT        *
+ *        PROPERTY        *
  *************************/
 
-export const UPDATE_PRODUCT_BY_ADMIN = gql`
-	mutation UpdateProductByAdmin($input: ProductUpdate!) {
-		updateProductByAdmin(input: $input) {
+export const UPDATE_PROPERTY_BY_ADMIN = gql`
+	mutation UpdatePropertyByAdmin($input: PropertyUpdate!) {
+		updatePropertyByAdmin(input: $input) {
 			_id
-			productType
-			productStatus
-			productLocation
-			productAddress
-			productTitle
-			productPrice
-			productMileage
-			productYears
-			productEngineSize
-			productViews
-			productLikes
-			productImages
-			productDesc
-			productBarter
-			productRent
-			productSale
+			propertyType
+			propertyStatus
+			propertyLocation
+			propertyAddress
+			propertyTitle
+			propertyPrice
+			propertySquare
+			propertyBeds
+			propertyRooms
+			propertyViews
+			propertyLikes
+			propertyImages
+			propertyDesc
+			propertyBarter
+			propertyRent
+			propertySale
 			memberId
 			soldAt
 			deletedAt
@@ -67,26 +67,26 @@ export const UPDATE_PRODUCT_BY_ADMIN = gql`
 	}
 `;
 
-export const REMOVE_PRODUCT_BY_ADMIN = gql`
-	mutation RemoveProductByAdmin($input: String!) {
-		removeProductByAdmin(productId: $input) {
+export const REMOVE_PROPERTY_BY_ADMIN = gql`
+	mutation RemovePropertyByAdmin($input: String!) {
+		removePropertyByAdmin(propertyId: $input) {
 			_id
-			productType
-			productStatus
-			productLocation
-			productAddress
-			productTitle
-			productPrice
-			productMileage
-			productYears
-			productEngineSize
-			productViews
-			productLikes
-			productImages
-			productDesc
-			productBarter
-			productRent
-			productSale
+			propertyType
+			propertyStatus
+			propertyLocation
+			propertyAddress
+			propertyTitle
+			propertyPrice
+			propertySquare
+			propertyBeds
+			propertyRooms
+			propertyViews
+			propertyLikes
+			propertyImages
+			propertyDesc
+			propertyBarter
+			propertyRent
+			propertySale
 			memberId
 			soldAt
 			deletedAt
