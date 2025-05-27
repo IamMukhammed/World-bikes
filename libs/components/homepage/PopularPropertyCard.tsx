@@ -53,16 +53,16 @@ const PopularPropertyCard = (props: PopularPropertyCardProps) => {
 					<p className={'desc'}>{property.propertyAddress}</p>
 					<div className={'options'}>
 						<div>
-							<img src="/img/icons/bed.svg" alt="" />
-							<span>{property?.propertyBeds} bed</span>
+							<img src="/img/icons/year.svg" alt="" />
+							<span>{property?.propertyBeds} year</span>
 						</div>
 						<div>
-							<img src="/img/icons/room.svg" alt="" />
-							<span>{property?.propertyRooms} rooms</span>
+							<img src="/img/icons/engine.svg" alt="" />
+							<span>{property?.propertyRooms} cc</span>
 						</div>
 						<div>
-							<img src="/img/icons/expand.svg" alt="" />
-							<span>{property?.propertySquare} m2</span>
+							<img src="/img/icons/mileage.svg" alt="" />
+							<span>{property?.propertySquare} mi</span>
 						</div>
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />
@@ -105,16 +105,16 @@ const PopularPropertyCard = (props: PopularPropertyCardProps) => {
 					<p className={'desc'}>{property.propertyAddress}</p>
 					<div className={'options'}>
 						<div>
-							<img src="/img/icons/bed.svg" alt="" />
-							<span>{property?.propertyBeds} bed</span>
+							<img src="/img/icons/year.svg" alt="" />
+							<span>{property?.propertyBeds} year</span>
 						</div>
 						<div>
-							<img src="/img/icons/room.svg" alt="" />
-							<span>{property?.propertyRooms} rooms</span>
+							<img src="/img/icons/engine.svg" alt="" />
+							<span>{property?.propertyRooms} cc</span>
 						</div>
 						<div>
-							<img src="/img/icons/expand.svg" alt="" />
-							<span>{property?.propertySquare} m2</span>
+							<img src="/img/icons/mileage.svg" alt="" />
+							<span>{property?.propertySquare} mi</span>
 						</div>
 					</div>
 					<Divider sx={{ mt: '15px', mb: '17px' }} />

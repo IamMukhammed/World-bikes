@@ -32,6 +32,7 @@ import { T } from '../../libs/types/common';
 import { Direction, Message } from '../../libs/enums/common.enum';
 import { CREATE_COMMENT, LIKE_TARGET_PROPERTY } from '../../apollo/user/mutation';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
+import dynamic from 'next/dynamic';
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -39,6 +40,10 @@ export const getStaticProps = async ({ locale }: any) => ({
 	props: {
 		...(await serverSideTranslations(locale, ['common'])),
 	},
+});
+
+const GoogleMapView = dynamic(() => import('../../libs/components/common/GoogleMapView'), {
+	ssr: false,
 });
 
 const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
@@ -283,13 +288,13 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 									</Stack>
 									<Stack className={'bottom-box'}>
 										<Stack className="option">
-											<img src="/img/icons/bed.svg" alt="" /> <Typography>{property?.propertyBeds} bed</Typography>
+											<img src="/img/icons/year.svg" alt="" /> <Typography>{property?.propertyBeds} year</Typography>
 										</Stack>
 										<Stack className="option">
-											<img src="/img/icons/room.svg" alt="" /> <Typography>{property?.propertyRooms} room</Typography>
+											<img src="/img/icons/engine.svg" alt="" /> <Typography>{property?.propertyRooms} cc</Typography>
 										</Stack>
 										<Stack className="option">
-											<img src="/img/icons/expand.svg" alt="" /> <Typography>{property?.propertySquare} m2</Typography>
+											<img src="/img/icons/mileage.svg" alt="" /> <Typography>{property?.propertySquare} mi</Typography>
 										</Stack>
 									</Stack>
 								</Stack>
@@ -341,43 +346,6 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 										<Stack className={'svg-box'}>
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
 												<path
-													d="M21.4883 11.1135L21.4071 11.0524V5.26354C21.4071 4.47769 21.0568 3.72395 20.4331 3.16775C19.8094 2.61155 18.9632 2.29835 18.0803 
-													2.29688H6.09625C5.21335 2.29835 4.36717 2.61155 3.74345 3.16775C3.11973 3.72395 2.76942 4.47769 2.76942 5.26354V11.058L2.68828 11.1135C2.31313 
-													11.4484 2.10218 11.9018 2.10156 12.3747V17.1135C2.10156 17.2712 2.17193 17.4224 2.29717 17.5339C2.42242 17.6454 2.5923 17.708 2.76942 
-													17.708H6.09625C6.20637 17.7077 6.31471 17.6833 6.41163 17.6367C6.50855 17.5902 6.59104 17.5231 6.65176 17.4413L7.78775 15.9302H16.3951L17.531 
-													17.4413C17.5918 17.5231 17.6743 17.5902 17.7712 17.6367C17.8681 17.6833 17.9764 17.7077 18.0866 17.708H21.4134C21.5894 17.7065 21.7577 17.6432 
-													21.8816 17.5319C22.0055 17.4206 22.075 17.2702 22.075 17.1135V12.3747C22.0744 11.9018 21.8634 11.4484 21.4883 11.1135ZM6.09625 3.48576H18.0803C18.61 
-													3.48576 19.1181 3.67306 19.4927 4.00646C19.8672 4.33986 20.0777 4.79205 20.0777 5.26354V8.83576C19.778 8.45662 19.3781 8.14887 18.9134 7.93961C18.4486 
-													7.73035 17.9332 7.62601 17.4125 7.63576H6.76411C6.32701 7.63469 5.894 7.71072 5.4901 7.85948C5.08621 8.00824 4.71944 8.22676 4.41099 8.50243C4.29799 
-													8.60664 4.19369 8.71804 4.09891 8.83576V5.26354C4.09891 4.79205 4.30934 4.33986 4.68392 4.00646C5.05849 3.67306 5.56652 3.48576 6.09625 3.48576ZM19.4098 
-													10.5969H4.76677C4.76677 10.1254 4.9772 9.67319 5.35178 9.3398C5.72635 9.0064 6.23438 8.8191 6.76411 8.8191H17.4125C17.9422 8.8191 18.4502 9.0064 18.8248 
-													9.3398C19.1994 9.67319 19.4098 10.1254 19.4098 10.5969ZM20.7393 16.5247H18.4299L17.3001 15.0024C17.2387 14.9217 17.1559 14.8556 17.059 14.8101C16.9621 
-													14.7646 16.8541 14.741 16.7446 14.7413H7.42573C7.31618 14.741 7.20821 14.7646 7.11133 14.8101C7.01446 14.8556 6.93165 14.9217 6.87022 15.0024L5.74047 
-													16.5191H3.43104V12.3747C3.43104 12.2966 3.44832 12.2193 3.48188 12.1472C3.51545 12.075 3.56464 12.0095 3.62666 11.9543C3.68867 11.8991 3.7623 11.8553 
-													3.84333 11.8255C3.92436 11.7956 4.0112 11.7802 4.09891 11.7802H20.0777C20.2548 11.7802 20.4247 11.8428 20.5499 11.9543C20.6752 12.0658 20.7455 12.217 
-													20.7455 12.3747L20.7393 16.5247Z"
-													fill="#181A20"
-												/>
-											</svg>
-										</Stack>
-										<Stack className={'option-includes'}>
-											<Typography className={'title'}>Bedroom</Typography>
-											<Typography className={'option-data'}>{property?.propertyBeds}</Typography>
-										</Stack>
-									</Stack>
-									<Stack className={'option'}>
-										<Stack className={'svg-box'}>
-											<img src={'/img/icons/room.svg'} />
-										</Stack>
-										<Stack className={'option-includes'}>
-											<Typography className={'title'}>Room</Typography>
-											<Typography className={'option-data'}>{property?.propertyRooms}</Typography>
-										</Stack>
-									</Stack>
-									<Stack className={'option'}>
-										<Stack className={'svg-box'}>
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
-												<path
 													d="M20.0464 2.29271H16.7196V1.10938H15.3839V2.29271H8.73021V1.10938H7.39448V2.29271H4.06766C3.53793 2.29271 3.0299 2.48001 2.65532 2.81341C2.28075 3.14681 
 													2.07031 3.59899 2.07031 4.07049V17.1094C2.07031 17.5809 2.28075 18.0331 2.65532 18.3665C3.0299 18.6999 3.53793 18.8872 4.06766 18.8872H20.0464C20.5761 
 													18.8872 21.0842 18.6999 21.4587 18.3665C21.8333 18.0331 22.0438 17.5809 22.0438 17.1094V4.07049C22.0438 3.59899 21.8333 3.14681 21.4587 2.81341C21.0842 
@@ -404,47 +372,45 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 											</svg>
 										</Stack>
 										<Stack className={'option-includes'}>
-											<Typography className={'title'}>Year Build</Typography>
-											<Typography className={'option-data'}>{moment(property?.createdAt).format('YYYY')}</Typography>
+											<Typography className={'title'}>Year</Typography>
+											<Typography className={'option-data'}>{property?.propertyBeds}</Typography>
 										</Stack>
 									</Stack>
 									<Stack className={'option'}>
 										<Stack className={'svg-box'}>
-											<svg xmlns="http://www.w3.org/2000/svg" width="23" height="20" viewBox="0 0 23 20" fill="none">
-												<path d="M9.60156 1.10938H13.5963V2.29271H9.60156V1.10938Z" fill="#181A20" />
+											<img src={'/img/icons/engine.svg'} />
+										</Stack>
+										<Stack className={'option-includes'}>
+											<Typography className={'title'}>Engine Size</Typography>
+											<Typography className={'option-data'}>{property?.propertyRooms} cc</Typography>
+										</Stack>
+									</Stack>
+									<Stack className={'option'}>
+										<Stack className={'svg-box'}>
+											<svg
+												height="27px"
+												width="25px"
+												version="1.1"
+												id="Capa_1"
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 19.804 19.804"
+											>
 												<path
-													d="M20.2628 17.1144C20.2628 17.2721 20.1924 17.4233 20.0671 17.5347C19.9419 17.6462 19.772 17.7089 19.5949 17.7089H16.9297V18.8922H19.5949C20.1246 18.8922 
-													20.6327 18.7049 21.0072 18.3715C21.3818 18.0381 21.5922 17.5859 21.5922 17.1144V14.7422H20.2628V17.1144Z"
-													fill="#181A20"
-												/>
-												<path
-													d="M19.5949 1.10938H16.9297V2.29271H19.5949C19.6826 2.29271 19.7694 2.30808 19.8505 2.33796C19.9315 2.36783 20.0051 2.41162 20.0671 2.46682C20.1292 2.52202 
-													20.1784 2.58755 20.2119 2.65967C20.2455 2.73179 20.2628 2.80909 20.2628 2.88715V5.25938H21.5922V2.88715C21.5922 2.41566 21.3818 1.96347 21.0072 
-													1.63007C20.6327 1.29668 20.1246 1.10938 19.5949 1.10938Z"
-													fill="#181A20"
-												/>
-												<path
-													d="M2.94667 2.88715C2.94667 2.80909 2.96394 2.73179 2.99751 2.65967C3.03107 2.58755 3.08027 2.52202 3.14228 2.46682C3.2043 2.41162 3.27792 2.36783 
-													3.35895 2.33796C3.43998 2.30808 3.52683 2.29271 3.61453 2.29271H6.27974V1.10938H3.61453C3.0848 1.10938 2.57677 1.29668 2.2022 1.63007C1.82762 1.96347 
-													1.61719 2.41566 1.61719 2.88715V5.25938H2.94667V2.88715Z"
-													fill="#181A20"
-												/>
-												<path d="M20.2578 8.21875H21.5873V11.7743H20.2578V8.21875Z" fill="#181A20" />
-												<path
-													d="M16.9281 9.40781V5.85226C16.9281 5.6946 16.8577 5.5434 16.7325 5.43192C16.6072 5.32044 16.4373 5.25781 16.2602 5.25781H12.2655V6.4467H14.6499L11.1233 
-													9.58559C10.8569 9.46989 10.5646 9.40912 10.2682 9.40781H3.61453C3.38637 9.41019 3.16039 9.44778 2.94667 9.51892V8.22448H1.61719V17.1134C1.61719 17.5849 
-													1.82762 18.037 2.2022 18.3704C2.57677 18.7038 3.0848 18.8911 3.61453 18.8911H13.6013V17.7078H12.1469C12.2269 17.5176 12.2691 17.3165 12.2718 
-													17.1134V11.1856C12.2703 10.9218 12.202 10.6616 12.072 10.4245L15.5986 7.28559V9.40781H16.9281ZM3.61453 17.7078C3.4374 17.7078 3.26753 17.6452 3.14228 
-													17.5337C3.01703 17.4222 2.94667 17.271 2.94667 17.1134V11.1856C2.94832 11.0289 3.0194 10.8791 3.14447 10.7688C3.26955 10.6586 3.43848 10.5967 3.61453 
-													10.5967H10.2744C10.4516 10.5967 10.6214 10.6593 10.7467 10.7708C10.8719 10.8823 10.9423 11.0335 10.9423 11.1911V17.1134C10.9423 17.271 10.8719 17.4222 
-													10.7467 17.5337C10.6214 17.6452 10.4516 17.7078 10.2744 17.7078H3.61453Z"
-													fill="#181A20"
+													d="M9.902,0.001C4.433,0.001,0,4.433,0,9.903c0,5.469,4.433,9.9,9.902,9.9
+													c5.471,0,9.902-4.433,9.902-9.9C19.804,4.434,15.373,0.001,9.902,0.001z M9.902,18.724c-4.87,0-8.819-3.947-8.819-8.819
+													c0-4.873,3.949-8.819,8.819-8.819c4.872,0,8.82,3.947,8.82,8.819C18.72,14.774,14.773,18.724,9.902,18.724z M6.936,14.186h1.612
+													v2.672H6.936V14.186z M9.38,14.186h1.612v2.672H9.38C9.38,16.858,9.38,14.186,9.38,14.186z M11.782,14.186h1.612v2.672h-1.612
+													V14.186z M11.218,10.506c0,0.455-0.371,0.826-0.825,0.826c-0.438,0-0.798-0.342-0.824-0.774L6.658,6.934l3.736,2.748
+													C10.847,9.682,11.218,10.051,11.218,10.506z M5.21,11.88l0.715,0.716l-1.342,1.343l-0.716-0.717L5.21,11.88z M4.587,9.382H2.689
+													V8.37h1.898C4.587,8.37,4.587,9.382,4.587,9.382z M4.995,3.869l1.342,1.343L5.621,5.927L4.279,4.584L4.995,3.869z M10.408,4.332
+													H9.396V2.434h1.012V4.332z M14.523,6.31l-0.717-0.715l1.344-1.343l0.715,0.716L14.523,6.31z M17.407,8.37v1.012H15.51V8.37H17.407z
+		 											M14.869,12.083l1.344,1.342l-0.715,0.715l-1.344-1.342L14.869,12.083z"
 												/>
 											</svg>
 										</Stack>
 										<Stack className={'option-includes'}>
-											<Typography className={'title'}>Size</Typography>
-											<Typography className={'option-data'}>{property?.propertySquare} m2</Typography>
+											<Typography className={'title'}>Mileage</Typography>
+											<Typography className={'option-data'}>{property?.propertySquare} mi</Typography>
 										</Stack>
 									</Stack>
 									<Stack className={'option'}>
@@ -469,6 +435,51 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 											<Typography className={'option-data'}>{property?.propertyType}</Typography>
 										</Stack>
 									</Stack>
+									<Stack className={'option'}>
+										<Stack className={'svg-box'}>
+											<svg
+												width="35px"
+												height="33px"
+												viewBox="0 0 1024 1024"
+												version="1.1"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M764.6 341.5c0 127.9-221.5 343.7-221.5 343.7S321.7 469.4 321.7 341.5 420.9 110 543.2 110c122.3-0.1 221.4 103.6 221.4 231.5z"
+													fill="#808080"
+												/>
+												<path
+													d="M554 282v-16.9c0-2.9-2.4-5.3-5.3-5.3h-51.3c-2.9 0-5.3 2.4-5.3 5.3v27.3c0 9.8-8 17.8-17.8 17.8h-26.4c-2.9 0-5.3 2.4-5.3 5.3v51.3c0 
+														2.9 2.4 5.3 5.3 5.3h15.5c4.7 0 12 3.8 12 8.4l0.9 35.1c0 8.7 2.6 15.7 11.3 15.7h11.1c3.8 0 7.2 1.3 9.9-0.9h37.6c4.4 0 8-3.6 
+														8-8v-33.7c0-9.2 7.5-16.7 16.7-16.7h34.6c2.9 0 5.3-2.4 5.3-5.3v-60c0-6.5-5.2-11.7-11.7-11.7h-31.7c-7.5 0.2-13.4-5.7-13.4-13z"
+													fill="#FFFFFF"
+												/>
+												<path
+													d="M543 439.2h-55.6c-4.2 0-8.2-1.7-11.2-4.7s-4.7-7-4.7-11.2v-35.7c0-2.1-0.8-4.1-2.3-5.6s-3.5-2.3-5.6-2.3h-35.7c-8.8 0-15.9-7.1-15.9-15.9v-55.6c0-4.2 
+													1.7-8.2 4.7-11.2s7-4.7 11.2-4.7h0.7v8h-0.7c-2.1 0-4.1 0.8-5.6 2.3s-2.3 3.5-2.3 5.6v55.6c0 4.4 3.5 7.9 7.9 7.9h35.7c4.3 0 8.2 1.7 11.3 4.7 3 3 4.7 7 
+													4.7 11.3v35.7c0 4.4 3.5 7.9 7.9 7.9h55.6c4.4 0 7.9-3.5 7.9-7.9v-35.7c0-4.3 1.7-8.2 4.7-11.3 3-3 7-4.7 11.3-4.7h35.7c2.1 0 4.1-0.8 5.6-2.3s2.3-3.5 
+													2.3-5.6v-55.6c0-4.4-3.5-7.9-7.9-7.9H567c-8.8 0-15.9-7.1-15.9-15.9v-35.7c0-4.4-3.5-7.9-7.9-7.9h-55.6c-4.4 0-7.9 3.5-7.9 7.9v35.7c0 4.3-1.7 8.2-4.7 
+													11.3-3 3-7 4.7-11.3 4.7h-8.9v-8h8.9c2.1 0 4.1-0.8 5.6-2.3s2.3-3.5 2.3-5.6v-35.7c0-8.8 7.1-15.9 15.9-15.9h55.6c8.8 0 15.9 7.1 15.9 15.9v35.7c0 4.4 3.6 
+													7.9 7.9 7.9h35.7c8.8 0 15.9 7.1 15.9 15.9v55.6c0 4.2-1.7 8.2-4.7 11.2s-7 4.7-11.2 4.7h-35.7c-2.1 0-4.1 0.8-5.6 2.3s-2.3 3.5-2.3 5.6v35.7c-0.1 8.6-7.3 15.8-16 15.8z"
+													fill="#999999"
+												/>
+												<path
+													d="M516.4 713l-5.1-4.8c-0.6-0.6-63.1-59-124.8-133.5C303.1 473.8 260.7 393 260.7 334.3c0-68.3 26.6-132.5 74.9-180.8s112.5-74.9 180.8-74.9c68.3 0 132.5 26.6 180.8 
+													74.9s74.9 112.5 74.9 180.8c0 58.6-42.3 139.5-125.8 240.4-61.6 74.5-124.1 132.9-124.8 133.5l-5.1 4.8z m0-619.4c-64.3 0-124.7 25-170.2 70.5S275.7 270 275.7 334.3c0 68.5 
+													66.5 163.3 122.3 230.7 50.9 61.5 102.3 112 118.4 127.4C532.5 677 584 626.5 634.9 565c55.8-67.4 122.3-162.2 122.3-230.7 0-64.3-25-124.7-70.5-170.2s-106-70.5-170.3-70.5z"
+													fill="#999999"
+												/>
+												<path
+													d="M516 943.8l-224.9-56.6-219.7 15.5 145.2-250.9 120.4-16 2 14.9-113.1 15-127.4 220 193.9-13.6 223.5 56.2 207.3-56.2 201.3 12-122.1-218.4-110.6-15 2-14.9 118.1 16L951 900.7l-226.3-13.5z"
+													fill="#999999"
+												/>
+											</svg>
+										</Stack>
+										<Stack className={'option-includes'}>
+											<Typography className={'title'}>Location</Typography>
+											<Typography className={'option-data'}>{property?.propertyLocation}</Typography>
+										</Stack>
+									</Stack>
 								</Stack>
 								<Stack className={'prop-desc-config'}>
 									<Stack className={'top'}>
@@ -484,31 +495,32 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 													<Typography className={'data'}>${formatterStr(property?.propertyPrice)}</Typography>
 												</Box>
 												<Box component={'div'} className={'info'}>
+													<Typography className={'title'}>Mileage</Typography>
+													<Typography className={'data'}>{property?.propertySquare} mi</Typography>
+												</Box>
+												<Box component={'div'} className={'info'}>
 													<Typography className={'title'}>Engine Size</Typography>
-													<Typography className={'data'}>{property?.propertySquare} m2</Typography>
+													<Typography className={'data'}>{property?.propertyRooms} cc</Typography>
 												</Box>
 												<Box component={'div'} className={'info'}>
-													<Typography className={'title'}>Speed</Typography>
-													<Typography className={'data'}>{property?.propertyRooms}</Typography>
-												</Box>
-												<Box component={'div'} className={'info'}>
-													<Typography className={'title'}>Bedrooms</Typography>
+													<Typography className={'title'}>Year</Typography>
 													<Typography className={'data'}>{property?.propertyBeds}</Typography>
 												</Box>
 											</Stack>
 											<Stack className={'right'}>
 												<Box component={'div'} className={'info'}>
-													<Typography className={'title'}>Year</Typography>
-													<Typography className={'data'}>{moment(property?.createdAt).format('YYYY')}</Typography>
+													<Typography className={'title'}>Location</Typography>
+													<Typography className={'data'}>{property?.propertyLocation}</Typography>
 												</Box>
 												<Box component={'div'} className={'info'}>
-													<Typography className={'title'}>Motorcycle Type</Typography>
+													<Typography className={'title'}>Type</Typography>
 													<Typography className={'data'}>{property?.propertyType}</Typography>
 												</Box>
 												<Box component={'div'} className={'info'}>
-													<Typography className={'title'}>Motorcycle Options</Typography>
+													<Typography className={'title'}>Options</Typography>
 													<Typography className={'data'}>
-														For {property?.propertyBarter && 'Barter'} {property?.propertyRent && 'Rent'}
+														For {property?.propertyBarter && 'Barter'} {property?.propertyRent && 'Rent'}{' '}
+														{property?.propertySale && 'Sale'}
 													</Typography>
 												</Box>
 											</Stack>
@@ -516,23 +528,27 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 									</Stack>
 								</Stack>
 								<Stack className={'floor-plans-config'}>
-									<Typography className={'title'}>Floor Plans</Typography>
+									<Typography className={'title'}>Parts Diagram</Typography>
 									<Stack className={'image-box'}>
-										<img src={'/img/property/floorPlan.png'} alt={'image'} />
+										<img src={'/img/property/partsDiagram.png'} alt={'image'} />
 									</Stack>
 								</Stack>
 								<Stack className={'address-config'}>
 									<Typography className={'title'}>Address</Typography>
-									<Stack className={'map-box'}>
-										<iframe
-											src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25867.098915951767!2d128.68632810247993!3d35.86402299180927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35660bba427bf179%3A0x1fc02da732b9072f!2sGeumhogangbyeon-ro%2C%20Dong-gu%2C%20Daegu!5e0!3m2!1suz!2skr!4v1695537640704!5m2!1suz!2skr"
-											width="100%"
-											height="100%"
-											style={{ border: 0 }}
-											allowFullScreen={true}
-											loading="lazy"
-											referrerPolicy="no-referrer-when-downgrade"
-										></iframe>
+									<Stack className="map-box" sx={{ width: '100%', height: '400px', position: 'relative' }}>
+										{property?.propertyLocation && (
+											<iframe
+												src={`https://www.google.com/maps?q=${encodeURIComponent(
+													property.propertyLocation,
+												)}&output=embed`}
+												width="100%"
+												height="100%"
+												style={{ border: 0 }}
+												allowFullScreen
+												loading="lazy"
+												referrerPolicy="no-referrer-when-downgrade"
+											></iframe>
+										)}
 									</Stack>
 								</Stack>
 								{commentTotal !== 0 && (

@@ -33,7 +33,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 const Faq = () => {
 	const device = useDeviceDetect();
 	const router = useRouter();
-	const [category, setCategory] = useState<string>('product');
+	const [category, setCategory] = useState<string>('property');
 	const [expanded, setExpanded] = useState<string | false>('panel1');
 
 	/** APOLLO REQUESTS **/
@@ -451,9 +451,9 @@ const Faq = () => {
 			<Stack className={'faq-content'}>
 				<Box className={'categories'} component={'div'}>
 					<div
-						className={category === 'product' ? 'active' : ''}
+						className={category === 'property' ? 'active' : ''}
 						onClick={() => {
-							changeCategoryHandler('product');
+							changeCategoryHandler('property');
 						}}
 					>
 						Motorcycle

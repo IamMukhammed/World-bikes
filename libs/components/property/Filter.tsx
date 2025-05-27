@@ -623,7 +623,7 @@ const Filter = (props: FilterType) => {
 					))}
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
-					<Typography className={'title'}>Rooms</Typography>
+					<Typography className={'title'}>Engine Size (cc)</Typography>
 					<Stack className="button-group">
 						<Button
 							sx={{
@@ -642,7 +642,7 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => propertyRoomSelectHandler(1)}
 						>
-							1
+							125
 						</Button>
 						<Button
 							sx={{
@@ -652,7 +652,7 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => propertyRoomSelectHandler(2)}
 						>
-							2
+							150
 						</Button>
 						<Button
 							sx={{
@@ -662,7 +662,7 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => propertyRoomSelectHandler(3)}
 						>
-							3
+							250
 						</Button>
 						<Button
 							sx={{
@@ -673,7 +673,7 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => propertyRoomSelectHandler(4)}
 						>
-							4
+							400
 						</Button>
 						<Button
 							sx={{
@@ -682,11 +682,11 @@ const Filter = (props: FilterType) => {
 							}}
 							onClick={() => propertyRoomSelectHandler(5)}
 						>
-							5+
+							600+
 						</Button>
 					</Stack>
 				</Stack>
-				<Stack className={'find-your-home'} mb={'30px'}>
+				{/* <Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Bedrooms</Typography>
 					<Stack className="button-group">
 						<Button
@@ -750,7 +750,7 @@ const Filter = (props: FilterType) => {
 							5+
 						</Button>
 					</Stack>
-				</Stack>
+				</Stack> */}
 				<Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Options</Typography>
 					<Stack className={'input-box'}>
@@ -781,9 +781,23 @@ const Filter = (props: FilterType) => {
 							<Typography className="propert-type">Rent</Typography>
 						</label>
 					</Stack>
+					<Stack className={'input-box'}>
+						<Checkbox
+							id={'Rent'}
+							className="property-checkbox"
+							color="default"
+							size="small"
+							value={'propertySale'}
+							checked={(searchFilter?.search?.options || []).includes('propertySale')}
+							onChange={propertyOptionSelectHandler}
+						/>
+						<label htmlFor={'Rent'} style={{ cursor: 'pointer' }}>
+							<Typography className="propert-type">Sale</Typography>
+						</label>
+					</Stack>
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
-					<Typography className={'title'}>Square meter</Typography>
+					<Typography className={'title'}>Mileage (mi)</Typography>
 					<Stack className="square-year-input">
 						<FormControl>
 							<InputLabel id="demo-simple-select-label">Min</InputLabel>
@@ -812,7 +826,7 @@ const Filter = (props: FilterType) => {
 							<Select
 								labelId="demo-simple-select-label"
 								id="demo-simple-select"
-								value={searchFilter?.search?.squaresRange?.end ?? 500}
+								value={searchFilter?.search?.squaresRange?.end ?? 0}
 								label="Max"
 								onChange={(e: any) => propertySquareHandler(e, 'end')}
 								MenuProps={MenuProps}
