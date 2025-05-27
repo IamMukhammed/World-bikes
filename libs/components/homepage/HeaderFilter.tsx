@@ -578,7 +578,7 @@ HeaderFilter.defaultProps = {
 		search: {
 			squaresRange: {
 				start: 0,
-				end: 500,
+				end: 50000,
 			},
 			pricesRange: {
 				start: 0,

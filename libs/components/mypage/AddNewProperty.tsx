@@ -59,8 +59,6 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 		});
 	}, [getPropertyLoading, getPropertyData]);
 
-	const engineSizesCC = [50, 100, 125, 150, 200, 250, 300, 400, 500, 600, 750, 1000, 1200];
-
 	/** HANDLERS **/
 	async function uploadImages() {
 		try {

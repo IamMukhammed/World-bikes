@@ -25,7 +25,7 @@ const PropertyCard = (props: PropertyCardType) => {
 	const user = useReactiveVar(userVar);
 	const imagePath: string = property?.propertyImages[0]
 		? `${REACT_APP_API_URL}/${property?.propertyImages[0]}`
-		: '/img/banner/header1.svg';
+		: '/img/banner/header1.webp';
 
 	if (device === 'mobile') {
 		return <div>PRODUCT CARD</div>;
@@ -56,7 +56,7 @@ const PropertyCard = (props: PropertyCardType) => {
 						<Stack className="name">
 							<Link
 								href={{
-									pathname: '/product/detail',
+									pathname: '/property/detail',
 									query: { id: property?._id },
 								}}
 							>
