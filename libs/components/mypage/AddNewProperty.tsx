@@ -12,6 +12,7 @@ import { useMutation, useQuery, useReactiveVar } from '@apollo/client';
 import { CREATE_PROPERTY, UPDATE_PROPERTY } from '../../../apollo/user/mutation';
 import { GET_PROPERTY } from '../../../apollo/user/query';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetMixinSuccessAlert } from '../../sweetAlert';
+import GoogleAddressInput from '../common/GoogleAddressInput';
 
 const AddProperty = ({ initialValues, ...props }: any) => {
 	const device = useDeviceDetect();
@@ -124,7 +125,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 			insertPropertyData.propertySale === '' ||
 			insertPropertyData.propertyRooms === 0 ||
 			insertPropertyData.propertyBeds === 0 ||
-			insertPropertyData.propertySquare === 0 ||
+			insertPropertyData.propertySquare === null ||
 			insertPropertyData.propertyDesc === '' ||
 			insertPropertyData.propertyImages.length === 0
 		) {
@@ -274,14 +275,9 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 								</Stack>
 								<Stack className="price-year-after-price">
 									<Typography className="title">Address</Typography>
-									<input
-										type="text"
-										className="description-input"
-										placeholder={'Address'}
+									<GoogleAddressInput
 										value={insertPropertyData.propertyAddress}
-										onChange={({ target: { value } }) =>
-											setInsertPropertyData({ ...insertPropertyData, propertyAddress: value })
-										}
+										onChange={(val) => setInsertPropertyData({ ...insertPropertyData, propertyAddress: val })}
 									/>
 								</Stack>
 							</Stack>
@@ -392,7 +388,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
 								</Stack>
 
-								<Stack className="price-year-after-price">
+								{/* <Stack className="price-year-after-price">
 									<Typography className="title">Mileage (mi)</Typography>
 									<select
 										className={'select-description'}
@@ -413,6 +409,29 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									</select>
 									<div className={'divider'}></div>
 									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
+								</Stack> */}
+								<Stack className="price-year-after-price">
+									<Typography className="title">Mileage (mi)</Typography>
+									<select
+										className="select-description"
+										value={
+											insertPropertyData.propertySquare !== undefined ? insertPropertyData.propertySquare : 'select'
+										}
+										onChange={({ target: { value } }) =>
+											setInsertPropertyData({ ...insertPropertyData, propertySquare: parseInt(value) })
+										}
+									>
+										<option disabled value="select">
+											Select
+										</option>
+										{propertySquare.map((square: number) => (
+											<option key={square} value={`${square}`}>
+												{square}
+											</option>
+										))}
+									</select>
+									<div className="divider"></div>
+									<img src="/img/icons/Vector.svg" className="arrow-down" />
 								</Stack>
 							</Stack>
 
@@ -534,7 +553,9 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 										<g clipPath="url(#clip0_7309_3249)">
 											<path
-												d="M15.5556 0H5.7778C5.53214 0 5.33334 0.198792 5.33334 0.444458C5.33334 0.690125 5.53214 0.888917 5.7778 0.888917H14.4827L0.130219 15.2413C-0.0434062 15.415 -0.0434062 15.6962 0.130219 15.8698C0.21701 15.9566 0.33076 16 0.444469 16C0.558177 16 0.671885 15.9566 0.758719 15.8698L15.1111 1.51737V10.2222C15.1111 10.4679 15.3099 10.6667 15.5556 10.6667C15.8013 10.6667 16.0001 10.4679 16.0001 10.2222V0.444458C16 0.198792 15.8012 0 15.5556 0Z"
+												d="M15.5556 0H5.7778C5.53214 0 5.33334 0.198792 5.33334 0.444458C5.33334 0.690125 5.53214 0.888917 5.7778 0.888917H14.4827L0.130219 15.2413C-0.0434062 
+													15.415 -0.0434062 15.6962 0.130219 15.8698C0.21701 15.9566 0.33076 16 0.444469 16C0.558177 16 0.671885 15.9566 0.758719 15.8698L15.1111 1.51737V10.2222C15.1111 
+													10.4679 15.3099 10.6667 15.5556 10.6667C15.8013 10.6667 16.0001 10.4679 16.0001 10.2222V0.444458C16 0.198792 15.8012 0 15.5556 0Z"
 												fill="#181A20"
 											/>
 										</g>
@@ -585,7 +606,7 @@ AddProperty.defaultProps = {
 		propertyAddress: '',
 		propertyBarter: false,
 		propertyRent: false,
-		propertySale: false,
+		propertySale: true,
 		propertyRooms: 0,
 		propertyBeds: 0,
 		propertySquare: 0,
