@@ -326,12 +326,12 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 							<ExpandMoreIcon />
 						</Box>
 						<Box className={`box ${openType ? 'on' : ''}`} onClick={typeStateChangeHandler}>
-							<span> {searchFilter?.search?.typeList ? searchFilter?.search?.typeList[0] : t('Property type')} </span>
+							<span> {searchFilter?.search?.typeList ? searchFilter?.search?.typeList[0] : t('Motorcycle type')} </span>
 							<ExpandMoreIcon />
 						</Box>
 						<Box className={`box ${openRooms ? 'on' : ''}`} onClick={roomStateChangeHandler}>
 							<span>
-								{searchFilter?.search?.roomsList ? `${searchFilter?.search?.roomsList[0]} rooms}` : t('Rooms')}
+								{searchFilter?.search?.roomsList ? `${searchFilter?.search?.roomsList[0]} cc` : t('Engine Size (cc)')}
 							</span>
 							<ExpandMoreIcon />
 						</Box>
@@ -351,7 +351,8 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 						{propertyLocation.map((location: string) => {
 							return (
 								<div onClick={() => propertyLocationSelectHandler(location)} key={location}>
-									<img src={`img/banner/cities/${location}.webp`} alt="" />
+									<img src={`img/banner/cities/${location.toLowerCase().replaceAll(' ', '-')}.webp`} alt={location} />
+									{/* <img src={`img/banner/cities/${location}.webp`} alt="" /> */}
 									<span>{location}</span>
 								</div>
 							);
@@ -362,7 +363,10 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 						{propertyType.map((type: string) => {
 							return (
 								<div
-									style={{ backgroundImage: `url(/img/banner/types/${type.toLowerCase()}.webp)` }}
+									// style={{ backgroundImage: `url(/img/banner/types/${type.toLowerCase()}.webp)` }}
+									style={{
+										backgroundImage: `url(/img/banner/types/${type.toLowerCase().replace(/\s/g, '-')}.webp)`,
+									}}
 									onClick={() => propertyTypeSelectHandler(type)}
 									key={type}
 								>
@@ -373,10 +377,10 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 					</div>
 
 					<div className={`filter-rooms ${openRooms ? 'on' : ''}`} ref={roomsRef}>
-						{[1, 2, 3, 4, 5].map((room: number) => {
+						{[50, 100, 125, 150, 250, 400, 600, 1000].map((room: number) => {
 							return (
 								<span onClick={() => propertyRoomSelectHandler(room)} key={room}>
-									{room} room{room > 1 ? 's' : ''}
+									{room} c{room > 1 ? 'c' : ''}
 								</span>
 							);
 						})}
@@ -397,7 +401,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 								<CloseIcon />
 							</div>
 							<div className={'top'}>
-								<span>Find your home</span>
+								<span>Find your feature motorcycle</span>
 								<div className={'search-input-box'}>
 									<img src="/img/icons/search.svg" alt="" />
 									<input
@@ -416,22 +420,22 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 							<Divider sx={{ mt: '30px', mb: '35px' }} />
 							<div className={'middle'}>
 								<div className={'row-box'}>
-									<div className={'box'}>
-										<span>bedrooms</span>
-										<div className={'inside'}>
+									<div className="box">
+										<span>Engine size (CC)</span>
+										<div className="inside">
 											<div
 												className={`room ${!searchFilter?.search?.bedsList ? 'active' : ''}`}
 												onClick={() => propertyBedSelectHandler(0)}
 											>
 												Any
 											</div>
-											{[1, 2, 3, 4, 5].map((bed: number) => (
+											{[50, 100, 125, 150, 250, 400, 600, 1000].map((cc) => (
 												<div
-													className={`room ${searchFilter?.search?.bedsList?.includes(bed) ? 'active' : ''}`}
-													onClick={() => propertyBedSelectHandler(bed)}
-													key={bed}
+													className={`room ${searchFilter?.search?.bedsList?.includes(cc) ? 'active' : ''}`}
+													onClick={() => propertyBedSelectHandler(cc)}
+													key={cc}
 												>
-													{bed == 0 ? 'Any' : bed}
+													{cc}
 												</div>
 											))}
 										</div>
@@ -457,7 +461,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 								</div>
 								<div className={'row-box'} style={{ marginTop: '44px' }}>
 									<div className={'box'}>
-										<span>Year Built</span>
+										<span>Year</span>
 										<div className={'inside space-between align-center'}>
 											<FormControl sx={{ width: '122px' }}>
 												<Select
@@ -495,44 +499,48 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 											</FormControl>
 										</div>
 									</div>
-									<div className={'box'}>
-										<span>square meter</span>
-										<div className={'inside space-between align-center'}>
+									<div className="box">
+										<span>Mileage (mi)</span>
+										<div className="inside space-between align-center">
 											<FormControl sx={{ width: '122px' }}>
 												<Select
-													value={searchFilter?.search?.squaresRange?.start}
+													value={searchFilter?.search?.squaresRange?.start ?? 0}
 													onChange={(e: any) => propertySquareHandler(e, 'start')}
 													displayEmpty
-													inputProps={{ 'aria-label': 'Without label' }}
+													renderValue={(selected) => `${selected} mi`}
+													inputProps={{ 'aria-label': 'Mileage start' }}
 													MenuProps={MenuProps}
 												>
-													{propertySquare.map((square: number) => (
+													{propertySquare.map((mi: number) => (
 														<MenuItem
-															value={square}
-															disabled={(searchFilter?.search?.squaresRange?.end || 0) < square}
-															key={square}
+															value={mi}
+															disabled={(searchFilter?.search?.squaresRange?.end || 0) < mi}
+															key={mi}
 														>
-															{square}
+															{mi} mi
 														</MenuItem>
 													))}
 												</Select>
 											</FormControl>
-											<div className={'minus-line'}></div>
+
+											<div className="minus-line"></div>
+
 											<FormControl sx={{ width: '122px' }}>
 												<Select
-													value={searchFilter?.search?.squaresRange?.end}
+													value={searchFilter?.search?.squaresRange?.end ?? 0}
 													onChange={(e: any) => propertySquareHandler(e, 'end')}
 													displayEmpty
-													inputProps={{ 'aria-label': 'Without label' }}
+													renderValue={(selected) => `${selected} mi`}
+													inputProps={{ 'aria-label': 'Mileage end' }}
 													MenuProps={MenuProps}
 												>
-													{propertySquare.map((square: number) => (
+													{propertySquare.map((mi: number) => (
 														<MenuItem
-															value={square}
-															disabled={(searchFilter?.search?.squaresRange?.start || 0) > square}
-															key={square}
+															value={mi}
+															disabled={(searchFilter?.search?.squaresRange?.start || 0) > mi}
+															key={mi}
 														>
-															{square}
+															{mi} mi
 														</MenuItem>
 													))}
 												</Select>

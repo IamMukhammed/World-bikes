@@ -349,27 +349,6 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 							</Stack>
 
 							<Stack className="config-row">
-								{/* <Stack className="price-year-after-price">
-									<Typography className="title">Engine Size</Typography>
-									<select
-										className={'select-description'}
-										value={insertPropertyData.propertyRooms || 'select'}
-										defaultValue={insertPropertyData.propertyRooms || 'select'}
-										onChange={({ target: { value } }) =>
-											setInsertPropertyData({ ...insertPropertyData, propertyRooms: parseInt(value) })
-										}
-									>
-										<option disabled={true} selected={true} value={'select'}>
-											Select
-										</option>
-										{[1, 2, 3, 4, 5].map((room: number) => (
-											<option value={`${room}`}>{room}</option>
-										))}
-									</select>
-									<div className={'divider'}></div>
-									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
-								</Stack> */}
-
 								<Stack className="price-year-after-price">
 									<Typography className="title">Engine Size (cc)</Typography>
 									<select
@@ -392,27 +371,6 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 									<div className="divider"></div>
 									<img src="/img/icons/Vector.svg" className="arrow-down" />
 								</Stack>
-
-								{/* <Stack className="price-year-after-price">
-									<Typography className="title">Year</Typography>
-									<select
-										className={'select-description'}
-										value={insertPropertyData.propertyBeds || 'select'}
-										defaultValue={insertPropertyData.propertyBeds || 'select'}
-										onChange={({ target: { value } }) =>
-											setInsertPropertyData({ ...insertPropertyData, propertyBeds: parseInt(value) })
-										}
-									>
-										<option disabled={true} selected={true} value={'select'}>
-											Select
-										</option>
-										{[1, 2, 3, 4, 5].map((bed: number) => (
-											<option value={`${bed}`}>{bed}</option>
-										))}
-									</select>
-									<div className={'divider'}></div>
-									<img src={'/img/icons/Vector.svg'} className={'arrow-down'} />
-								</Stack> */}
 								<Stack className="price-year-after-price">
 									<Typography className="title">Year</Typography>
 									<select
@@ -426,7 +384,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 										<option disabled={true} value={'select'}>
 											Select
 										</option>
-										{Array.from({ length: 2025 - 1980 + 1 }, (_, i) => 2025 - i).map((year) => (
+										{Array.from({ length: 2025 - 1970 + 1 }, (_, i) => 2025 - i).map((year) => (
 											<option key={year} value={year}>
 												{year}
 											</option>

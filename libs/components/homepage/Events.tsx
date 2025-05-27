@@ -10,30 +10,32 @@ interface EventData {
 }
 const eventsData: EventData[] = [
 	{
-		eventTitle: 'Paradise City Theme Park',
-		city: 'Incheon',
+		eventTitle: 'Sturgis Motorcycle Rally',
+		city: 'Sturgis, South Dakota',
 		description:
-			'Experience magic and wonder in Incheon with a visit to the night-themed indoor theme park Wonderbox at Paradise City!',
-		imageSrc: '/img/events/INCHEON.webp',
+			'Join hundreds of thousands of riders at the legendary Sturgis Rally — one of the world’s largest motorcycle events since 1938.',
+		imageSrc: '/img/events/STURGIS.webp',
 	},
 	{
-		eventTitle: 'Taebaeksan Snow Festival',
-		city: 'Seoul',
-		description: 'If you have the opportunity to travel to South Korea, do not miss the Taebaeksan Snow Festival!',
-		imageSrc: '/img/events/SEOUL.webp',
-	},
-	{
-		eventTitle: 'Suseong Lake Event',
-		city: 'Daegu',
-		description: 'The Suseong Lake Festival is a culture and arts festival held alongside Suseongmot Lake!',
-		imageSrc: '/img/events/DAEGU.webp',
-	},
-	{
-		eventTitle: 'Sand Festival',
-		city: 'Busan',
+		eventTitle: 'Daytona Bike Week',
+		city: 'Daytona Beach, Florida',
 		description:
-			'Haeundae Sand Festival, the nation’s largest eco-friendly exhibition on sand, is held at Haeundae Beach!',
-		imageSrc: '/img/events/BUSAN.webp',
+			'Rev your engines at Daytona Bike Week — a 10-day celebration of motorcycles, live music, and scenic rides along the coast.',
+		imageSrc: '/img/events/DAYTONA.webp',
+	},
+	{
+		eventTitle: 'Laconia Motorcycle Week',
+		city: 'Laconia, New Hampshire',
+		description:
+			'America’s oldest motorcycle rally takes over New Hampshire every summer — ride through mountains, lakes, and history.',
+		imageSrc: '/img/events/LACONIA.webp',
+	},
+	{
+		eventTitle: 'Lone Star Rally',
+		city: 'Galveston, Texas',
+		description:
+			'Texas-style fun with thousands of bikers, custom shows, and beachside rides at the Lone Star Rally in Galveston.',
+		imageSrc: '/img/events/LONESTAR.webp',
 	},
 ];
 
