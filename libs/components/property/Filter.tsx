@@ -11,6 +11,8 @@ import {
 	MenuItem,
 	Tooltip,
 	IconButton,
+	Box,
+	Grid,
 } from '@mui/material';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { PropertyLocation, PropertyType } from '../../enums/property.enum';
@@ -42,6 +44,8 @@ const Filter = (props: FilterType) => {
 	const [propertyType, setPropertyType] = useState<PropertyType[]>(Object.values(PropertyType));
 	const [searchText, setSearchText] = useState<string>('');
 	const [showMore, setShowMore] = useState<boolean>(false);
+
+	const engineSizes = [50, 125, 150, 200, 250, 300, 400, 500, 600, 750, 850, 1000];
 
 	/** LIFECYCLES **/
 	useEffect(() => {
@@ -575,7 +579,12 @@ const Filter = (props: FilterType) => {
 					</p>
 					<Stack
 						className={`property-location`}
-						style={{ height: showMore ? '253px' : '115px' }}
+						style={{
+							height: showMore ? '253px' : '115px',
+							overflowY: 'auto',
+							scrollbarWidth: 'thin',
+							scrollbarColor: '#aaa transparent',
+						}}
 						onMouseEnter={() => setShowMore(true)}
 						onMouseLeave={() => {
 							if (!searchFilter?.search?.locationList) {
@@ -583,24 +592,22 @@ const Filter = (props: FilterType) => {
 							}
 						}}
 					>
-						{propertyLocation.map((location: string) => {
-							return (
-								<Stack className={'input-box'} key={location}>
-									<Checkbox
-										id={location}
-										className="property-checkbox"
-										color="default"
-										size="small"
-										value={location}
-										checked={(searchFilter?.search?.locationList || []).includes(location as PropertyLocation)}
-										onChange={propertyLocationSelectHandler}
-									/>
-									<label htmlFor={location} style={{ cursor: 'pointer' }}>
-										<Typography className="property-type">{location}</Typography>
-									</label>
-								</Stack>
-							);
-						})}
+						{propertyLocation.map((location: string) => (
+							<Stack className={'input-box'} key={location}>
+								<Checkbox
+									id={location}
+									className="property-checkbox"
+									color="default"
+									size="small"
+									value={location}
+									checked={(searchFilter?.search?.locationList || []).includes(location as PropertyLocation)}
+									onChange={propertyLocationSelectHandler}
+								/>
+								<label htmlFor={location} style={{ cursor: 'pointer' }}>
+									<Typography className="property-type">{location}</Typography>
+								</label>
+							</Stack>
+						))}
 					</Stack>
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
@@ -624,133 +631,51 @@ const Filter = (props: FilterType) => {
 				</Stack>
 				<Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Engine Size (cc)</Typography>
-					<Stack className="button-group">
+					{/* "Any" Button */}
+					<Box mb={-1.4} display="flex" justifyContent="center" className="button-group">
 						<Button
 							sx={{
-								borderRadius: '12px 0 0 12px',
+								borderRadius: '12px 12px 0 0px',
 								border: !searchFilter?.search?.roomsList ? '2px solid #181A20' : '1px solid #b9b9b9',
 							}}
 							onClick={() => propertyRoomSelectHandler(0)}
 						>
 							Any
 						</Button>
-						<Button
-							sx={{
-								borderRadius: 0,
-								border: searchFilter?.search?.roomsList?.includes(1) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.roomsList?.includes(1) ? undefined : 'none',
-							}}
-							onClick={() => propertyRoomSelectHandler(1)}
-						>
-							125
-						</Button>
-						<Button
-							sx={{
-								borderRadius: 0,
-								border: searchFilter?.search?.roomsList?.includes(2) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.roomsList?.includes(2) ? undefined : 'none',
-							}}
-							onClick={() => propertyRoomSelectHandler(2)}
-						>
-							150
-						</Button>
-						<Button
-							sx={{
-								borderRadius: 0,
-								border: searchFilter?.search?.roomsList?.includes(3) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.roomsList?.includes(3) ? undefined : 'none',
-							}}
-							onClick={() => propertyRoomSelectHandler(3)}
-						>
-							250
-						</Button>
-						<Button
-							sx={{
-								borderRadius: 0,
-								border: searchFilter?.search?.roomsList?.includes(4) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.roomsList?.includes(4) ? undefined : 'none',
-								borderRight: searchFilter?.search?.roomsList?.includes(4) ? undefined : 'none',
-							}}
-							onClick={() => propertyRoomSelectHandler(4)}
-						>
-							400
-						</Button>
-						<Button
-							sx={{
-								borderRadius: '0 12px 12px 0',
-								border: searchFilter?.search?.roomsList?.includes(5) ? '2px solid #181A20' : '1px solid #b9b9b9',
-							}}
-							onClick={() => propertyRoomSelectHandler(5)}
-						>
-							600+
-						</Button>
-					</Stack>
+					</Box>
+
+					{/* Engine Size Grid: 4 items per row */}
+					<Grid container justifyContent="center">
+						{engineSizes.map((cc, index) => {
+							const isLastRow = index >= engineSizes.length - 4;
+							const isFirstInLastRow = index === engineSizes.length - 4;
+							const isLastInLastRow = index === engineSizes.length - 1;
+
+							return (
+								<Grid item key={cc}>
+									<Button
+										sx={{
+											width: 72.7,
+											height: 50,
+											borderLeft: searchFilter?.search?.roomsList?.includes(1) ? undefined : 'none',
+											border: searchFilter?.search?.roomsList?.includes(cc) ? '2px solid #181A20' : '1px solid #b9b9b9',
+											borderRadius: isLastRow
+												? isFirstInLastRow
+													? '0 0 0 12px'
+													: isLastInLastRow
+													? '0 0 12px 0'
+													: '0 0 0 0px'
+												: '0',
+										}}
+										onClick={() => propertyRoomSelectHandler(cc)}
+									>
+										{cc === 1000 ? '1000+' : cc}
+									</Button>
+								</Grid>
+							);
+						})}
+					</Grid>
 				</Stack>
-				{/* <Stack className={'find-your-home'} mb={'30px'}>
-					<Typography className={'title'}>Bedrooms</Typography>
-					<Stack className="button-group">
-						<Button
-							sx={{
-								borderRadius: '12px 0 0 12px',
-								border: !searchFilter?.search?.bedsList ? '2px solid #181A20' : '1px solid #b9b9b9',
-							}}
-							onClick={() => propertyBedSelectHandler(0)}
-						>
-							Any
-						</Button>
-						<Button
-							sx={{
-								borderRadius: 0,
-								border: searchFilter?.search?.bedsList?.includes(1) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(1) ? undefined : 'none',
-							}}
-							onClick={() => propertyBedSelectHandler(1)}
-						>
-							1
-						</Button>
-						<Button
-							sx={{
-								borderRadius: 0,
-								border: searchFilter?.search?.bedsList?.includes(2) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(2) ? undefined : 'none',
-							}}
-							onClick={() => propertyBedSelectHandler(2)}
-						>
-							2
-						</Button>
-						<Button
-							sx={{
-								borderRadius: 0,
-								border: searchFilter?.search?.bedsList?.includes(3) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(3) ? undefined : 'none',
-							}}
-							onClick={() => propertyBedSelectHandler(3)}
-						>
-							3
-						</Button>
-						<Button
-							sx={{
-								borderRadius: 0,
-								border: searchFilter?.search?.bedsList?.includes(4) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(4) ? undefined : 'none',
-								// borderRight: false ? undefined : 'none',
-							}}
-							onClick={() => propertyBedSelectHandler(4)}
-						>
-							4
-						</Button>
-						<Button
-							sx={{
-								borderRadius: '0 12px 12px 0',
-								border: searchFilter?.search?.bedsList?.includes(5) ? '2px solid #181A20' : '1px solid #b9b9b9',
-								borderLeft: searchFilter?.search?.bedsList?.includes(5) ? undefined : 'none',
-							}}
-							onClick={() => propertyBedSelectHandler(5)}
-						>
-							5+
-						</Button>
-					</Stack>
-				</Stack> */}
 				<Stack className={'find-your-home'} mb={'30px'}>
 					<Typography className={'title'}>Options</Typography>
 					<Stack className={'input-box'}>

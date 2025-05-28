@@ -362,7 +362,7 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 										<option disabled={true} selected={true} value="select">
 											Select
 										</option>
-										{[50, 100, 125, 150, 250, 400, 600, 1000].map((cc) => (
+										{[50, 125, 150, 200, 250, 300, 400, 500, 600, 750, 850, 1000].map((cc) => (
 											<option key={cc} value={cc}>
 												{cc} cc
 											</option>

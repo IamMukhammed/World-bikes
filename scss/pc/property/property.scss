@@ -48,8 +48,22 @@
 								height: 115px;
 								overflow: hidden;
 								transition: 1s;
+								overflow-y: auto;
+								scrollbar-width: thin;
+								scrollbar-color: #aaa transparent;
 								&:hover {
 									height: 253px;
+								}
+								&::-webkit-scrollbar {
+									width: 6px;
+								}
+								&::-webkit-scrollbar-track {
+									background: transparent;
+								}
+								&::-webkit-scrollbar-thumb {
+									background-color: #aaa;
+									border-radius: 10px;
+									border: 1px solid transparent;
 								}
 							}
 							.title-main {

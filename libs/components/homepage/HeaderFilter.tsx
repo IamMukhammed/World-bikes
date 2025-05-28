@@ -377,7 +377,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 					</div>
 
 					<div className={`filter-rooms ${openRooms ? 'on' : ''}`} ref={roomsRef}>
-						{[50, 100, 125, 150, 250, 400, 600, 1000].map((room: number) => {
+						{[50, 125, 150, 200, 250, 300, 400, 500, 600, 750, 850, 1000].map((room: number) => {
 							return (
 								<span onClick={() => propertyRoomSelectHandler(room)} key={room}>
 									{room} c{room > 1 ? 'c' : ''}
@@ -421,7 +421,7 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 							<div className={'middle'}>
 								<div className={'row-box'}>
 									<div className="box">
-										<span>Engine size (CC)</span>
+										<span>Engine Size (CC)</span>
 										<div className="inside">
 											<div
 												className={`room ${!searchFilter?.search?.bedsList ? 'active' : ''}`}
@@ -429,20 +429,21 @@ const HeaderFilter = (props: HeaderFilterProps) => {
 											>
 												Any
 											</div>
-											{[50, 100, 125, 150, 250, 400, 600, 1000].map((cc) => (
+											{[50, 125, 150, 200, 250, 300, 400, 500, 600, 750, 850, 1000].map((cc, idx) => (
 												<div
 													className={`room ${searchFilter?.search?.bedsList?.includes(cc) ? 'active' : ''}`}
 													onClick={() => propertyBedSelectHandler(cc)}
 													key={cc}
+													style={cc === 1000 ? { gridColumn: 'span 2' } : {}}
 												>
-													{cc}
+													{cc === 1000 ? '1000+' : cc}
 												</div>
 											))}
 										</div>
 									</div>
 									<div className={'box'}>
 										<span>options</span>
-										<div className={'inside'}>
+										<div className={'insider'}>
 											<FormControl>
 												<Select
 													value={optionCheck}
