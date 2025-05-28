@@ -262,6 +262,12 @@ const AddProperty = ({ initialValues, ...props }: any) => {
 										<>
 											<option selected={true} disabled={true} value={'select'}>
 												Select
+											{/* </option>
+											{propertyLocation.map((location: any) => (
+												<option value={`${location}`} key={location}>
+													{location}
+												</option>
+											))} */}
 											</option>
 											{propertyLocation.map((location: any) => (
 												<option value={`${location}`} key={location}>
@@ -606,7 +612,7 @@ AddProperty.defaultProps = {
 		propertyAddress: '',
 		propertyBarter: false,
 		propertyRent: false,
-		propertySale: true,
+		propertySale: false,
 		propertyRooms: 0,
 		propertyBeds: 0,
 		propertySquare: 0,

@@ -536,10 +536,10 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 								<Stack className={'address-config'}>
 									<Typography className={'title'}>Address</Typography>
 									<Stack className="map-box" sx={{ width: '100%', height: '400px', position: 'relative' }}>
-										{property?.propertyLocation && (
+										{property?.propertyAddress && (
 											<iframe
 												src={`https://www.google.com/maps?q=${encodeURIComponent(
-													property.propertyLocation,
+													property.propertyAddress,
 												)}&output=embed`}
 												width="100%"
 												height="100%"
