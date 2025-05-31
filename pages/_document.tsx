@@ -9,7 +9,7 @@ export default function Document() {
 				<meta name="robots" content="index,follow" />
 				<link rel="icon" type="image/png" href="/img/logo/favicon.svg" />
 
-				<meta name="keyword" content="world motorcycles, world-motorcycles.uz, devex mern, mern nestjs fullstack" />
+				<meta name="keyword" content="world-motorcycles, world-motorcycles.uz, devex mern, mern nestjs fullstack" />
 				<meta
 					name="description"
 					content={
