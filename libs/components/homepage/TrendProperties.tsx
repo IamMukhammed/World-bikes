@@ -150,7 +150,7 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 TrendProperties.defaultProps = {
 	initialInput: {
 		page: 1,
-		limit: 8,
+		limit: 12,
 		sort: 'propertyLikes',
 		direction: 'DESC',
 		search: {},

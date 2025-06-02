@@ -230,13 +230,13 @@ const AgentDetail: NextPage = ({ initialInput, initialComment, ...props }: any) 
 										/>
 									</Stack>
 									<span>
-										Total {propertyTotal} propert{propertyTotal > 1 ? 'ies' : 'y'} available
+										Total {propertyTotal} motorcycle{propertyTotal > 1 ? 's' : 'y'} available
 									</span>
 								</>
 							) : (
 								<div className={'no-data'}>
 									<img src="/img/icons/icoAlert.svg" alt="" />
-									<p>No properties found!</p>
+									<p>No motorcycles found!</p>
 								</div>
 							)}
 						</Stack>

@@ -530,12 +530,12 @@ const Filter = (props: FilterType) => {
 	};
 
 	if (device === 'mobile') {
-		return <div>PROPERTIES FILTER</div>;
+		return <div>MOTORCYCLES FILTER</div>;
 	} else {
 		return (
 			<Stack className={'filter-main'}>
 				<Stack className={'find-your-home'} mb={'40px'}>
-					<Typography className={'title-main'}>Find Your Home</Typography>
+					<Typography className={'title-main'}>Find Your Feature Motorcycle</Typography>
 					<Stack className={'input-box'}>
 						<OutlinedInput
 							value={searchText}

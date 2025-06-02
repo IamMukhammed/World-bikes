@@ -123,7 +123,7 @@ const PopularProperties = (props: PopularPropertiesProps) => {
 PopularProperties.defaultProps = {
 	initialInput: {
 		page: 1,
-		limit: 7,
+		limit: 10,
 		sort: 'propertyViews',
 		direction: 'DESC',
 		search: {},

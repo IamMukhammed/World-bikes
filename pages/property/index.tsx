@@ -129,7 +129,7 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 	};
 
 	if (device === 'mobile') {
-		return <h1>MOTORCYCLEs MOBILE</h1>;
+		return <h1>MOTORCYCLES MOBILE</h1>;
 	} else {
 		return (
 			<div id="property-list-page" style={{ position: 'relative' }}>
@@ -204,7 +204,7 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 								{properties.length !== 0 && (
 									<Stack className="total-result">
 										<Typography>
-											Total {total} motorcycle{total > 1 ? 'ies' : 'y'} available
+											Total {total} motorcycle{total > 1 ? 's' : 'y'} available
 										</Typography>
 									</Stack>
 								)}
@@ -226,7 +226,7 @@ PropertyList.defaultProps = {
 		search: {
 			squaresRange: {
 				start: 0,
-				end: 500,
+				end: 50000,
 			},
 			pricesRange: {
 				start: 0,

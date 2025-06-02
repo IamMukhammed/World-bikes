@@ -236,7 +236,7 @@
 							.top {
 								position: relative;
 								width: 100%;
-								height: 240px;
+								height: 220px;
 								a {
 									height: 100%;
 								}
@@ -245,6 +245,7 @@
 									height: 100%;
 									object-fit: cover;
 									border-radius: 12px 12px 0 0;
+									border: 1px solid cover;
 								}
 								.top-badge {
 									position: absolute;
@@ -295,7 +296,7 @@
 								padding: 20px 16px 10px 16px;
 								.name-address {
 									width: 100%;
-									height: 48px;
+									height: auto;
 									gap: 5px;
 									margin-bottom: 20px;
 									.name {
@@ -329,7 +330,7 @@
 									flex-direction: row;
 									width: 100%;
 									height: 20px;
-									gap: 20px;
+									gap: 10px;
 									margin-bottom: 10px;
 									.option {
 										flex-direction: row;

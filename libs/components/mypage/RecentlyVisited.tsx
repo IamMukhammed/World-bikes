@@ -72,7 +72,7 @@ const RecentlyVisited: NextPage = () => {
 						</Stack>
 						<Stack className="total-result">
 							<Typography>
-								Total {total} recently visited motorcycle{total > 1 ? 'ies' : 'y'}
+								Total {total} recently visited motorcycle{total > 1 ? 's' : 'y'}
 							</Typography>
 						</Stack>
 					</Stack>
