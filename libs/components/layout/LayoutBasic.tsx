@@ -41,7 +41,7 @@ const withLayoutBasic = (Component: any) => {
 				case '/agent/detail':
 					title = 'Agent Page';
 					desc = 'Home / For Rent';
-					bgImage = '/img/banner/header2.svg';
+					bgImage = '/img/banner/agents4.jpg';
 					break;
 				case '/mypage':
 					title = 'my page';
@@ -66,7 +66,7 @@ const withLayoutBasic = (Component: any) => {
 				case '/account/join':
 					title = 'Login/Signup';
 					desc = 'Authentication Process';
-					bgImage = '/img/banner/header2.svg';
+					bgImage = '/img/banner/agents4.jpg';
 					setAuthHeader(true);
 					break;
 				case '/member':
@@ -116,7 +116,7 @@ const withLayoutBasic = (Component: any) => {
 				<>
 					<Head>
 						<title>World Motorcycles</title>
-						<meta name={'title'} content={`WOrld Motorcycles`} />
+						<meta name={'title'} content={`World Motorcycles`} />
 					</Head>
 					<Stack id="pc-wrap">
 						<Stack id={'top'}>

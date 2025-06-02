@@ -570,6 +570,16 @@ const Top = () => {
 										/>
 										{t('Russian')}
 									</MenuItem>
+									{/* <MenuItem disableRipple onClick={langChoice} id="uz">
+										<img
+											className="img-flag"
+											src={'/img/flag/languz.png'}
+											onClick={langChoice}
+											id="ru"
+											alt={'russiaFlag'}
+										/>
+										{t('Uzbek')}
+									</MenuItem> */}
 								</StyledMenu>
 							</div>
 						</Box>
