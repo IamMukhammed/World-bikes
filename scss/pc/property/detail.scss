@@ -691,6 +691,9 @@
 							gap: 10px;
 							border-radius: 12px;
 							background: #eb6753;
+							z-index: 1000;
+							pointer-events: auto;
+							position: relative;
 							.title {
 								color: #fff;
 								font-family: $font;
@@ -698,6 +701,8 @@
 								font-style: normal;
 								font-weight: 600;
 								line-height: normal;
+								// pointer-events: auto !important;
+								// opacity: 1 !important;
 							}
 						}
 					}

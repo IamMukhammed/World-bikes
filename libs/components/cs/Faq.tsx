@@ -456,7 +456,7 @@ const Faq = () => {
 							changeCategoryHandler('property');
 						}}
 					>
-						Motorcycle
+						Property
 					</div>
 					<div
 						className={category === 'payment' ? 'active' : ''}
@@ -472,7 +472,7 @@ const Faq = () => {
 							changeCategoryHandler('buyers');
 						}}
 					>
-						For Buyers
+						Foy Buyers
 					</div>
 					<div
 						className={category === 'agents' ? 'active' : ''}

@@ -621,3 +621,48 @@ export const GET_MEMBER_FOLLOWINGS = gql`
 		}
 	}
 `;
+
+/**************************
+ *     NOTIFICATION       *
+ *************************/
+
+export const GET_NOTIFICATIONS = gql`
+	query GetNotificationsByUserId($userId: String!) {
+		getNotificationsByUserId(userId: $userId) {
+			_id
+			notificationType
+			notificationStatus
+			notificationGroup
+			notificationTitle
+			notificationDesc
+			authorId
+			receiverId
+			propertyId
+			articleId
+			createdAt
+		}
+	}
+`;
+
+export const MARK_NOTIFICATION_READ = gql`
+	mutation MarkNotificationAsRead($notificationId: String!) {
+		markNotificationAsRead(notificationId: $notificationId)
+	}
+`;
+
+/**************************
+ *    CONTACT MESSAGE      *
+ *************************/
+export const GET_MESSAGE = gql`
+	query GetMessage($input: ContactsInquiry!) {
+		getMessage(input: $input) {
+			_id
+			name
+			phone
+			email
+			message
+			contactRefId
+			memberId
+		}
+	}
+`;
