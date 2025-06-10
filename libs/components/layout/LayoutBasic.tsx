@@ -35,27 +35,27 @@ const withLayoutBasic = (Component: any) => {
 					break;
 				case '/agent':
 					title = 'Agents';
-					desc = 'Home / For Rent';
+					desc = 'Bikes / For Sale';
 					bgImage = '/img/banner/agents5.webp';
 					break;
 				case '/agent/detail':
 					title = 'Agent Page';
-					desc = 'Home / For Rent';
+					desc = 'Bikes / For Sale';
 					bgImage = '/img/banner/agents4.jpg';
 					break;
 				case '/mypage':
 					title = 'my page';
-					desc = 'Home / For Rent';
+					desc = 'Bikes / For Sale';
 					bgImage = '/img/banner/agents9.webp';
 					break;
 				case '/community':
 					title = 'Community';
-					desc = 'Home / For Rent';
+					desc = 'Bikes / For Sale';
 					bgImage = '/img/banner/agents4.jpg';
 					break;
 				case '/community/detail':
 					title = 'Community Detail';
-					desc = 'Home / For Rent';
+					desc = 'Bikes / For Sale';
 					bgImage = '/img/banner/agents4.jpg';
 					break;
 				case '/cs':
@@ -71,7 +71,7 @@ const withLayoutBasic = (Component: any) => {
 					break;
 				case '/member':
 					title = 'Member Page';
-					desc = 'Home / For Rent';
+					desc = 'Bikes / For Sale';
 					bgImage = '/img/banner/header1.webp';
 					break;
 				default:
@@ -93,8 +93,8 @@ const withLayoutBasic = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>World Motorcycles</title>
-						<meta name={'title'} content={`World Motorcycles`} />
+						<title>MotoLink</title>
+						<meta name={'title'} content={`MotoLink`} />
 					</Head>
 					<Stack id="mobile-wrap">
 						<Stack id={'top'}>
@@ -115,8 +115,8 @@ const withLayoutBasic = (Component: any) => {
 			return (
 				<>
 					<Head>
-						<title>World Motorcycles</title>
-						<meta name={'title'} content={`World Motorcycles`} />
+						<title>MotoLink</title>
+						<meta name={'title'} content={`MotoLink`} />
 					</Head>
 					<Stack id="pc-wrap">
 						<Stack id={'top'}>

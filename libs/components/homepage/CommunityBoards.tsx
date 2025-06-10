@@ -84,19 +84,6 @@ const CommunityBoards = () => {
 								})}
 							</Stack>
 						</Stack>
-						{/* <Stack className={'community-left'}>
-							<Stack className={'content-top'}>
-								<Link href={'/community?articleCategory=HUMOR'}>
-									<span>Humor</span>
-								</Link>
-								<img src="/img/icons/arrowBig.svg" alt="" />
-							</Stack>
-							<Stack className={'card-wrap'}>
-								{newsArticles.map((article, index) => {
-									return <CommunityCard vertical={true} article={article} index={index} key={article?._id} />;
-								})}
-							</Stack>
-						</Stack> */}
 					</Stack>
 				</Stack>
 			</Stack>

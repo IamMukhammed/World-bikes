@@ -65,7 +65,7 @@ const MemberFollowings = (props: MemberFollowingsProps) => {
 	};
 
 	if (device === 'mobile') {
-		return <div>WORLD MOTORCYCLES FOLLOWS MOBILE</div>;
+		return <div>MOTOLINK FOLLOWS MOBILE</div>;
 	} else {
 		return (
 			<div id="member-follows-page">

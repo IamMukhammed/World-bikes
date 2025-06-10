@@ -22,35 +22,6 @@ function Image(props: any) {
 	);
 }
 
-// function Page({ m = 0.4, urls, ...props }: any) {
-// 	const { width } = useThree((state) => state.viewport);
-// 	const w = width < 10 ? 1.5 / 3 : 1 / 3;
-
-// 	return (
-// 		<group {...props}>
-// 		  <Text
-// 			position={[-8, 0, 0]}
-// 			fontSize={0.8}
-// 			color="#ccc"
-// 			anchorX="center"
-// 			anchorY="middle"
-// 			maxWidth={9}
-// 		  >
-// 			Browse & List Motorcycles Worldwide
-// 		  </Text>
-// 		  <Text
-// 			position={[-10, -1.5, 0]}
-// 			fontSize={0.5}
-// 			color="#fff"
-// 			anchorX="center"
-// 			anchorY="middle"
-// 			maxWidth={6}
-// 		  >
-// 			Ride Free. Ride Global.
-// 		  </Text>
-// 		</group>
-// 	  );
-
 function Page({ m = 0.4, urls, ...props }: any) {
 	const { width } = useThree((state) => state.viewport);
 	// const w = width < 10 ? 1.5 / 3 : 1 / 3;
@@ -70,7 +41,7 @@ function Page({ m = 0.4, urls, ...props }: any) {
 
 	return (
 		<group {...props}>
-			<AnimatedText {...leftSpring} fontSize={0.7} color="#ccc" anchorX="center" anchorY="middle" maxWidth={8}>
+			<AnimatedText {...leftSpring} fontSize={0.7} color="white" anchorX="center" anchorY="middle" maxWidth={8}>
 				{'Browse & List\nMotorcycles Worldwide'}
 			</AnimatedText>
 

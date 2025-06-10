@@ -7,7 +7,7 @@ export default function Document() {
 			<Head>
 				{/* SEO Meta Tags */}
 				<meta name="robots" content="index,follow" />
-				<link rel="icon" type="image/png" href="/img/logo/favicon.svg" />
+				<link rel="icon" type="image/svg" href="/img/logo/favicon.svg" />
 
 				<meta name="keyword" content="world-motorcycles, world-motorcycles.uz, devex mern, mern nestjs fullstack" />
 				<meta

@@ -63,7 +63,7 @@ const Footer = () => {
 					</Stack>
 				</Stack>
 				<Stack className={'second'}>
-					<span>© World Motorcycles - All rights reserved. {moment().year()}</span>
+					<span>© MotoLink - All rights reserved. {moment().year()}</span>
 				</Stack>
 			</Stack>
 		);
@@ -73,7 +73,7 @@ const Footer = () => {
 				<Stack className={'main'}>
 					<Stack className={'left'}>
 						<Box component={'div'} className={'footer-box'}>
-							<img src="/img/logo/logoFooter2.svg" alt="" className={'logo'} />
+							<img src="/img/logo/logo 23.svg" alt="" className={'logo'} />
 						</Box>
 						<Box component={'div'} className={'footer-box'}>
 							<span>total free customer care</span>
@@ -128,7 +128,7 @@ const Footer = () => {
 					</Stack>
 				</Stack>
 				<Stack className={'second'}>
-					<span>© World Motorcycles - All rights reserved. {moment().year()}</span>
+					<span>© MotoLink - All rights reserved. {moment().year()}</span>
 					{/* <span>Privacy · Terms · Sitemap</span> */}
 				</Stack>
 			</Stack>

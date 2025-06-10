@@ -66,7 +66,7 @@ body::-webkit-scrollbar {
 					justify-content: space-between;
 					.logo-box {
 						img {
-							width: 150px;
+							width: 230px;
 							cursor: pointer;
 						}
 					}
@@ -184,7 +184,7 @@ body::-webkit-scrollbar {
 			align-items: center;
 			.search-box {
 				position: relative;
-				margin-top: 56px;
+				margin-top: 50px;
 				padding: 16px 29px;
 				width: 1094px;
 				height: 96px;
@@ -332,7 +332,7 @@ body::-webkit-scrollbar {
 				}
 				.filter-type {
 					position: absolute;
-					padding: 30px 60px;
+					padding: 30px 40px;
 					width: 1094px;
 					min-height: 120px;
 					height: auto;
@@ -340,7 +340,7 @@ body::-webkit-scrollbar {
 					right: 0px;
 					display: flex;
 					flex-wrap: wrap;
-					gap: 22px 30px;
+					gap: 20px 20px;
 					visibility: hidden;
 					border-radius: 12px;
 					background: #fff;
@@ -354,8 +354,8 @@ body::-webkit-scrollbar {
 					}
 					div {
 						position: relative;
-						width: 220px;
-						height: 210px;
+						width: 152px;
+						height: 152px;
 						border-radius: 15px;
 						cursor: pointer;
 						background-size: cover;
@@ -363,15 +363,15 @@ body::-webkit-scrollbar {
 						background-repeat: no-repeat;
 						span {
 							position: absolute;
-							top: 13px;
-							right: 12px;
+							top: 10px;
+							right: 6px;
 							padding: 1px 5px 5px 5px;
 							border-radius: 2px 2px 0px 0px;
 							font-family: $font;
-							font-size: 20px;
+							font-size: 18px;
 							font-style: normal;
 							font-weight: 700;
-							line-height: 26px;
+							line-height: 24px;
 							background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
 							// -webkit-background-clip: text;
 							// -webkit-text-fill-color: transparent;
@@ -694,10 +694,10 @@ body::-webkit-scrollbar {
 						flex-direction: column;
 						.logo {
 							width: 550px;
-							height: 200px;
-							margin-left: -35%;
-							margin-top: -15%;
-							margin-bottom: -18%;
+							height: 150px;
+							margin-left: -31%;
+							margin-top: -8%;
+							margin-bottom: -8%;
 							cursor: pointer;
 						}
 						span {

@@ -567,6 +567,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 									<Typography className={'title'}>Parts Diagram</Typography>
 									<Stack className={'image-box'}>
 										<img src={'/img/property/partsDiagram.png'} alt={'image'} />
+										{/* <img src={`/img/property/partsDiagram-${property}.png`} alt={`${property} parts diagram`} /> */}
 									</Stack>
 								</Stack>
 								<Stack className={'address-config'}>

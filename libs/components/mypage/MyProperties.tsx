@@ -91,7 +91,7 @@ const MyProperties: NextPage = ({ initialInput, ...props }: any) => {
 	}
 
 	if (device === 'mobile') {
-		return <div>WORLD MOTORCYCLES MOBILE</div>;
+		return <div>MOTOLINK MOBILE</div>;
 	} else {
 		return (
 			<div id="my-property-page">
