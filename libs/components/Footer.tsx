@@ -63,7 +63,7 @@ const Footer = () => {
 					</Stack>
 				</Stack>
 				<Stack className={'second'}>
-					<span>© World Motorcycles - All rights reserved. World Motorcycles {moment().year()}</span>
+					<span>© World Motorcycles - All rights reserved. {moment().year()}</span>
 				</Stack>
 			</Stack>
 		);
@@ -128,8 +128,8 @@ const Footer = () => {
 					</Stack>
 				</Stack>
 				<Stack className={'second'}>
-					<span>© World Motorcycles - All rights reserved. World Motorcycles {moment().year()}</span>
-					<span>Privacy · Terms · Sitemap</span>
+					<span>© World Motorcycles - All rights reserved. {moment().year()}</span>
+					{/* <span>Privacy · Terms · Sitemap</span> */}
 				</Stack>
 			</Stack>
 		);

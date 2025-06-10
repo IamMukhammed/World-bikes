@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { context as fiberContext, useFrame, useThree } from '@react-three/fiber';
-import mergeRefs from 'react-merge-refs';
+import { mergeRefs } from 'react-merge-refs';
 
 export type ScrollControlsProps = {
 	eps?: number;
