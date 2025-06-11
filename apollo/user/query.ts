@@ -630,6 +630,8 @@ export const GET_NOTIFICATIONS = gql`
 	query GetNotificationsByUserId($userId: String!) {
 		getNotificationsByUserId(userId: $userId) {
 			_id
+			content
+			isRead
 			notificationType
 			notificationStatus
 			notificationGroup
@@ -644,9 +646,12 @@ export const GET_NOTIFICATIONS = gql`
 	}
 `;
 
-export const MARK_NOTIFICATION_READ = gql`
+export const MARK_NOTIFICATION_AS_READ = gql`
 	mutation MarkNotificationAsRead($notificationId: String!) {
-		markNotificationAsRead(notificationId: $notificationId)
+		markNotificationAsRead(notificationId: $notificationId) {
+			_id
+			isRead
+		}
 	}
 `;
 
@@ -654,15 +659,16 @@ export const MARK_NOTIFICATION_READ = gql`
  *    CONTACT MESSAGE      *
  *************************/
 export const GET_MESSAGE = gql`
-	query GetMessage($input: ContactsInquiry!) {
-		getMessage(input: $input) {
+	query Messages($input: MessageInput!) {
+		messages(input: $input) {
 			_id
 			name
-			phone
 			email
+			phone
 			message
-			contactRefId
+			messageRefId
 			memberId
+			createdAt
 		}
 	}
 `;
