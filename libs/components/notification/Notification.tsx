@@ -13,20 +13,18 @@ import { NotificationStatus } from '../../enums/notification.enum';
 import { useRouter } from 'next/router';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-
-import IconButton from '@mui/material/IconButton';
-
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
-export default function NotificationPopover() {
+export default function BasicPopover() {
 	const user = useReactiveVar(userVar);
 	const router = useRouter();
-	// const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-	const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 	const [notification, setNotification] = React.useState<Notification[]>([]);
-	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
+		if (notification.length > 0) {
+		}
 	};
 	const [markNotificationAsRead] = useMutation(MARK_NOTIFICATION_AS_READ, {
 		onCompleted: () => {
@@ -83,9 +81,6 @@ export default function NotificationPopover() {
 		},
 	});
 
-	// Fake notification count for demo
-	const unreadCount = 3;
-
 	return (
 		<div>
 			<Badge
@@ -96,32 +91,18 @@ export default function NotificationPopover() {
 				}
 				color="secondary"
 			>
-				<IconButton
-					onClick={(event: { currentTarget: React.SetStateAction<HTMLElement | null>; }) => {
-						console.log('clicked:', event);
-						console.log('target:', event.currentTarget);
-						setAnchorEl(event.currentTarget);
-					}}
-				>
-					<NotificationsOutlinedIcon />
-				</IconButton>
-
-				<Popover
-					open={Boolean(anchorEl)}
-					anchorEl={anchorEl}
-					onClose={() => setAnchorEl(null)}
-					anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-				>
-					<Typography sx={{ p: 2 }}>Test notification</Typography>
-				</Popover>
+				<Button onClick={(event: any) => handleClick(event)} style={{ padding: 0, minWidth: 0 }}>
+					<NotificationsOutlinedIcon style={{ cursor: 'pointer', color: 'white' }} />
+				</Button>
 			</Badge>
 			<Popover
-				PaperProps={{
-					style: {
-						backgroundColor: 'white',
-						border: '1px solid #ccc',
-						borderRadius: '10px',
-					},
+				sx={{
+					marginTop: 5,
+				}}
+				style={{
+					maxHeight: '500px',
+					width: '600px',
+					borderRadius: '10px',
 				}}
 				id={id}
 				open={open}

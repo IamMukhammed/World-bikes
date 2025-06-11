@@ -3,6 +3,6 @@ export interface MessageInput {
 	phone: string;
 	email: string;
 	message: string;
-	messageRefId: string;
+	messageRefId?: string;
 	memberId?: string;
 }
