@@ -768,8 +768,10 @@
 						display: flex;
 						flex-direction: column;
 						.logo {
-							width: 128px;
-							height: 52px;
+							margin-top: -10%;
+							margin-bottom: -8%;
+							width: 178px;
+							height: 100px;
 							cursor: pointer;
 						}
 						span {

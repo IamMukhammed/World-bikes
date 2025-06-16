@@ -167,7 +167,7 @@ const Top = () => {
 						<Box component={'div'} className={'logo-box'}>
 							<Link href={'/'}>
 								{/* <h1 style={{ color: 'white' }}>MotoLink</h1> */}
-								<img src="/img/logo/logo 23.svg" alt="" />
+								<img src="/img/logo/logo23.svg" alt="" />
 							</Link>
 						</Box>
 						<Box component={'div'} className={'router-box'}>
