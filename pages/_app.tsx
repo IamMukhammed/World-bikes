@@ -6,7 +6,6 @@ import { light } from '../scss/MaterialTheme';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '../apollo/client';
 import { appWithTranslation } from 'next-i18next';
-import Navbar from '../libs/components/navbar/Navbar';
 import '../scss/app.scss';
 import '../scss/pc/main.scss';
 import '../scss/mobile/main.scss';
@@ -20,7 +19,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 		<ApolloProvider client={client}>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
-				{/* <Navbar /> */}
 				<Component {...pageProps} />
 			</ThemeProvider>
 		</ApolloProvider>

@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  bikes-api:
+    container_name: bikes-app
+    restart: always
+    image: node:20.10.0
+    ports:
+      - 4000:3000
+    environment:
+      - PORT=3000
+
+    volumes:
+      - ./:/usr/src/bikes-app
+    working_dir: /usr/src/bikes-app
+
+    networks:
+      - monorepo-network
+
+    # FOR PRODUCTION
+    command: bash -c "yarn && yarn run build && yarn run start"
+
+networks:
+  monorepo-network:
+    driver: bridge
+
+# bikes-next:   localhost:4000 <=> container:3000
+# bikes-api:    localhost:4001 <=> container:3007
+# bikes-batch:  localhost:4002 <=> container:3008
