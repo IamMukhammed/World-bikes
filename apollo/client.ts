@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { ApolloClient, ApolloLink, InMemoryCache, split, from, NormalizedCacheObject } from '@apollo/client';
-import createUploadLink from 'apollo-upload-client/public/createUploadLink.js';
+// import createUploadLink from 'apollo-upload-client/public/createUploadLink.js';
+import { createUploadLink } from 'apollo-upload-client';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { onError } from '@apollo/client/link/error';

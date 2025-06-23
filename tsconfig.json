@@ -1,3 +1,26 @@
+// {
+// 	"compilerOptions": {
+// 		"target": "es5",
+// 		"lib": ["dom", "dom.iterable", "esnext"],
+// 		"allowJs": true,
+// 		"skipLibCheck": true,
+// 		"strict": true,
+// 		"forceConsistentCasingInFileNames": true,
+// 		"noEmit": true,
+// 		"esModuleInterop": true,
+// 		"module": "esnext",
+// 		"moduleResolution": "node",
+// 		"resolveJsonModule": true,
+// 		"isolatedModules": true,
+// 		"jsx": "preserve",
+// 		"incremental": true,
+// 		"typeRoots": ["./node_modules/@types", "./types"],
+// 		"types": ["node", "axios", "google.maps"],
+// 	},
+// 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+// 	"exclude": ["node_modules"]
+// }
+
 {
 	"compilerOptions": {
 		"target": "es5",
@@ -6,7 +29,6 @@
 		"skipLibCheck": true,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
-		// "suppressImplicitAnyIndexErrors": true,
 		"noEmit": true,
 		"esModuleInterop": true,
 		"module": "esnext",
@@ -14,7 +36,9 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"incremental": true
+		"incremental": true,
+		"typeRoots": ["./node_modules/@types"], // faqat node_modules/@types bo‘lsa yetarli
+		"types": ["node", "google.maps"] // axios olib tashlandi
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules"]

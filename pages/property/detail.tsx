@@ -35,6 +35,7 @@ import { GET_PROPERTIES, GET_PROPERTY } from '../../apollo/user/query';
 import { MessageInput } from '../../libs/types/message/message.input';
 import { sweetErrorHandling, sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from '../../libs/sweetAlert';
 import dynamic from 'next/dynamic';
+import { PropertyLocation } from '../../libs/enums/property.enum';
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -179,7 +180,8 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 					sort: 'createdAt',
 					direction: Direction.DESC,
 					search: {
-						locationList: [property?.propertyLocation],
+						// locationList: [property?.propertyLocation],
+						locationList: [property?.propertyLocation].filter(Boolean) as PropertyLocation[]
 					},
 				},
 			});

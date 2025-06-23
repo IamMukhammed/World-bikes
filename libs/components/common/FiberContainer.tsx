@@ -24,7 +24,6 @@ function Image(props: any) {
 
 function Page({ m = 0.4, urls, ...props }: any) {
 	const { width } = useThree((state) => state.viewport);
-	// const w = width < 10 ? 1.5 / 3 : 1 / 3;
 
 	const leftSpring = useSpring({
 		from: { position: [-width, 0, 0] },
@@ -32,7 +31,6 @@ function Page({ m = 0.4, urls, ...props }: any) {
 		config: { mass: 1, tension: 120, friction: 14 },
 	});
 
-	// O'ng tarafdan markazga
 	const rightSpring = useSpring({
 		from: { position: [width, 0, 0] },
 		to: { position: [-8.5, -0.8, 0] },
@@ -41,13 +39,17 @@ function Page({ m = 0.4, urls, ...props }: any) {
 
 	return (
 		<group {...props}>
-			<AnimatedText {...leftSpring} fontSize={0.7} color="white" anchorX="center" anchorY="middle" maxWidth={8}>
-				{'Browse & List\nMotorcycles Worldwide'}
-			</AnimatedText>
+			<a.mesh position={leftSpring.position.to((x, y, z) => [x, y, z])}>
+				<AnimatedText fontSize={0.7} color="white" anchorX="center" anchorY="middle" maxWidth={8}>
+					{'Browse & List\nMotorcycles Worldwide'}
+				</AnimatedText>
+			</a.mesh>
 
-			<AnimatedText {...rightSpring} fontSize={0.5} color="#ccc" anchorX="center" anchorY="middle" maxWidth={8}>
-				{'Join the Ride Anywhere, Anytime'}
-			</AnimatedText>
+			<a.mesh position={rightSpring.position.to((x, y, z) => [x, y, z])}>
+				<AnimatedText fontSize={0.5} color="#ccc" anchorX="center" anchorY="middle" maxWidth={8}>
+					{'Join the Ride Anywhere, Anytime'}
+				</AnimatedText>
+			</a.mesh>
 		</group>
 	);
 }

@@ -350,7 +350,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 										</Stack>
 									</Stack>
 									<Stack>
-										<ToastViewerComponent markdown={boardArticle?.articleContent} className={'ytb_play'} />
+										{/* <ToastViewerComponent markdown={boardArticle?.articleContent} className={'ytb_play'} /> */}
 									</Stack>
 									<Stack className="like-and-dislike">
 										<Stack className="top">
